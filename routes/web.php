@@ -4,12 +4,15 @@ use App\Http\Controllers\Admin\{ReplySupportController, SupportController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\TesteController;
 
 Route::get('/contato', [SiteController::class, 'contact']);
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("/teste", [TesteController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
