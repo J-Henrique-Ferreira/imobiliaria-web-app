@@ -14,13 +14,14 @@ class ProductController extends Controller
     public function index()
     {
 
-        $infos = [
+        $products = [
             [
                 "category" => "casa",
                 "bedrooms" => "3", // quartos
                 "bathroom" => "2", // banheiros
                 "cars_in_garage" => 2,
                 "home_size" => "128", // metros quadrados
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "Description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "modality" => "aluguel",
                 "address" => [
@@ -30,6 +31,7 @@ class ProductController extends Controller
                     "number" => "7892"
                 ],
                 "value" => "1200",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image1.jpg", "image2.jpg", "image3.jpg"]
             ],
             [
@@ -38,6 +40,7 @@ class ProductController extends Controller
                 "bathroom" => "1",
                 "cars_in_garage" => 1,
                 "home_size" => "80",
+                "title" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
                 "Description" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
                 "modality" => "venda",
                 "address" => [
@@ -47,6 +50,7 @@ class ProductController extends Controller
                     "number" => "456"
                 ],
                 "value" => "250000",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image4.jpg", "image5.jpg"]
             ],
             [
@@ -61,9 +65,10 @@ class ProductController extends Controller
                     "city" => "Novo Hamburgo",
                     "state" => "RS",
                     "country" => "Bairro Primavera",
-                    "number" => "123"
+                    "number" => "123",
                 ],
                 "value" => "1800",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image6.jpg", "image7.jpg", "image8.jpg"]
             ],
             // Adicionando mais 10 itens...
@@ -82,6 +87,7 @@ class ProductController extends Controller
                     "number" => "789"
                 ],
                 "value" => "550000",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image9.jpg", "image10.jpg", "image11.jpg"]
             ],
             [
@@ -99,6 +105,7 @@ class ProductController extends Controller
                     "number" => "987"
                 ],
                 "value" => "900",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image12.jpg", "image13.jpg"]
             ],
             [
@@ -116,6 +123,7 @@ class ProductController extends Controller
                     "number" => "321"
                 ],
                 "value" => "780000",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image14.jpg", "image15.jpg", "image16.jpg"]
             ],
             [
@@ -133,6 +141,7 @@ class ProductController extends Controller
                     "number" => "741"
                 ],
                 "value" => "1250000",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image17.jpg", "image18.jpg", "image19.jpg"]
             ],
             [
@@ -150,6 +159,8 @@ class ProductController extends Controller
                     "number" => "1234"
                 ],
                 "value" => "2500",
+
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image20.jpg", "image21.jpg"]
             ],
             [
@@ -167,6 +178,7 @@ class ProductController extends Controller
                     "number" => "567"
                 ],
                 "value" => "620000",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image22.jpg", "image23.jpg", "image24.jpg"]
             ],
             [
@@ -184,6 +196,7 @@ class ProductController extends Controller
                     "number" => "890"
                 ],
                 "value" => "1800",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image25.jpg", "image26.jpg"]
             ],
             [
@@ -201,6 +214,7 @@ class ProductController extends Controller
                     "number" => "246"
                 ],
                 "value" => "150000",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image27.jpg", "image28.jpg"]
             ],
             [
@@ -218,6 +232,7 @@ class ProductController extends Controller
                     "number" => "135"
                 ],
                 "value" => "2200",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
                 "images" => ["image29.jpg", "image30.jpg", "image31.jpg"]
             ]
         ];
@@ -225,7 +240,7 @@ class ProductController extends Controller
         // Agora o array $infos possui 13 elementos, cada um representando um imóvel diferente.
 
 
-        return view('site.index', ["infos" => $infos]);
+        return view('site.index', ["products" => $products]);
     }
 
     /**
@@ -233,7 +248,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        //,,
     }
 
     /**
@@ -253,7 +268,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource.,,
      */
     public function edit(product $product)
     {
