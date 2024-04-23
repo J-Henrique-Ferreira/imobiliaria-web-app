@@ -1,10 +1,13 @@
 <x-layouts.site title="início">
 
 
-<section>
+<section class="d-flex flex-row w-100  flex-wrap ">
     @foreach($products as $product) 
 
-    <x-site.productCard title={{$product}}> </x-site.productCard>
+
+
+    @component("components.site.productCard", ["product" => $product])
+    @endComponent
     @endForeach
 </section>
 

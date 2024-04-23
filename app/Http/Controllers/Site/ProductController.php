@@ -22,7 +22,7 @@ class ProductController extends Controller
                 "cars_in_garage" => 2,
                 "home_size" => "128", // metros quadrados
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                "Description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "modality" => "aluguel",
                 "address" => [
                     "city" => "Taquara",
@@ -41,7 +41,7 @@ class ProductController extends Controller
                 "cars_in_garage" => 1,
                 "home_size" => "80",
                 "title" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
-                "Description" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
+                "description" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
                 "modality" => "venda",
                 "address" => [
                     "city" => "Porto Alegre",
@@ -59,7 +59,8 @@ class ProductController extends Controller
                 "bathroom" => "3",
                 "cars_in_garage" => 2,
                 "home_size" => "200",
-                "Description" => "Sobrado amplo e arejado, ideal para famílias grandes. Área de lazer completa.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Sobrado amplo e arejado, ideal para famílias grandes. Área de lazer completa.",
                 "modality" => "aluguel",
                 "address" => [
                     "city" => "Novo Hamburgo",
@@ -78,7 +79,8 @@ class ProductController extends Controller
                 "bathroom" => "3",
                 "cars_in_garage" => 3,
                 "home_size" => "180",
-                "Description" => "Casa espaçosa com piscina e churrasqueira. Ótima localização residencial.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Casa espaçosa com piscina e churrasqueira. Ótima localização residencial.",
                 "modality" => "venda",
                 "address" => [
                     "city" => "Gramado",
@@ -96,7 +98,8 @@ class ProductController extends Controller
                 "bathroom" => "1",
                 "cars_in_garage" => 1,
                 "home_size" => "60",
-                "Description" => "Apartamento compacto com ótima vista da cidade.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Apartamento compacto com ótima vista da cidade.",
                 "modality" => "aluguel",
                 "address" => [
                     "city" => "Caxias do Sul",
@@ -114,7 +117,8 @@ class ProductController extends Controller
                 "bathroom" => "2",
                 "cars_in_garage" => 2,
                 "home_size" => "150",
-                "Description" => "Sobrado moderno com acabamentos de alto padrão. Condomínio fechado.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Sobrado moderno com acabamentos de alto padrão. Condomínio fechado.",
                 "modality" => "venda",
                 "address" => [
                     "city" => "Gravataí",
@@ -132,7 +136,8 @@ class ProductController extends Controller
                 "bathroom" => "4",
                 "cars_in_garage" => 4,
                 "home_size" => "250",
-                "Description" => "Casa luxuosa com ampla área de lazer. Vista para o mar.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Casa luxuosa com ampla área de lazer. Vista para o mar.",
                 "modality" => "venda",
                 "address" => [
                     "city" => "Florianópolis",
@@ -150,7 +155,8 @@ class ProductController extends Controller
                 "bathroom" => "2",
                 "cars_in_garage" => 1,
                 "home_size" => "90",
-                "Description" => "Apartamento mobiliado em condomínio com piscina e academia.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Apartamento mobiliado em condomínio com piscina e academia.",
                 "modality" => "aluguel",
                 "address" => [
                     "city" => "Balneário Camboriú",
@@ -169,7 +175,8 @@ class ProductController extends Controller
                 "bathroom" => "3",
                 "cars_in_garage" => 2,
                 "home_size" => "180",
-                "Description" => "Sobrado amplo em bairro tranquilo. Próximo a escolas e comércios.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Sobrado amplo em bairro tranquilo. Próximo a escolas e comércios.",
                 "modality" => "venda",
                 "address" => [
                     "city" => "Itajaí",
@@ -187,7 +194,8 @@ class ProductController extends Controller
                 "bathroom" => "2",
                 "cars_in_garage" => 2,
                 "home_size" => "120",
-                "Description" => "Casa térrea em condomínio fechado. Área de lazer completa.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Casa térrea em condomínio fechado. Área de lazer completa.",
                 "modality" => "aluguel",
                 "address" => [
                     "city" => "Joinville",
@@ -205,7 +213,8 @@ class ProductController extends Controller
                 "bathroom" => "1",
                 "cars_in_garage" => 1,
                 "home_size" => "50",
-                "Description" => "Apartamento compacto e aconchegante. Localização privilegiada.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Apartamento compacto e aconchegante. Localização privilegiada.",
                 "modality" => "venda",
                 "address" => [
                     "city" => "Blumenau",
@@ -223,7 +232,8 @@ class ProductController extends Controller
                 "bathroom" => "3",
                 "cars_in_garage" => 2,
                 "home_size" => "200",
-                "Description" => "Sobrado espaçoso em bairro residencial. Fácil acesso às principais vias.",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Sobrado espaçoso em bairro residencial. Fácil acesso às principais vias.",
                 "modality" => "aluguel",
                 "address" => [
                     "city" => "Chapecó",
