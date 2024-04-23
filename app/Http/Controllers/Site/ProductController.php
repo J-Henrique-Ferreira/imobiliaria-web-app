@@ -31,7 +31,7 @@ class ProductController extends Controller
                     "number" => "7892"
                 ],
                 "value" => "1200",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://cf.bstatic.com/xdata/images/hotel/max1024x768/476329454.jpg?k=8b8963ae5ac81ee0ee895e2b1e6cc3986e1d258daeca6210777adde62d660166&o=&hp=1",
                 "images" => ["image1.jpg", "image2.jpg", "image3.jpg"]
             ],
             [
@@ -50,7 +50,7 @@ class ProductController extends Controller
                     "number" => "456"
                 ],
                 "value" => "250000",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/93/23/22/11/720x532/4263982728.jpg?isFirstImage=true",
                 "images" => ["image4.jpg", "image5.jpg"]
             ],
             [
@@ -69,7 +69,7 @@ class ProductController extends Controller
                     "number" => "123",
                 ],
                 "value" => "1800",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/93/23/22/11/720x532/4263982728.jpg?isFirstImage=true",
                 "images" => ["image6.jpg", "image7.jpg", "image8.jpg"]
             ],
             // Adicionando mais 10 itens...
@@ -89,7 +89,7 @@ class ProductController extends Controller
                     "number" => "789"
                 ],
                 "value" => "550000",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://fotos.sobressai.com.br/fotos/278/1100341/23999945_g.jpg",
                 "images" => ["image9.jpg", "image10.jpg", "image11.jpg"]
             ],
             [
@@ -108,7 +108,7 @@ class ProductController extends Controller
                     "number" => "987"
                 ],
                 "value" => "900",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/92/78/51/24/720x532/4247834075.jpg?isFirstImage=true",
                 "images" => ["image12.jpg", "image13.jpg"]
             ],
             [
@@ -146,7 +146,7 @@ class ProductController extends Controller
                     "number" => "741"
                 ],
                 "value" => "1250000",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/89/83/72/27/720x532/4149207307.jpg?isFirstImage=true",
                 "images" => ["image17.jpg", "image18.jpg", "image19.jpg"]
             ],
             [
@@ -166,7 +166,7 @@ class ProductController extends Controller
                 ],
                 "value" => "2500",
 
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/84/37/63/90/720x532/3961039985.jpg?isFirstImage=true",
                 "images" => ["image20.jpg", "image21.jpg"]
             ],
             [
@@ -185,7 +185,7 @@ class ProductController extends Controller
                     "number" => "567"
                 ],
                 "value" => "620000",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/91/02/78/00/720x532/4186964833.jpg?isFirstImage=true",
                 "images" => ["image22.jpg", "image23.jpg", "image24.jpg"]
             ],
             [
@@ -204,7 +204,7 @@ class ProductController extends Controller
                     "number" => "890"
                 ],
                 "value" => "1800",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "default_image" => "https://i.ytimg.com/vi/T2wIxUjqPFM/maxresdefault.jpg",
                 "images" => ["image25.jpg", "image26.jpg"]
             ],
             [
@@ -246,9 +246,6 @@ class ProductController extends Controller
                 "images" => ["image29.jpg", "image30.jpg", "image31.jpg"]
             ]
         ];
-
-        // Agora o array $infos possui 13 elementos, cada um representando um imóvel diferente.
-
 
         return view('site.index', ["products" => $products]);
     }

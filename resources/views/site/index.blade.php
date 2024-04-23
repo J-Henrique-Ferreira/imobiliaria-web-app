@@ -1,20 +1,15 @@
 <x-layouts.site title="início">
-
-
-<section class="d-flex flex-row w-100  flex-wrap ">
-    @foreach($products as $product) 
-
-
-
-    @component("components.site.productCard", ["product" => $product])
-    @endComponent
-    @endForeach
-</section>
+    <section class="flex flex-wrap justify-center gap-5 max-w-7xl my-4 ">
+        @foreach($products as $product)
+        @component("components.site.productCard", ["product" => $product])
+        @endComponent
+        @endForeach
+    </section>
 
 </x-layouts.site>
 
 <!-- 
-      [
+    [
         "category" => "casa",
         "bedrooms" => "3", // quartos
         "bathroom" => "2", // banheiros
