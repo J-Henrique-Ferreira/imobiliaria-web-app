@@ -6,7 +6,7 @@
 
     <x-site.filter></x-site.filter>
 
-    <section class="d-flex flex-wrap justify-content-center gap-3 max-w-7xl my-4">
+    <section class="d-flex flex-wrap justify-content-center gap-2 max-w-7xl my-4">
         @foreach($products as $product)
         @component("components.site.productCard", ["product" => $product])
         @endComponent

@@ -17,7 +17,7 @@
 
 <x-site.header></x-site.header>
 
-<body class="">
+<body class="" style="background-color: #f7f9fc;">
     <main class=" container mx-auto flex flex-col items-center" style="min-height: 100vh;">{{$slot}}</main>
     <x-site.footer></x-site.footer>
 </body>

@@ -20,7 +20,7 @@ class ProductController extends Controller
                 "bedrooms" => "3", // quartos
                 "bathroom" => "2", // banheiros
                 "cars_in_garage" => 2,
-                "home_size" => "128", // metros quadrados
+                "size" => "128", // metros quadrados
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "modality" => "aluguel",
@@ -39,7 +39,7 @@ class ProductController extends Controller
                 "bedrooms" => "2",
                 "bathroom" => "1",
                 "cars_in_garage" => 1,
-                "home_size" => "80",
+                "size" => "80",
                 "title" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
                 "description" => "Apartamento recém-reformado, localização central. Segurança 24 horas.",
                 "modality" => "venda",
@@ -58,7 +58,7 @@ class ProductController extends Controller
                 "bedrooms" => "4",
                 "bathroom" => "3",
                 "cars_in_garage" => 2,
-                "home_size" => "200",
+                "size" => "200",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Sobrado amplo e arejado, ideal para famílias grandes. Área de lazer completa.",
                 "modality" => "aluguel",
@@ -72,13 +72,12 @@ class ProductController extends Controller
                 "default_image" => "https://tribuneonlineng.com/wp-content/uploads/2023/08/Real-estate.jpg",
                 "images" => ["image6.jpg", "image7.jpg", "image8.jpg"]
             ],
-            // Adicionando mais 10 itens...
             [
                 "category" => "casa",
                 "bedrooms" => "4",
                 "bathroom" => "3",
                 "cars_in_garage" => 3,
-                "home_size" => "180",
+                "size" => "180",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Casa espaçosa com piscina e churrasqueira. Ótima localização residencial.",
                 "modality" => "venda",
@@ -97,7 +96,7 @@ class ProductController extends Controller
                 "bedrooms" => "1",
                 "bathroom" => "1",
                 "cars_in_garage" => 1,
-                "home_size" => "60",
+                "size" => "60",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Apartamento compacto com ótima vista da cidade.",
                 "modality" => "aluguel",
@@ -116,7 +115,7 @@ class ProductController extends Controller
                 "bedrooms" => "3",
                 "bathroom" => "2",
                 "cars_in_garage" => 2,
-                "home_size" => "150",
+                "size" => "150",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Sobrado moderno com acabamentos de alto padrão. Condomínio fechado.",
                 "modality" => "venda",
@@ -135,7 +134,7 @@ class ProductController extends Controller
                 "bedrooms" => "5",
                 "bathroom" => "4",
                 "cars_in_garage" => 4,
-                "home_size" => "250",
+                "size" => "250",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Casa luxuosa com ampla área de lazer. Vista para o mar.",
                 "modality" => "venda",
@@ -154,7 +153,7 @@ class ProductController extends Controller
                 "bedrooms" => "2",
                 "bathroom" => "2",
                 "cars_in_garage" => 1,
-                "home_size" => "90",
+                "size" => "90",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Apartamento mobiliado em condomínio com piscina e academia.",
                 "modality" => "aluguel",
@@ -174,7 +173,7 @@ class ProductController extends Controller
                 "bedrooms" => "4",
                 "bathroom" => "3",
                 "cars_in_garage" => 2,
-                "home_size" => "180",
+                "size" => "180",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Sobrado amplo em bairro tranquilo. Próximo a escolas e comércios.",
                 "modality" => "venda",
@@ -193,7 +192,7 @@ class ProductController extends Controller
                 "bedrooms" => "3",
                 "bathroom" => "2",
                 "cars_in_garage" => 2,
-                "home_size" => "120",
+                "size" => "120",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Casa térrea em condomínio fechado. Área de lazer completa.",
                 "modality" => "aluguel",
@@ -212,7 +211,7 @@ class ProductController extends Controller
                 "bedrooms" => "1",
                 "bathroom" => "1",
                 "cars_in_garage" => 1,
-                "home_size" => "50",
+                "size" => "50",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Apartamento compacto e aconchegante. Localização privilegiada.",
                 "modality" => "venda",
@@ -231,7 +230,7 @@ class ProductController extends Controller
                 "bedrooms" => "4",
                 "bathroom" => "3",
                 "cars_in_garage" => 2,
-                "home_size" => "200",
+                "size" => "200",
                 "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
                 "description" => "Sobrado espaçoso em bairro residencial. Fácil acesso às principais vias.",
                 "modality" => "aluguel",
@@ -252,7 +251,11 @@ class ProductController extends Controller
                 "src" => "https://img.kenlo.io/VWRCUkQ2Tnp3d1BJRDBJVe1szBgxSbxEJs4E8PoAzyCur-yjcWvylTZaIWQxUUFHJ%2BMbgmN3V8Aj%2B0Ih2sgp6R4-m9EYQLL55nLWh9nT4tqVrU3R9p%2BJtuKF38mmBpyHldxv2vCtHAHwv6NuFtcpOhoiOuU-XRX3W46bNX5NpCLJ417MU7ZxSWNT2Qwo1g9WyxH9F4HmpQFozg%3D%3D.png",
                 "alt" => "imagem 1 do banner"
             ],
-
+            [
+                "src" => "https://storage.pixteller.com/designs/designs-images/2019-05-15/01/real-estate-modern-banner-1-5cdbf09815644.png",
+                "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
+                "alt" => "imagem 2 do banner"
+            ],
             [
                 "src" => "https://athenasimobiliaria.com.br/wp-content/uploads/2021/02/banner-1.jpg",
                 "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
