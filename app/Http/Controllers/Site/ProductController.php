@@ -252,11 +252,7 @@ class ProductController extends Controller
                 "src" => "https://img.kenlo.io/VWRCUkQ2Tnp3d1BJRDBJVe1szBgxSbxEJs4E8PoAzyCur-yjcWvylTZaIWQxUUFHJ%2BMbgmN3V8Aj%2B0Ih2sgp6R4-m9EYQLL55nLWh9nT4tqVrU3R9p%2BJtuKF38mmBpyHldxv2vCtHAHwv6NuFtcpOhoiOuU-XRX3W46bNX5NpCLJ417MU7ZxSWNT2Qwo1g9WyxH9F4HmpQFozg%3D%3D.png",
                 "alt" => "imagem 1 do banner"
             ],
-            [
-                "src" => "https://assets.materialup.com/uploads/9520f681-ab25-41dc-a325-abcef8949c48/preview.jpg",
-                "alt" => "imagem 2 do banner"
 
-            ],
             [
                 "src" => "https://athenasimobiliaria.com.br/wp-content/uploads/2021/02/banner-1.jpg",
                 "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",

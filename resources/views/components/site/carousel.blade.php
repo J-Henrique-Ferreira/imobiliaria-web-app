@@ -1,5 +1,5 @@
-<div class="swiffy-slider slider-nav-round slider-nav-autoplay">
-    <ul class="slider-container rounded shadow">
+<div class="swiffy-slider slider-nav-round slider-nav-autoplay overflow-visible ">
+    <ul class="slider-container">
 
         @foreach($banners as $index => $banner)
         <li>
