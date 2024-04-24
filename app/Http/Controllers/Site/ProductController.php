@@ -69,7 +69,7 @@ class ProductController extends Controller
                     "number" => "123",
                 ],
                 "value" => "1800",
-                "default_image" => "https://imgbr.imovelwebcdn.com/avisos/2/29/93/23/22/11/720x532/4263982728.jpg?isFirstImage=true",
+                "default_image" => "https://tribuneonlineng.com/wp-content/uploads/2023/08/Real-estate.jpg",
                 "images" => ["image6.jpg", "image7.jpg", "image8.jpg"]
             ],
             // Adicionando mais 10 itens...
@@ -247,7 +247,24 @@ class ProductController extends Controller
             ]
         ];
 
-        return view('site.index', ["products" => $products]);
+        $bannersList = [
+            [
+                "src" => "https://img.kenlo.io/VWRCUkQ2Tnp3d1BJRDBJVe1szBgxSbxEJs4E8PoAzyCur-yjcWvylTZaIWQxUUFHJ%2BMbgmN3V8Aj%2B0Ih2sgp6R4-m9EYQLL55nLWh9nT4tqVrU3R9p%2BJtuKF38mmBpyHldxv2vCtHAHwv6NuFtcpOhoiOuU-XRX3W46bNX5NpCLJ417MU7ZxSWNT2Qwo1g9WyxH9F4HmpQFozg%3D%3D.png",
+                "alt" => "imagem 1 do banner"
+            ],
+            [
+                "src" => "https://assets.materialup.com/uploads/9520f681-ab25-41dc-a325-abcef8949c48/preview.jpg",
+                "alt" => "imagem 2 do banner"
+
+            ],
+            [
+                "src" => "https://athenasimobiliaria.com.br/wp-content/uploads/2021/02/banner-1.jpg",
+                "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
+                "alt" => "imagem 3 do banner"
+            ]
+        ];
+
+        return view('site.index', ["products" => $products, "bannersList" => $bannersList]);
     }
 
     /**

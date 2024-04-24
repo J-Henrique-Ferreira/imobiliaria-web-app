@@ -1,5 +1,10 @@
 <x-layouts.site title="início">
-    <section class="flex flex-wrap justify-center gap-5 max-w-7xl my-4 ">
+    <section class="d-flex justify-content-center max-w-7xl my-4">
+        @component("components.site.carousel", ["banners" => $bannersList])
+        @endcomponent
+    </section>
+
+    <section class="d-flex flex-wrap justify-content-center gap-3 max-w-7xl my-4">
         @foreach($products as $product)
         @component("components.site.productCard", ["product" => $product])
         @endComponent
