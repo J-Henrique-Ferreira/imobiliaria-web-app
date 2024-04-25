@@ -3,7 +3,7 @@
         @component("components.site.carousel", ["banners" => $bannersList])
         @endcomponent
     </section>
-
+    <a href="/product/1234/titulo">pagina de produto dev</a>
     <x-site.filter></x-site.filter>
 
     <section class="d-flex flex-wrap justify-content-center gap-2 max-w-7xl my-4">

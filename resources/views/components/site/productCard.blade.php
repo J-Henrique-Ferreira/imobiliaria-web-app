@@ -25,21 +25,17 @@
     .zoom_card:hover {
         transform: scale(1.02);
     }
-
-    ;
 </style>
 
 
 <div class="shadow overflow-hidden rounded-3 mb-3 card-width zoom_card position-relative " style=" transition: transform 0.25s ease;">
     <img src="{{$product['default_image']}}" class="w-100" style="object-fit: cover; height: 14rem;" alt="Imagem da Casa">
-    <p class="position-absolute px-1 mx-2 rounded-5 end-0 top-0 text-secondary " style="margin-top: 10px; background-color: aliceblue; z-index: 50; box-shadow: 0 0 3px #d5dadc;">Cod: 563234</p>
+    <p class="position-absolute px-1 mx-2 rounded-5 end-0 top-0 text-secondary small" style="
+    margin-top: 10px; background-color: aliceblue; z-index: 50; box-shadow: 0 0 3px #d5dadc;">Cod: 563234</p>
 
-    <div class="card-body p-2" style="display: flex; flex-direction: column; min-height: 8rem;justify-content: space-between;">
-        <!-- <span class="badge fw-normal text-dark" style="--bs-bg-opacity: .3;">
-            {{$product["address"]["city"]}}
-        </span> -->
+    <div class="card-body pt-2 px-3 pb-4" style="display: flex; flex-direction: column; justify-content: space-between;">
 
-        <p class="fw-normal fs-5 mb-2 lh-sm text-dark text-opacity-75">
+        <p class="fw-normal fs-5 mb-2 lh-sm text-dark text-opacity-75" style=" min-height: 50px;">
             {{$product["category"]}} - {{$product["address"]["city"]}}
         </p>
 

@@ -287,7 +287,35 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        //
+        $product = [
+            "category" => "casa",
+            "bedrooms" => "3", // quartos
+            "bathroom" => "2", // banheiros
+            "cars_in_garage" => 2,
+            "size" => "128", // metros quadrados
+            "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+            "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+            "modality" => "aluguel",
+            "address" => [
+                "city" => "Taquara",
+                "state" => "RS",
+                "country" => "Morro do Leôncio",
+                "number" => "7892"
+            ],
+            "value" => "1200",
+            "default_image" => "https://cf.bstatic.com/xdata/images/hotel/max1024x768/476329454.jpg?k=8b8963ae5ac81ee0ee895e2b1e6cc3986e1d258daeca6210777adde62d660166&o=&hp=1",
+            "images" => [
+                "https://img.freepik.com/free-photo/design-house-modern-villa-with-open-plan-living-private-bedroom-wing-large-terrace-with-privacy_1258-169741.jpg",
+                "https://cdn.onekindesign.com/wp-content/uploads/2019/11/Striking-Modern-Villa-Design-Marmol-Radziner-01-1-Kindesign.jpg",
+                "https://zegebeya.com/wp-content/uploads/2023/03/villa.jpg",
+                "https://www.digitow.com.br/wp-content/uploads/2020/10/home-office-historia-digitow.jpg",
+                "https://i.ytimg.com/vi/zumJJUL_ruM/maxresdefault.jpg",
+                "https://cullumhomes.com/assets/blog/2022%20Interior%20Design%20Trends%20for%20Luxury%20Homes%20Featured.jpg"
+
+            ]
+        ];
+
+        return view('site.productPage', ["product" => $product]);
     }
 
     /**

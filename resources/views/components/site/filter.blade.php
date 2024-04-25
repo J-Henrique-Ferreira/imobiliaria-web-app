@@ -1,23 +1,21 @@
-<div class="container shadow rounded-3 p-3">
+<div id="filter" class="container shadow rounded-3 p-3 pb-4" style="background-color: #f7f9fc;">
     <span class="fw-medium fs-4">Buscador de Imóveis</span>
-    <div class="row gap-2 mt-3">
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="preco" class="text-secondary">Local:</label>
-                <select class="form-control" id="preco">
-                    <option value="">Todos</option>
-                    <option value="">Porto Alegre</option>
-                    <option value="">Gravataí</option>
-                    <option value="">Parobé</option>
-                    <option value="">Taquara</option>
-                    <option value="">Rolante</option>
-                    <!-- Adicione mais opções conforme necessário -->
-                </select>
-            </div>
+    <div class="d-flex flex-column flex-lg-row justify-content-center  gap-3 mt-3">
+        <div class="form-group w-100 mb-3 mb-lg-0 ">
+            <label for="preco" class="text-secondary mb-1">Localização:</label>
+            <select class="form-control" id="preco">
+                <option value="">Todos</option>
+                <option value="">Porto Alegre</option>
+                <option value="">Gravataí</option>
+                <option value="">Parobé</option>
+                <option value="">Taquara</option>
+                <option value="">Rolante</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
         </div>
-        <div class="col-md-3">
+        <div class="form-group w-100 mb-3 mb-lg-0 ">
             <div class="form-group">
-                <label for="tipoImovel" class="text-secondary">Tipo De Imóvel:</label>
+                <label for="tipoImovel" class="text-secondary mb-1">Tipo De Imóvel:</label>
                 <select class="form-control" id="tipoImovel">
                     <option value="">Todos</option>
                     <option value="casa">Casa</option>
@@ -27,9 +25,9 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="form-group w-100 mb-3 mb-lg-0 ">
             <div class="form-group">
-                <label for="modalidade" class="text-secondary">Tipo De Negócio:</label>
+                <label for="modalidade" class="text-secondary mb-1">Tipo De Negócio:</label>
                 <select class="form-control" id="modalidade">
                     <option value="">Todos</option>
                     <option value="aluguel">Aluguel</option>
@@ -38,9 +36,9 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="form-group w-100">
             <div class="form-group">
-                <label for="preco" class="text-secondary">Faixa De Preço:</label>
+                <label for="preco" class="text-secondary mb-1">Faixa De Preço:</label>
                 <select class="form-control" id="preco">
                     <option value="">Selecione</option>
                     <option value="0-500">Até R$ 500</option>
@@ -50,9 +48,9 @@
                 </select>
             </div>
         </div>
-    </div>
-    <button class="btn btn-primary mt-3" onclick="buscarImoveis()">Buscar</button>
 
+        <button class="btn btn-primary mt-4  mx-lg-0 " style="width: 200px;" onclick="buscarImoveis()">Buscar</button>
+    </div>
 </div>
 
 <script>
