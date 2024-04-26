@@ -1,9 +1,10 @@
-<div class="swiffy-slider slider-nav-round slider-nav-autoplay overflow-visible ">
+<div @class(['swiffy-slider', 'slider-nav-round' , 'slider-nav-autoplay'=> $autoplay, 'overflow-hidden'])>
+
     <ul class="slider-container rounded-3">
 
-        @foreach($banners as $index => $banner)
+        @foreach($imgList as $index => $img)
         <li>
-            <img class="rounded object-fit-cover" style="width: 100%; height: 100%;" src="{{ $banner['src'] }}" alt="{{ $banner['alt'] }}">
+            <img class="rounded object-fit-cover" style="width: 100%; height: 100%;" src="{{ $img['src'] }}" alt="{{ $img['alt'] }}">
         </li>
         @endforeach
 
