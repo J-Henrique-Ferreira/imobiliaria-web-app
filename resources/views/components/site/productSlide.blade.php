@@ -18,7 +18,7 @@
             swiffyslider.slideTo(sliderElement, imageNumber)
         }
     </script>
-    <div class="swiffy-slider slider-item-ratio slider-nav-caret slider-nav-autoplay slider-nav-autopause slider-nav-animation slider-nav-animation-slow" id="pgallery">
+    <div class="swiffy-slider slider-item-ratio slider-nav-caret slider-nav-autoplay slider-nav-autopause slider-nav-animation slider-nav-animation-slow shadow" id="pgallery">
         <ul class="slider-container rounded">
             @foreach($imgList as $index => $img)
             <li>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- controlador de imagens -->
-    <div class="swiffy-slider slider-nav-dark slider-nav-sm slider-nav-chevron slider-item-show6 slider-item-snapstart slider-item-ratio  slider-nav-visible slider-nav-page slider-nav-outside-expand pt-3 d-none  d-lg-block">
+    <div class="swiffy-slider slider-nav-dark slider-nav-sm slider-nav-chevron slider-item-show6 slider-item-snapstart slider-item-ratio slider-nav-visible slider-nav-outside my-3 d-none  d-lg-block">
         <ul class="slider-container" id="pgallerythumbs" style="cursor:pointer">
             @foreach($imgList as $index => $img)
             <li>
@@ -43,7 +43,8 @@
         <button type="button" class="slider-nav" aria-label="Go previous"></button>
         <button type="button" class="slider-nav slider-nav-next" aria-label="Go next"></button>
     </div>
-    <!-- modal de carousel de slides -->
+
+    <!-- modal de carousel de slides extendido-->
     <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="productGalleryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-fullscreen">
             <div class="modal-content">

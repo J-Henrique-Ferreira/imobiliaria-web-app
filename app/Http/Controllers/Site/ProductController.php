@@ -294,8 +294,10 @@ class ProductController extends Controller
             "cars_in_garage" => 2,
             "size" => "128", // metros quadrados
             "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-            "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-            "modality" => "aluguel",
+            "description" => "RECREIO DOS BANEIRANTES (72352) - CASA TRIPLEX à VENDA, no condomínio Terra América, Maravilhosa casa com espaço gourmet, churrasqueira, piscina, salão em 03 ambientes decorado, lavabo, copa cozinha planejada, quarto normal, área e banheiro de serviço, SEGUNDO PISO: 04 SUÍTES. TERCEIRO PISO: Sótão que está usando como escritório e banheiro, que pode ser mais uma suíte. Condomínio com infraestrutura e segurança 24 h. Pagamento à vista.Financiamento bancário. Estuda permuta por apto menor valor no Recreio, ou na ABM Barra. AGENDE já sua visita com corretor da PHD Imobiliária!
+
+            ",
+            "modality" => "Aluguel",
             "address" => [
                 "city" => "Taquara",
                 "state" => "RS",
@@ -303,6 +305,9 @@ class ProductController extends Controller
                 "number" => "7892"
             ],
             "value" => "1200",
+            "iptu" => "250",
+            "condominio" => "1400",
+            "code" => "245654",
             "default_image" => "https://cdn.onekindesign.com/wp-content/uploads/2019/11/Striking-Modern-Villa-Design-Marmol-Radziner-01-1-Kindesign.jpg",
             "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
             "images" =>
