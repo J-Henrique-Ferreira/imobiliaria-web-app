@@ -27,8 +27,7 @@
     }
 </style>
 
-
-<div class="shadow overflow-hidden rounded-3 mb-3 card-width zoom_card position-relative " style=" transition: transform 0.25s ease;">
+<a href="/product/1234/titulo" class="nav-link shadow overflow-hidden rounded-3 mb-3 card-width zoom_card position-relative " style=" transition: transform 0.25s ease;">
     <img src="{{$product['default_image']}}" class="w-100" style="object-fit: cover; height: 14rem;" alt="Imagem da Casa">
     <p class="position-absolute px-1 mx-2 rounded-5 end-0 top-0 text-secondary small" style="
     margin-top: 10px; background-color: aliceblue; z-index: 50; box-shadow: 0 0 3px #d5dadc;">Cod: 563234</p>
@@ -56,9 +55,9 @@
             </span>
         </div>
         <div class="pt-2 d-flex flex-wrap gap-2 text-xs align-items-center">
-            <p class="card-text text-dark fw-semibold text-opacity-75 m-0">R$ {{$product["value"]}}</p>
+            <p class="card-text text-dark fw-semibold text-opacity-75 m-0">R${{$product["value"]}}</p>
             <p class="badge fw-medium text-dark bg-secondary m-0" style="--bs-bg-opacity: .3;">{{$product["modality"]}}
             </p>
         </div>
     </div>
-</div>
+</a>

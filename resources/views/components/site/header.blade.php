@@ -1,9 +1,9 @@
 <header class="shadow-sm fixed-top bg-white" style="z-index: 999;">
     <div class="container  container-fluid">
         <div class="d-flex justify-content-between align-items-center py-2">
-            <div class="col">
+            <a href="/" class="col nav-link">
                 <img class="img-fluid" src="https://martinslealimoveis.com.br/imagens/site_modelo/20230315141349565.png" alt="Logo da Imobiliária" style="height: 3rem;">
-            </div>
+            </a>
             <div class="col-md-auto">
                 <nav class="d-block">
                     <ul class="nav">
