@@ -8,7 +8,7 @@
 
     <section class="d-flex flex-wrap justify-content-center gap-2 my-4">
         @foreach($products as $product)
-        @component("components.site.productCard", ["product" => $product])
+        @component("components.site.product.card", ["product" => $product])
         @endComponent
         @endForeach
     </section>

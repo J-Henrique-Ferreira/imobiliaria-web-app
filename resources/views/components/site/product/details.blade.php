@@ -27,7 +27,7 @@
 
             <div class="text-dark p-0 opacity-75 d-block  gap-2 " style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Condominio</p>
-                {{$product["condominio"]}}
+                R${{$product["condominio"]}},00
             </div>
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Cód:</p>

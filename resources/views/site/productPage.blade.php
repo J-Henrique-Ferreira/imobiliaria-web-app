@@ -4,18 +4,16 @@
         R${{$product["value"]}},00
     </h1>
     <section class="d-lg-flex justify-content-center gap-4 my-4">
-        @component("components.site.productSlide", ["imgList" => $product["images"], "autoplay" => true])
+        @component("components.site.product.slide", ["imgList" => $product["images"], "autoplay" => true])
         @endcomponent
 
         @component("components.site.product.details", ["product" => $product])
         @endcomponent
     </section>
 
-
     @component("components.site.product.description", ["description" => $product["description"]])
     @endcomponent
 
     @component("components.site.product.contactForm", ["productCode" => $product["code"]])
     @endcomponent
-
 </x-layouts.site>
