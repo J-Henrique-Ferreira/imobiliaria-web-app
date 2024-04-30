@@ -9,3 +9,4 @@ Route::get('/', [ProductController::class, "index"]);
 Route::get('/product/{code}/{title}', [ProductController::class, "show"]);
 
 Route::get('/dashboard', [DashboardController::class, "index"]);
+Route::get('/dashboard/imoveis', [DashboardController::class, "properties"]);

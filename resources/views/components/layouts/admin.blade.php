@@ -12,10 +12,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </head>
 
+<style>
+    .max-w {
+        max-width: 1600px;
+    }
+</style>
+
 <body class="" style="background-color: #f7f9fc;">
-    <main class="container mx-auto d-flex items-center" style="min-height: 100vh;">
+    <main class="container mx-auto max-w d-flex items-center" style="min-height: 100vh;">
         <x-admin.navbar></x-admin.navbar>
-        {{$slot}}
+        <div class="w-100  shadow-sm">
+            <div class="bg-white shadow-sm-b px-5 py-4 fs-3 mb-3">
+                {{$containerTitle}}
+            </div>
+            <div class="d-flex flex-column gap-3 p-3">{{$slot}}</div>
+        </div>
     </main>
 </body>
 

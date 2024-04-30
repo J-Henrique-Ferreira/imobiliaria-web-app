@@ -25,68 +25,64 @@ $maintenanceHistory = [
 ];
 @endphp
 
-<div class="w-100 d-flex flex-column gap-3 shadow-sm">
-    <div class="bg-white shadow-sm-b px-5 py-4 fs-3">
-        Painel de controle
+
+<div class="d-flex gap-3 text-dark opacity-75">
+    @foreach($dashboardDatasList as $data)
+    <div class="bg-white rounded shadow-sm w-100 p-3 ">
+        <span class="mb-2 d-block">{{$data["title"]}}</span>
+        <span class="fw-semibold fs-4 ">{{$data["value"]}}</span>
     </div>
-    <div class="d-flex gap-3 text-dark opacity-75 mx-3">
-        @foreach($dashboardDatasList as $data)
-        <div class="bg-white rounded shadow-sm w-100 p-3 ">
-            <span class="mb-2 d-block">{{$data["title"]}}</span>
-            <span class="fw-semibold fs-4 ">{{$data["value"]}}</span>
+    @endForeach
+</div>
+
+<div class="d-flex gap-3 text-dark opacity-75">
+    <div class="d-flex flex-column gap-3  bg-white rounded shadow-sm w-100 p-3">
+        <div class="fw-normal fs-5">Histórico de Pagamentos</div>
+
+        <div class="d-flex justify-content-between fw-semibold">
+            <div class="col-4">Data de pagamento</div>
+            <div class="col-3">Valor</div>
+            <div class="col-3">Status</div>
         </div>
-        @endForeach
+
+        <div>
+            @foreach($pymentHistory as $pyment)
+            <a href="/historico-pagamentos/{{$pyment["date"]}}" class="nav-link">
+                <div class="d-flex justify-content-between align-items-center " style="height: 34px;">
+                    <div class="col-4">{{$pyment["date"]}}</div>
+                    <div class="col-3">{{$pyment["value"]}}</div>
+                    <div class="col-3">{{$pyment["status"]}}</div>
+                </div>
+            </a>
+
+            <div class="border  border-bottom-1 "></div>
+            @endForeach
+
+        </div>
+        <a href="" class="btn btn-primary">Todos os Pagamentos</a>
     </div>
 
-    <div class="d-flex gap-3 text-dark opacity-75 mx-3">
-        <div class="d-flex flex-column gap-3  bg-white rounded shadow-sm w-100 p-3">
-            <div class="fw-normal fs-5">Histórico de Pagamentos</div>
+    <div class="d-flex flex-column gap-3  bg-white rounded shadow-sm w-100 p-3">
+        <div class="fw-normal fs-5">Histórico de Manutenções</div>
 
-            <div class="d-flex justify-content-between fw-semibold">
-                <div class="col-4">Data de pagamento</div>
-                <div class="col-3">Valor</div>
-                <div class="col-3">Status</div>
-            </div>
-
-            <div>
-                @foreach($pymentHistory as $pyment)
-                <a href="/historico-pagamentos/{{$pyment["date"]}}" class="nav-link">
-                    <div class="d-flex justify-content-between align-items-center " style="height: 34px;">
-                        <div class="col-4">{{$pyment["date"]}}</div>
-                        <div class="col-3">{{$pyment["value"]}}</div>
-                        <div class="col-3">{{$pyment["status"]}}</div>
-                    </div>
-                </a>
-
-                <div class="border  border-bottom-1 "></div>
-                @endForeach
-
-            </div>
-            <a href="" class="btn btn-primary">Todos os Pagamentos</a>
+        <div class="d-flex justify-content-between fw-semibold">
+            <div class="col-4">Data de pagamento</div>
+            <div class="col-3">Valor</div>
+            <div class="col-3">Status</div>
         </div>
 
-        <div class="d-flex flex-column gap-3  bg-white rounded shadow-sm w-100 p-3">
-            <div class="fw-normal fs-5">Histórico de Manutenções</div>
-
-            <div class="d-flex justify-content-between fw-semibold">
-                <div class="col-4">Data de pagamento</div>
-                <div class="col-3">Valor</div>
-                <div class="col-3">Status</div>
-            </div>
-
-            <div>
-                @foreach($maintenanceHistory as $pyment)
-                <a href="historico-manutencoes/{{$pyment["date"]}}" class="nav-link">
-                    <div class="d-flex justify-content-between align-items-center " style="height: 34px;">
-                        <div class="col-4">{{$pyment["date"]}}</div>
-                        <div class="col-3">{{$pyment["value"]}}</div>
-                        <div class="col-3">{{$pyment["status"]}}</div>
-                    </div>
-                </a>
-                <div class="border  border-bottom-1 "></div>
-                @endForeach
-            </div>
-            <a href="" class="btn btn-primary">Todas As Manutenções</a>
+        <div>
+            @foreach($maintenanceHistory as $pyment)
+            <a href="historico-manutencoes/{{$pyment["date"]}}" class="nav-link">
+                <div class="d-flex justify-content-between align-items-center " style="height: 34px;">
+                    <div class="col-4">{{$pyment["date"]}}</div>
+                    <div class="col-3">{{$pyment["value"]}}</div>
+                    <div class="col-3">{{$pyment["status"]}}</div>
+                </div>
+            </a>
+            <div class="border  border-bottom-1 "></div>
+            @endForeach
         </div>
+        <a href="" class="btn btn-primary">Todas As Manutenções</a>
     </div>
 </div>

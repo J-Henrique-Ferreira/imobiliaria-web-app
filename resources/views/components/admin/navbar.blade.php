@@ -1,10 +1,10 @@
 @php
 $navList = [
-["name"=>"Painel de controle" , "href" => "" ],
-["name"=>"Imoveis" , "href" => "" ],
-["name"=>"Inquilinos" , "href" => "" ],
-["name"=>"Adicionar Imóvel" , "href" => "" ],
-["name"=>"Contatos" , "href" => ""]
+["name"=>"Painel de controle" , "href" => "/dashboard" ],
+["name"=>"Imoveis" , "href" => "/dashboard/imoveis" ],
+["name"=>"Inquilinos" , "href" => "dashboard/inquilinos" ],
+["name"=>"Adicionar Imóvel" , "href" => "dashboard/adicionar-imovel" ],
+["name"=>"Contatos" , "href" => "dashboard/contatos"]
 ];
 @endphp
 
