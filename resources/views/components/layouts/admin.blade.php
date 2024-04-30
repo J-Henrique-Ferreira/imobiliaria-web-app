@@ -15,10 +15,12 @@
 <body class="" style="background-color: #f7f9fc;">
     <main class="container mx-auto d-flex items-center" style="min-height: 100vh;">
         <x-admin.navbar></x-admin.navbar>
-
         {{$slot}}
     </main>
-    <!-- <x-site.footer></x-site.footer> -->
 </body>
 
 </html>
+
+<!-- https://cdn-icons-png.freepik.com/512/6861/6861362.png%20%20%20%20
+
+https://icons.veryicon.com/png/o/miscellaneous/blue-soft-fillet-icon/edit-173.png -->

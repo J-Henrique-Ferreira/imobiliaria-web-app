@@ -1,6 +1,6 @@
 @php
 $navList = [
-["name"=>"Dasboard" , "href" => "" ],
+["name"=>"Painel de controle" , "href" => "" ],
 ["name"=>"Imoveis" , "href" => "" ],
 ["name"=>"Inquilinos" , "href" => "" ],
 ["name"=>"Adicionar Imóvel" , "href" => "" ],
