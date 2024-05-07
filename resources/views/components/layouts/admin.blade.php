@@ -19,11 +19,19 @@
 </style>
 
 <body class="" style="background-color: #f7f9fc;">
-    <main class="container mx-auto max-w d-flex items-center" style="min-height: 100vh;">
+    <main class="container mx-auto d-flex items-center">
         <x-admin.navbar></x-admin.navbar>
-        <div class="w-100  shadow-sm">
-            <div class="bg-white shadow-sm-b px-5 py-4 fs-3 mb-3">
-                {{$containerTitle}}
+        <div class="w-100 shadow-sm">
+            <div class="d-flex justify-content-between bg-white shadow-sm-b px-3 py-3 fs-3 mb-3">
+                <div class="d-flex justify-content-between">
+                    <img class="img-fluid" src="https://martinslealimoveis.com.br/imagens/site_modelo/20230315141349565.png" alt="Logo da Imobiliária" style="width: 80px;">
+                    <div class="mx-5 fs-4 my-auto">
+                        {{$containerTitle}}
+                    </div>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <img class="navbar-toggler-icon object-fit-contain   my-auto" style="width: 30px;" src="https://www.contentformula.com/wp-content/uploads/2016/06/hamburger-menu.png" alt="">
+                </button>
             </div>
             <div class="d-flex flex-column gap-3 p-3">{{$slot}}</div>
         </div>
@@ -31,7 +39,3 @@
 </body>
 
 </html>
-
-<!-- https://cdn-icons-png.freepik.com/512/6861/6861362.png%20%20%20%20
-
-https://icons.veryicon.com/png/o/miscellaneous/blue-soft-fillet-icon/edit-173.png -->

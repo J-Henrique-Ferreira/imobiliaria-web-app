@@ -18,7 +18,7 @@ class DashboardController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function properties()
+    public function products()
     {
         $products = [
             [
@@ -252,7 +252,7 @@ class DashboardController extends Controller
             ]
         ];
 
-        return view("admin.properties", ["products" => $products]);
+        return view("admin.products", ["products" => $products]);
     }
 
     /**
