@@ -1,4 +1,5 @@
 @php
+/*
 $navList = [
 ["name"=>"Painel de controle" , "href" => "/dashboard" ],
 ["name"=>"Imoveis" , "href" => "/dashboard/imoveis" ],
@@ -6,7 +7,20 @@ $navList = [
 ["name"=>"Adicionar Imóvel" , "href" => "/dashboard/adicionar-imovel" ],
 ["name"=>"Contatos" , "href" => "/dashboard/contatos"]
 ];
+*/
+
+$navList = [
+["name"=>"Painel de controle" , "href" => "/dashboard" ],
+["name"=>"Imoveis" , "href" => "/dashboard/imoveis" ],
+["name"=>"Adicionar Imóvel" , "href" => "/dashboard/adicionar-imovel" ],
+["name"=>"Cidades" , "href" => "/dashboard/cidades" ],
+["name"=>"Bairros" , "href" => "/dashboard/bairros" ],
+//["name"=>"Contatos" , "href" => "/dashboard/contatos"]
+];
+
 @endphp
+
+
 
 <nav class="navbar position-fixed fixed-top p-0" visually-hidden>
     <div class="container-fluid">
