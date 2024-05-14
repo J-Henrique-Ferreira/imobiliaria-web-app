@@ -302,6 +302,7 @@ class ProductController extends Controller
                 "city" => "Taquara",
                 "state" => "RS",
                 "country" => "Morro do Leôncio",
+                "rua" => "",
                 "number" => "7892"
             ],
             "value" => "1200",
