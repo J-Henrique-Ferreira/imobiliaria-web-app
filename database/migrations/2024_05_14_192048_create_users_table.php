@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("name", length: 255)->nullable(false)->unique();
             $table->string("email", length: 255)->nullable(false)->unique();
-            $table->string("phone_number", length: 20);
+            $table->string("phone_number", length: 20)->nullable(false);
             $table->string("role", length: 45)->default("adm");
             $table->string("password", length: 255)->nullable(false);
             $table->timestamps();

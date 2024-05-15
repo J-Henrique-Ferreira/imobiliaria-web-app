@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('business', function (Blueprint $table) {
             $table->id();
             $table->string("name", length: 255)->nullable(false)->unique("name");
-            $table->boolean("visible")->nullable(false)->default(true);
+            $table->boolean("visible")->default(true);
             $table->timestamps();
         });
     }
