@@ -13,17 +13,11 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId("prodct_id")->constrained(table: "products", column: "id");
-
             $table->string("client_name", 255)->nullable(false);
-
             $table->string("phone_number", 255)->nullable(false);
-
             $table->string("email", 255)->nullable(true);
-
             $table->boolean("viewed")->default(false);
-
             $table->timestamps();
         });
     }
