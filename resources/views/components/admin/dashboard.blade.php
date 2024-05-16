@@ -45,7 +45,7 @@ $maintenanceHistory = [
 
 <div class="my-5">
     <form action="#" id="filter_contacts" class="container shadow-sm rounded-3 p-3 pb-4 bg-white">
-        <span class="fw-medium fs-4">Filtro de contatos</span>
+        <span class="fw-medium fs-5">Filtro de contatos</span>
         <div class="d-flex flex-column flex-lg-row justify-content-center  gap-3 mt-3">
             <div class="form-group w-100 mb-3 mb-lg-0 ">
                 <label for="preco" class="text-secondary mb-1">Nome</label>
@@ -74,7 +74,7 @@ $maintenanceHistory = [
     </form>
 </div>
 
-<span class="fw-medium fs-4">Resultados - 45</span>
+<span class="fw-medium fs-5 mx-3">Resultados - 45</span>
 
 
 <div class="d-flex flex-column gap-3 text-dark opacity-75" id="accordionPanelsStayOpenExample">
