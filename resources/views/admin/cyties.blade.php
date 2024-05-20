@@ -1,3 +1,9 @@
+@php
+
+dd($citiesList);
+
+@endphp
+
 <x-layouts.admin containerTitle="Cidades">
     <div class="accordion mb-4" id="accordionAddDistrict">
         <div class="accordion-item">
@@ -8,10 +14,12 @@
             </div>
             <div id="AddDistrict-collapseOne" class="accordion-collapse collapse show">
                 <div class="accordion-body">
-                    <form action="" class="d-flex flex-column form w-100 my-3 ">
+                    @csrf
+                    <form action="/dashboard/cidades" method="POST" class="d-flex flex-column form w-100 my-3 ">
                         <div class="card-body d-flex flex-column col-12 col-md-4 mx-auto ">
                             <label class="form-label" for="">Nome da Cidade</label>
-                            <input class="form-control mb-4" type="text">
+                            <input class="form-control mb-4" type="text" name="name">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
                     </form>
