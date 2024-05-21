@@ -33,5 +33,5 @@ Route::get('/dashboard/contatos', function () {
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, "index"]);
 
-    Route::resource("/cidades",  CityController::class, []);
+    Route::resource("/cities",  CityController::class, []);
 });

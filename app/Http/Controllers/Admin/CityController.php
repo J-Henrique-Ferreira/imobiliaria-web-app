@@ -18,10 +18,10 @@ class CityController extends Controller
         $citiesList = [];
 
         foreach (City::all() as $city) {
-            array_push($citiesList, ["id" => $city->id, "name" => $city->name]);
+            array_push($citiesList, $city->getAttributes());
         }
 
-        return view('admin.cyties', ["citiesList" => $citiesList]);
+        return view('admin.cities', ["citiesList" => $citiesList]);
     }
 
     /**
@@ -42,7 +42,7 @@ class CityController extends Controller
         $city->save();
 
 
-        return redirect("/dashboard/cidades");
+        return redirect("/dashboard/cities");
     }
 
     /**
@@ -58,7 +58,7 @@ class CityController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -66,7 +66,7 @@ class CityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -74,6 +74,7 @@ class CityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        echo "deletar cidade id ";
+        dd($id);
     }
 }

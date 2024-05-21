@@ -13,7 +13,7 @@ $navList = [
 ["name"=>"Painel de controle" , "href" => "/dashboard" ],
 ["name"=>"Imoveis" , "href" => "/dashboard/imoveis" ],
 ["name"=>"Adicionar Imóvel" , "href" => "/dashboard/adicionar-imovel" ],
-["name"=>"Cidades" , "href" => "/dashboard/cidades" ],
+["name"=>"Cidades" , "href" => "/dashboard/cities" ],
 ["name"=>"Bairros" , "href" => "/dashboard/bairros" ]
 //["name"=>"Contatos" , "href" => "/dashboard/contatos"]
 ];
