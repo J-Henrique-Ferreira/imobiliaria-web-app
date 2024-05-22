@@ -33,6 +33,7 @@
                     <img class="navbar-toggler-icon object-fit-contain   my-auto" style="width: 30px;" src="https://www.contentformula.com/wp-content/uploads/2016/06/hamburger-menu.png" alt="">
                 </button>
             </div>
+
             <div class="d-flex flex-column gap-3 p-3">{{$slot}}</div>
         </div>
     </main>
