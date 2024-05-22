@@ -34,6 +34,8 @@
                 </button>
             </div>
 
+            <x-site.alertMessage></x-site.alertMessage>
+
             <div class="d-flex flex-column gap-3 p-3">{{$slot}}</div>
         </div>
     </main>

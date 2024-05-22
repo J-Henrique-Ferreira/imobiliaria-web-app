@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CityFormRequest;
 
 class CityController extends Controller
 {
@@ -25,10 +26,8 @@ class CityController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(CityFormRequest $request)
     {
-        $request->validate(["name" => ["required", "min:3"]],);
-
         $city = new City;
         $city->name = $request->name;
         $city->save();
@@ -44,10 +43,8 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(City $city, Request $request)
+    public function update(City $city, CityFormRequest $request)
     {
-        $request->validate(["name" => ["required", "min:3"]]);
-
         $city->name = $request->name;
         $city->visible = isset($request->visible);
 
