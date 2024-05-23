@@ -24,7 +24,9 @@
         <div class="w-100 shadow-sm">
             <div class="d-flex justify-content-between bg-white shadow-sm-b px-3 py-3 fs-3 mb-3">
                 <div class="d-flex justify-content-between">
-                    <img class="img-fluid" src="https://martinslealimoveis.com.br/imagens/site_modelo/20230315141349565.png" alt="Logo da Imobiliária" style="width: 80px;">
+                    <a href="/dashboard" class="col nav-link">
+                        <img class="img-fluid object-fit-contain" src="{{asset('storage/images/icons/logo.png')}}" alt="Logo da Imobiliária" style="width: 90px;">
+                    </a>
                     <div class="mx-5 fs-4 fw-medium my-auto">
                         {{$containerTitle}}
                     </div>
