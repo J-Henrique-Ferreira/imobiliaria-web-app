@@ -1,7 +1,8 @@
 <x-layouts.admin containerTitle="Cidades">
+    @if (isset($toastMessage))
     @component("components.site.toastMessage", ["toastMessage"=> $toastMessage])
     @endComponent
-
+    @endif
     <div class="accordion mb-4" id="accordionAddDistrict">
         <div class="accordion-item">
             <div class="accordion-header">
@@ -15,7 +16,7 @@
                     <form action="{{route('cities.store')}}" method="POST" class="d-flex flex-column form w-100 my-3">
                         <div class="card-body d-flex flex-column col-12 col-md-4 mx-auto ">
                             <label class="form-label" for="">Nome da Cidade</label>
-                            <input class="form-control mb-4" type="text" name="name">
+                            <input class="form-control mb-4" type="text" name="name" required>
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
@@ -34,11 +35,12 @@
 
     <div class="d-flex flex-column  gap-3 ">
         @foreach ($citiesList as $key => $city)
-        <x-admin.sectionObject :name="$city['name']" :cityId="$city['id']" :visible="$city['visible']"></x-admin.sectionObject>
+        <x-admin.sectionObject :name="$city['name']" :objectId="$city['id']" :visible="$city['visible']"></x-admin.sectionObject>
 
-        <x-admin.editCityModal :name="$city['name']" :cityId="$city['id']" :visible="$city['visible']"></x-admin.editCityModal>
+        <x-admin.city.editFormModal :name="$city['name']" :cityId="$city['id']" :visible="$city['visible']">
+        </x-admin.city.editFormModal>
 
-        <x-admin.deleteCityModal :name="$city['name']" :cityId="$city['id']" :visible="$city['visible']"></x-admin.deleteCityModal>
+        <x-admin.city.deleteFormModal :name="$city['name']" :cityId="$city['id']" :visible="$city['visible']"></x-admin.city.deleteFormModal>
         @endforeach
     </div>
     @else

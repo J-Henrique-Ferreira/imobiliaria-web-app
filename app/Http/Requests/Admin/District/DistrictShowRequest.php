@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\District;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CityFormRequest extends FormRequest
+class DistrictShowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,16 +22,15 @@ class CityFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|min:3",
+            "id" => "required",
+        ];
+    }
+    public function messages()
+    {
+        return [
+            "id" => "A cidade é obrigatória",
         ];
     }
 
-    // public function messages()
-    // {
-    //     return [
-    //         "name.*" => "O nome é obrigatório e precisa ter pelo menos 3 caracteres."
-    //     ];
-    // }
-
-    protected $redirectRoute = 'cities.index';
+    // protected $redirectRoute = 'districts.index';
 }

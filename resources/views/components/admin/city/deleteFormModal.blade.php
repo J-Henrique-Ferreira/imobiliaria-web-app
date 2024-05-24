@@ -11,7 +11,6 @@
                 <p class="text-center">ATENÇÃO VOCÊ ESTÁ DELETANTO UMA CIDADE</p>
                 <form action="{{ route('cities.destroy', $cityId) }}" method="POST" class="d-flex flex-column form gap-3">
                     @csrf
-                    @method('PUT')
                     @method('DELETE')
                     <input class="form-control" type="hidden" name="id" value="{{$cityId}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

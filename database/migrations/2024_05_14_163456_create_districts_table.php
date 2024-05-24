@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
-            $table->string("name", length: 255)->nullable(false)->unique("name");
+            $table->string("name", length: 255)->nullable(false);
             $table->boolean("visible")->default(false);
             $table->unsignedBigInteger('city_id')->nullable(false);
             $table->foreign('city_id')->references('id')->on('cities');

@@ -1,4 +1,3 @@
-@if (isset($toastMessage))
 @php
 $imgPath = asset('storage/images/icons/' . $toastMessage["status"] . '.png');
 @endphp
@@ -24,5 +23,3 @@ $imgPath = asset('storage/images/icons/' . $toastMessage["status"] . '.png');
         toastElement.classList.add("d-none");
     }, 3500);
 </script>
-
-@endif

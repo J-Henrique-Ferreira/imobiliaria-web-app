@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CityFormRequest;
+use App\Http\Requests\Admin\City\CityFormRequest;
 
 class CityController extends Controller
 {
@@ -37,7 +37,7 @@ class CityController extends Controller
             "message" => "Cidade adicionada com sucesso!"
         ]);
 
-        return redirect("/dashboard/cities");
+        return to_route("cities.index");
     }
 
     /**

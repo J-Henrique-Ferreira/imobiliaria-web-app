@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DistrictRequest;
+use App\Http\Requests\Admin\District\DistrictStoreUpdateRequest;
+use App\Http\Requests\Admin\District\DistrictDeleteRequest;
+use App\Http\Requests\Admin\District\DistrictShowListRequest;
 use App\Models\City;
 use App\Models\District;
 
@@ -13,45 +15,52 @@ class DistrictController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $citiesList = City::where("visible", true)->orderBy("name")->get();
-        // foreach ($citiesList as $city) {
-        //     echo $city->name;
-        // }
-        return view('admin.district', ["citiesList" => $citiesList]);
+
+        return view('admin.district', [
+            "citiesList" => $citiesList,
+            "toastMessage" => $request->session()->get("toastMessage") ?? null
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(DistrictStoreUpdateRequest $request)
     {
-        //
-    }
+        $district = new District;
+        $district->name = $request->name;
+        $district->city_id = $request->city_id;
+        $district->visible = isset($request->visible) ? true : false;
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(DistrictRequest $request)
-    {
-        dd($request);
+        $district->save();
+
+        $request->session()->flash("toastMessage", [
+            "status" => "success",
+            "message" => "Bairro adicionado com sucesso!"
+        ]);
+
+        return to_route("districts.index");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(DistrictShowListRequest $request)
     {
-        //
-    }
+        $citiesList = City::where("visible", true)->orderBy("name")->get();
+        $city = new City;
+        $city = $city->find($request->id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $districtsList = $city->districts;
+
+        return view(
+            'admin.district',
+            [
+                "citiesList" => $citiesList,
+                "cityName" => $city->name,
+                "districtsList" => $districtsList
+            ]
+        );
     }
 
     /**
@@ -59,14 +68,14 @@ class DistrictController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(DistrictDeleteRequest $request, string $id)
     {
-        //
+        dd($request);
     }
 }
