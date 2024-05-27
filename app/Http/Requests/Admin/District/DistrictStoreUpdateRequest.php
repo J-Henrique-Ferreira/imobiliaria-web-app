@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Admin\District;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+
 
 class DistrictStoreUpdateRequest extends FormRequest
 {
@@ -19,18 +21,26 @@ class DistrictStoreUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules(Request $request): array
     {
+        $districtId = $request->id;
+
         return [
             "city_id" => "required",
-            "name" => "required|min:3"
+            "name" => [
+                "required",
+                "min:3",
+                "unique:districts,name," . $districtId,
+            ],
         ];
     }
     public function messages()
     {
         return [
             "city_id" => "A cidade é obrigatória",
-            "name.*" => "O nome do bairro é obrigatório e precisa ter pelo menos 3 caracteres",
+            "name.required" => "O nome do bairro é obrigatório.",
+            "name.min" => "O nome do bairro precisa ter pelo menos 3 caracteres",
+            "name.unique" => "O nome precisa ser unico."
         ];
     }
 

@@ -1,5 +1,5 @@
 @php
-$imgPath = asset('storage/images/icons/' . $toastMessage["status"] . '.png');
+$imgPath = asset('storage/images/icons/' . ($toastMessage["status"] ?? "error") . '.png');
 @endphp
 
 <div id="toast_message" class="toast-container position-fixed top-0 mt-5 mx-4" style="right: 0;">
@@ -21,5 +21,5 @@ $imgPath = asset('storage/images/icons/' . $toastMessage["status"] . '.png');
 
     setTimeout(() => {
         toastElement.classList.add("d-none");
-    }, 3500);
+    }, 6500);
 </script>

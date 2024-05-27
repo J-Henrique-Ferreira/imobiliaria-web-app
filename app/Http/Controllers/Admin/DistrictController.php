@@ -4,17 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\District\DistrictDestroyRequest;
+use App\Http\Requests\Admin\District\DistrictShowRequest;
 use App\Http\Requests\Admin\District\DistrictStoreUpdateRequest;
-use App\Http\Requests\Admin\District\DistrictDeleteRequest;
-use App\Http\Requests\Admin\District\DistrictShowListRequest;
 use App\Models\City;
 use App\Models\District;
 
 class DistrictController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $citiesList = City::where("visible", true)->orderBy("name")->get();
@@ -42,10 +39,7 @@ class DistrictController extends Controller
         return to_route("districts.index");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(DistrictShowListRequest $request)
+    public function show(DistrictShowRequest $request)
     {
         $citiesList = City::where("visible", true)->orderBy("name")->get();
         $city = new City;
@@ -63,19 +57,30 @@ class DistrictController extends Controller
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(DistrictStoreUpdateRequest $request, string $id)
     {
-        dd($request);
+        $district = District::find($id);
+        $district->name = $request->name;
+        $district->city_id = $request->city_id;
+        $district->visible = isset($request->visible) ? true : false;
+        $district->save();
+
+        $request->session()->flash("toastMessage", [
+            "status" => "success",
+            "message" => "Bairro " . $district->value("name") . " atualizado com sucesso!"
+        ]);
+        return to_route("districts.index");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DistrictDeleteRequest $request, string $id)
+    public function destroy(DistrictDestroyRequest $request,  District $district)
     {
-        dd($request);
+        $district->delete();
+
+        $request->session()->flash("toastMessage", [
+            "status" => "success",
+            "message" => "Bairro removido com sucesso!"
+        ]);
+
+        return to_route("districts.index");
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\City\CityFormRequest;
+use App\Http\Requests\Admin\City\CityStoreUpdateRequest;
 
 class CityController extends Controller
 {
@@ -26,7 +26,7 @@ class CityController extends Controller
         ]);
     }
 
-    public function store(CityFormRequest $request)
+    public function store(CityStoreUpdateRequest $request)
     {
         $city = new City;
         $city->name = $request->name;
@@ -40,14 +40,10 @@ class CityController extends Controller
         return to_route("cities.index");
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(City $city, CityFormRequest $request)
+    public function update(City $city, CityStoreUpdateRequest $request)
     {
         $city->name = $request->name;
         $city->visible = isset($request->visible);
-
         $city->save();
 
         $request->session()->flash("toastMessage", [
@@ -58,9 +54,6 @@ class CityController extends Controller
         return to_route("cities.index");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(City $city, Request $request)
     {
         $city->delete();
