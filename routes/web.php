@@ -30,7 +30,11 @@ Route::get('/dashboard/contatos', function () {
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, "index"]);
 
-    Route::resource("/cities", CityController::class, [])->only(["index", "store", "update", "destroy"]);
+    Route::resource("/cities", CityController::class, [])->only(["index", "store", "update"]);
+
+    Route::delete('/cities/{id}', [CityController::class, 'destroy'])
+        ->name('cities.destroy')
+        ->middleware('city.check.related');
 
     Route::resource("/districts", DistrictController::class, [])->only(["index", "store", "show", "update", "destroy"]);
 });
