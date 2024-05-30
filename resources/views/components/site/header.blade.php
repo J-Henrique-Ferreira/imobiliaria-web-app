@@ -2,7 +2,7 @@
     <div class="container  container-fluid">
         <div class="d-flex justify-content-between align-items-center py-2">
             <a href="/" class="col nav-link">
-                <img class="img-fluid" src="https://martinslealimoveis.com.br/imagens/site_modelo/20230315141349565.png" alt="Logo da Imobiliária" style="height: 3rem;">
+                <img class="img-fluid object-fit-contain" src="{{asset('storage/images/icons/logo.png')}}" alt="Logo da Imobiliária" style="width: 90px;">
             </a>
             <div class="col-md-auto">
                 <nav class="d-block">
