@@ -15,8 +15,6 @@
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="visible" @if ($visible)checked @endif>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Visibilidade</label>
                     </div>
-                    <input type="hidden" name="id" name="id" value="{{$cityId}}" />
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>
                 </form>
             </div>

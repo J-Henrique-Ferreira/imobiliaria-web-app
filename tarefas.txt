@@ -1,0 +1,52 @@
+#estruturar
+
+[X] definir estrutura do banco (tabelas, campos, relacionamentos...)
+
+
+#cruds
+
+[em andamento] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
+[ ] crud de bairros
+[ ] crud de business
+[ ] crud de category
+[ ] crud de users
+[ ] crud de produtos
+[ ] crud de contatos
+
+#filtros
+
+[ ] filtrar imóveis
+[ ] filtrar contatos
+
+
+#componentes dinâmicos 
+
+[ ] cards de produto
+[ ] paginar resultados de listagem de imóveis na pagina do usuário
+[ ] página do produto
+[ ] paginar resultados de listagem de imóveis na pagina do adminstrador
+
+
+#permições
+
+[ ] login do adm
+[ ] tratamendo de autenticação e autorização
+
+
+#estilos personalizados 
+// Para o próximo projeto ser possivel criar interfaces diferentes sem que 
+// afete o restante do projeto, praticamente separando front e back end mas mantendo o mvc
+
+[ ] Criar lib para views respeitando os valores vindos da api
+
+[ ] pagina adm que permita selecionar formatos de: 
+	- slider de banners
+	- card de produto
+	- formato do filtro de produtos
+	- formato da pagina do produto
+	- cores do sistema
+	- formato do paginador
+	- formato e links do cabeçalho
+	- formato e links do rodapé
+	
+	

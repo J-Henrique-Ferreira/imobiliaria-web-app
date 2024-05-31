@@ -17,14 +17,12 @@ class CheckRelatedCities
     public function handle(Request $request, Closure $next): Response
     {
         $cityId = $request->route('id');
-
         $city = City::with('districts')->findOrFail($cityId);
+        $isAutorized = $city->districts()->count() > 0 ? false : true;
 
-        // dd($city);
-
-        if ($city->districts()->count() > 0) {
+        if (!$isAutorized) {
             return to_route('cities.index')
-                ->withErrors(['error' => 'Esta cidade não pode ser removida pois há bairros relacionados.']);
+                ->withErrors(['error' => 'A cidade ' . $city->name  . ' não pode ser removida pois há bairros relacionados.']);
         }
 
         return $next($request);

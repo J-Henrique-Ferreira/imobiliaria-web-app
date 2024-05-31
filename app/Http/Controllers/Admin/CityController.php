@@ -6,9 +6,14 @@ use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\City\CityStoreUpdateRequest;
+use App\Repositories\Contracts\CitiesRepositoryInterface;
 
 class CityController extends Controller
 {
+    public function __construct(private CitiesRepositoryInterface $cityRepository)
+    {
+    }
+
     public function index(Request $request)
     {
         try {
@@ -28,14 +33,19 @@ class CityController extends Controller
 
     public function store(CityStoreUpdateRequest $request)
     {
-        $city = new City;
-        $city->name = $request->name;
-        $city->save();
+        try {
+            $this->cityRepository->add($request);
 
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Cidade adicionada com sucesso!"
-        ]);
+            $request->session()->flash("toastMessage", [
+                "status" => "success",
+                "message" => "Cidade adicionada com sucesso!"
+            ]);
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "error",
+                "message" => "Não foi possivel salvar o registro."
+            ]);
+        }
 
         return to_route("cities.index");
     }
@@ -54,14 +64,20 @@ class CityController extends Controller
         return to_route("cities.index");
     }
 
-    public function destroy(City $city, Request $request)
+    public function destroy(Request $request, City $city)
     {
-        $city->delete();
-
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Cidade removida com sucesso!"
-        ]);
+        try {
+            $this->cityRepository->destroy(City::find($request->id));
+            $request->session()->flash("toastMessage", [
+                "status" => "success",
+                "message" => "Cidade removida com sucesso!"
+            ]);
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "error",
+                "message" => "Não foi possivel remover a cidade!"
+            ]);
+        }
 
         return to_route("cities.index");
     }
