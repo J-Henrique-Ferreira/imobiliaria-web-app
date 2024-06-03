@@ -5,6 +5,7 @@ use App\Http\Controllers\Site\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\LoginController;
 
 Route::get('/', [ProductController::class, "index"]);
 
@@ -21,9 +22,7 @@ Route::get('/dashboard/atualizar-imovel', function () {
     return view('admin.updateProduct', []);
 });
 
-Route::get('/dashboard/contatos', function () {
-    return view('admin.contacts', []);
-});
+Route::get('/login', [LoginController::class, "index"]);
 
 // Route::resource("/cidades")
 
