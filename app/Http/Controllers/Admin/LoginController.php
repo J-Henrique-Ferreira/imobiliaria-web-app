@@ -12,13 +12,14 @@ class LoginController extends Controller
         return view('admin.login', []);
     }
 
-    public function sigin(Request $request)
+    public function store(Request $request)
     {
-        // return to_route("districts.index");
+
+        return redirect("dashboard/");
     }
 
-    public function logout(Request $request)
+    public function destroy(Request $request)
     {
-        // retorno
+        return redirect("/");
     }
 }

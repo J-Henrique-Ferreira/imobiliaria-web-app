@@ -19,7 +19,7 @@
                         Login
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="#">
+                        <form method="POST" action="{{route('login.store')}}">
                             @csrf
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -33,8 +33,8 @@
                                 <div class="input-group">
                                     <input type="password" class="form-control" id="password" name="password" required>
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        <button class="btn btn-outline-secondary p-0" type="button" id="togglePassword">
+                                            <img src="{{asset('storage/images/icons/viewpass.png')}}" style="object-fit: contain; width:35px;" alt="ver senha">
                                         </button>
                                     </div>
                                 </div>
@@ -59,10 +59,10 @@
             var passwordFieldType = passwordField.getAttribute('type');
             if (passwordFieldType === 'password') {
                 passwordField.setAttribute('type', 'text');
-                this.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+                // this.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
             } else {
                 passwordField.setAttribute('type', 'password');
-                this.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+                // this.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
             }
         });
     </script>

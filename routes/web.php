@@ -22,7 +22,7 @@ Route::get('/dashboard/atualizar-imovel', function () {
     return view('admin.updateProduct', []);
 });
 
-Route::get('/login', [LoginController::class, "index"]);
+Route::resource("/login", LoginController::class, [])->only("index", "store", "destroy");
 
 // Route::resource("/cidades")
 

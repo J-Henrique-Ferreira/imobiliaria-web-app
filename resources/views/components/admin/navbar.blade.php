@@ -22,7 +22,17 @@ $navList = [
                     {{$navData["name"]}}
                 </a>
                 @endForeach
+
+                <form action="{{route("login.destroy", 0)}}" method="POST" class="w-100">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-primary border-0 text-start px-2 fw-normal w-100">
+                        Sair
+                    </button>
+                </form>
+
             </div>
+
         </div>
     </div>
 </nav>
