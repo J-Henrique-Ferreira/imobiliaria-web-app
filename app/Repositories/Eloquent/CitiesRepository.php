@@ -7,7 +7,7 @@ use App\Repositories\Contracts\CitiesRepositoryInterface;
 use App\Models\City;
 use Illuminate\Support\Facades\DB;
 
-class  CitiesRepository implements CitiesRepositoryInterface
+class CitiesRepository implements CitiesRepositoryInterface
 {
     public function add(CityStoreUpdateRequest $request): City
     {
