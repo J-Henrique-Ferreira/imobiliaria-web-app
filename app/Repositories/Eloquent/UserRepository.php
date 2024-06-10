@@ -2,12 +2,9 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Http\Requests\Admin\City\CityStoreUpdateRequest;
-
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -23,8 +20,7 @@ class UserRepository implements UserRepositoryInterface
     public function find(string $email): user
     {
         $user = new User();
-        $user = $user->find(["email" => $email]);
-
+        $user = $user->get()->where("email", $email)[0];
         return $user;
     }
 

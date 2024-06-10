@@ -14,6 +14,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <x-site.alertMessage></x-site.alertMessage>
                 <div class="card">
                     <div class="card-header">
                         Login
