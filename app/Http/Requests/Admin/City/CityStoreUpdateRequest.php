@@ -22,13 +22,11 @@ class CityStoreUpdateRequest extends FormRequest
      */
     public function rules(Request $request): array
     {
-        $cityId = $request->id;
-
         return [
             "name" => [
                 "required",
                 "min:3",
-                "unique:cities,name," . $cityId,
+                "unique:cities,name," . $request->id,
             ],
         ];
     }

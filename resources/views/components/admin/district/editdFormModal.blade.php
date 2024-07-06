@@ -9,7 +9,7 @@
                 <form action="{{ route('districts.update', $districtId) }}" method="POST" class="d-flex flex-column form gap-3">
                     @csrf
                     @method('PUT')
-                    <x-admin.generic.citiesListSelect :citiesList="$citiesList" :labelText="'Cidade'" :atualCityId="$atualCityId" :fieldName="'city_id'"></x-admin.generic.citiesListSelect>
+                    <x-admin.generic.citiesListSelect x-admin.generic.citiesListSelect :citiesList="$citiesList" :labelText="'Cidade'" :atualCityId="$atualCityId" :fieldName="'city_id'"></x-admin.generic.citiesListSelect>
                     <label for="name" class="form-label">Nome do bairro</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{$name}}" required>
                     <div class="form-check form-switch">
