@@ -11,6 +11,7 @@
                     @method('PUT')
                     <label for="name" class="form-label">Nome da cidade</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{$name}}" required>
+                    <input type="hidden" name="id" value="{{$cityId}}" required>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="visible" @if ($visible)checked @endif>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Visibilidade</label>
