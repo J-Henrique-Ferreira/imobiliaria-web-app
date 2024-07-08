@@ -53,15 +53,15 @@ class CityController extends Controller
     public function update(City $city, CityStoreUpdateRequest $request)
     {
         try {
-            $this->cityRepository->update($request);
+            $this->cityRepository->update($city, $request);
             $request->session()->flash("toastMessage", [
                 "status" => "success",
                 "message" => "Cidade adicionada com sucesso!"
             ]);
         } catch (\Throwable $th) {
             $request->session()->flash("toastMessage", [
-                "status" => "success",
-                "message" => "Cidade atualizada com sucesso!"
+                "status" => "error",
+                "message" => "Não foi atualizar o registro."
             ]);
         }
 

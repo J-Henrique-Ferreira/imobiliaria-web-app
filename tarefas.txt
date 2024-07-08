@@ -5,8 +5,8 @@
 
 #cruds
 
-[em andamento] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
-[ ] crud de bairros
+[X] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
+[X] crud de bairros
 [ ] crud de business
 [ ] crud de category
 [ ] crud de users

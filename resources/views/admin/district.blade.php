@@ -11,7 +11,7 @@
                     Adicionar Bairro
                 </button>
             </div>
-            <div id="AddDistrict-collapseOne" class="accordion-collapse collapse">
+            <div id="AddDistrict-collapseOne" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                     <form action="{{ route('districts.store')}}" method="POST" class="d-flex flex-column form gap-3 w-100 my-3 ">
                         @csrf
@@ -41,7 +41,7 @@
                     Filtrar por cidade
                 </button>
             </div>
-            <div id="FilterCities-collapseOne" class="accordion-collapse collapse">
+            <div id="FilterCities-collapseOne" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                     <form action="{{route('districts.show', 1)}}" method="GET" class="d-flex flex-column form gap-3 w-100 my-3">
                         @csrf

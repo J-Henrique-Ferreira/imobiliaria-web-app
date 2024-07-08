@@ -19,10 +19,9 @@ class  CitiesRepository implements CitiesRepositoryInterface
         });
     }
 
-    public function update(CityStoreUpdateRequest $request): bool
+    public function update(City $city, CityStoreUpdateRequest $request): bool
     {
-        $city = new City;
-
+        // $city = new City;
         $city->name = $request->name;
         $city->visible = isset($request->visible);
         return $city->save();
