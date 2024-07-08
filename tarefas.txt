@@ -1,22 +1,22 @@
 #estruturar
 
-[X] definir estrutura do banco (tabelas, campos, relacionamentos...)
+[OK] definir estrutura do banco (tabelas, campos, relacionamentos...)
 
 
 #cruds
 
-[X] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
-[X] crud de bairros
-[ ] crud de business
-[ ] crud de category
-[ ] crud de users
-[ ] crud de produtos
-[ ] crud de contatos
+[OK] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
+[OK] crud de bairros
+[AGUARDADNDO] crud de business
+[AGUARDADNDO] crud de category
+[AGUARDADNDO] crud de users
+[AGUARDADNDO] crud de produtos
+[AGUARDADNDO] crud de contatos
 
 #filtros
 
-[ ] filtrar imóveis
-[ ] filtrar contatos
+[AGUARDADNDO] filtrar imóveis
+[AGUARDADNDO] filtrar contatos
 
 
 #componentes dinâmicos 
