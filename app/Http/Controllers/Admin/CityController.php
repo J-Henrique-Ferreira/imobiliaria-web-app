@@ -38,7 +38,7 @@ class CityController extends Controller
 
             $request->session()->flash("toastMessage", [
                 "status" => "success",
-                "message" => "Cidade adicionada com sucesso!"
+                "message" => "Cidade atualizada com sucesso!"
             ]);
         } catch (\Throwable $th) {
             $request->session()->flash("toastMessage", [
@@ -52,14 +52,18 @@ class CityController extends Controller
 
     public function update(City $city, CityStoreUpdateRequest $request)
     {
-        $city->name = $request->name;
-        $city->visible = isset($request->visible);
-        $city->save();
-
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Cidade atualizada com sucesso!"
-        ]);
+        try {
+            $this->cityRepository->update($request);
+            $request->session()->flash("toastMessage", [
+                "status" => "success",
+                "message" => "Cidade adicionada com sucesso!"
+            ]);
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "success",
+                "message" => "Cidade atualizada com sucesso!"
+            ]);
+        }
 
         return to_route("cities.index");
     }
