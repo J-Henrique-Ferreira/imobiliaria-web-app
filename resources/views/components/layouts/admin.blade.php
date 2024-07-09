@@ -21,7 +21,7 @@
 <body class="" style="background-color: #f7f9fc;">
     <main class="container mx-auto d-flex items-center">
         <x-admin.navbar></x-admin.navbar>
-        <div class="w-100 shadow-sm">
+        <div class="w-100 shadow-sm min-vh-100">
             <div class="d-flex justify-content-between bg-white shadow-sm-b px-3 py-3 fs-3 mb-3">
                 <div class="d-flex justify-content-between">
                     <a href="/dashboard" class="col nav-link">

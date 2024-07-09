@@ -11,7 +11,7 @@
 [AGUARDADNDO] crud de category
 [AGUARDADNDO] crud de users
 [AGUARDADNDO] crud de produtos
-[AGUARDADNDO] crud de contatos
+//[AGUARDADNDO] crud de contatos
 
 #filtros
 

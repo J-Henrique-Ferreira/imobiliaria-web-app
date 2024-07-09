@@ -9,19 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class  CitiesRepository implements CitiesRepositoryInterface
 {
-    public function add(CityStoreUpdateRequest $request): City
+    public function add(CityStoreUpdateRequest $request): bool
     {
         return DB::transaction(function () use ($request) {
             $city = new City;
             $city->name = $request->name;
-            $city->save();
-            return $city;
+            return $city->save();
         });
     }
 
     public function update(City $city, CityStoreUpdateRequest $request): bool
     {
-        // $city = new City;
         $city->name = $request->name;
         $city->visible = isset($request->visible);
         return $city->save();

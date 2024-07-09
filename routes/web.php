@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Site\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -30,5 +31,8 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/cities/{id}', [CityController::class, 'destroy'])
         ->name('cities.destroy')
         ->middleware('city.check.related');
-    Route::resource("/districts", DistrictController::class, [])->only(["index", "store", "show", "update", "destroy"]);
+    Route::resource("/districts", DistrictController::class, [])->only(
+        ["index", "store", "show", "update", "destroy"]
+    );
+    Route::resource("/business", BusinessController::class, [])->only(["index", "create", "store", "update", "edit"]);
 });
