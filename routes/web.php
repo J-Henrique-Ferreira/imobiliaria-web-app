@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BusinessController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Site\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,5 @@ Route::prefix('dashboard')->group(function () {
         ["index", "store", "show", "update", "destroy"]
     );
     Route::resource("/business", BusinessController::class, []);
+    Route::resource("/category", CategoryController::class, []);
 });

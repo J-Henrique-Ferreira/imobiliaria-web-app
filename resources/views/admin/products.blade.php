@@ -1,4 +1,8 @@
 <x-layouts.admin containerTitle="Imóveis">
+
+    <div class="accordion mb-4 text-end" id="accordionAddDistrict">
+        <a href="/dashboard/adicionar-imovel" class="btn btn-primary my-3">Novo imóvel</a>
+    </div>
     <x-site.filter></x-site.filter>
 
     <section class="d-flex flex-wrap justify-content-center gap-2 my-4">

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin\Business;
+namespace App\Http\Requests\Admin\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-class BusinessStoreUpdateRequest extends FormRequest
+class CategoryStoreUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,14 +20,13 @@ class BusinessStoreUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-
     public function rules(Request $request): array
     {
         return [
             "name" => [
                 "required",
                 "min:3",
-                "unique:business,name," . $request->id,
+                "unique:cities,name," . $request->id,
             ],
         ];
     }
@@ -40,6 +39,4 @@ class BusinessStoreUpdateRequest extends FormRequest
             "name.unique" => "O nome precisa ser unico."
         ];
     }
-
-    protected $redirectRoute = 'business.index';
 }

@@ -1,11 +1,11 @@
-<x-layouts.admin containerTitle="Tipos de negócios">
+<x-layouts.admin containerTitle="Categorias de imóveis">
     @if (isset($toastMessage))
     @component("components.site.toastMessage", ["toastMessage"=> $toastMessage])
     @endComponent
     @endif
 
     <div class="accordion mb-4" id="accordionAddDistrict">
-        <a href="{{ route("business.create")}}" class="btn btn-primary my-3">Nova negociação</a>
+        <a href="{{ route("category.create")}}" class="btn btn-primary my-3">Nova categoria</a>
     </div>
 
     @if (isset($businessList))
@@ -28,7 +28,7 @@
     </div>
     @else
     <div class="fs-5 fw-medium mx-3">
-        Cadastre o primeiro tipo de negócio!
+        Cadastre a primeira categoria!
     </div>
     @endif
 </x-layouts.admin>
