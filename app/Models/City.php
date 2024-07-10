@@ -14,4 +14,6 @@ class City extends Model
     {
         return $this->hasMany(District::class, "city_id");
     }
+
+    protected $fillable = ["name"];
 }
