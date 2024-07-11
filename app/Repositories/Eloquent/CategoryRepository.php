@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Http\Requests\Admin\Business\BusinessStoreUpdateRequest;
-use App\Repositories\Contracts\BusinessRepositoryInterface;
-use App\Models\Business as Model;
+use App\Http\Requests\Admin\Category\CategoryStoreUpdateRequest;
+use App\Models\Category as Model;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class BusinessRepository  implements BusinessRepositoryInterface
+class CategoryRepository  implements CategoryRepositoryInterface
 {
     public function __construct(
         protected Model $model,
@@ -19,14 +19,14 @@ class BusinessRepository  implements BusinessRepositoryInterface
         return $this->model::all();
     }
 
-    public function add(BusinessStoreUpdateRequest $request): bool
+    public function add(CategoryStoreUpdateRequest $request): bool
     {
         $business = new $this->model();
         $business->name = $request->name;
         return $business->save();
     }
 
-    public function update(BusinessStoreUpdateRequest $request): bool
+    public function update(CategoryStoreUpdateRequest $request): bool
     {
         $business = $this->model::find($request->id);
         $business->name = $request->name;

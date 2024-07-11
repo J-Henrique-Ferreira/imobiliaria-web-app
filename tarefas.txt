@@ -2,28 +2,26 @@
 
 [OK] definir estrutura do banco (tabelas, campos, relacionamentos...)
 
-
 #cruds
 
 [OK] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
 [OK] crud de bairros
-[AGUARDADNDO] crud de business
-[AGUARDADNDO] crud de category
+[OK] crud de business
+[EM ANDAMENTO] crud de category
 [AGUARDADNDO] crud de users
 [AGUARDADNDO] crud de produtos
-//[AGUARDADNDO] crud de contatos
+// [AGUARDADNDO] crud de contatos
 
 #filtros
 
 [AGUARDADNDO] filtrar imóveis
 [AGUARDADNDO] filtrar contatos
 
-
 #componentes dinâmicos 
 
 [ ] cards de produto
 [ ] paginar resultados de listagem de imóveis na pagina do usuário
-[ ] página do produto
+[PARCIAL] página do produto
 [ ] paginar resultados de listagem de imóveis na pagina do adminstrador
 
 
@@ -48,5 +46,3 @@
 	- formato do paginador
 	- formato e links do cabeçalho
 	- formato e links do rodapé
-	
-	

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Business\BusinessStoreUpdateRequest;
-use App\Models\Business;
-use App\Repositories\Contracts\BusinessRepositoryInterface;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Category\CategoryStoreUpdateRequest;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 
-class BusinessController extends Controller
+class CategoryController extends Controller
 {
-    public function __construct(private BusinessRepositoryInterface $businessRepository)
+    public function __construct(private CategoryRepositoryInterface $categoryRepository)
     {
     }
 
@@ -20,13 +20,13 @@ class BusinessController extends Controller
     public function index(Request $request)
     {
         try {
-            $businessList = $this->businessRepository->all();
+            $categoryList = $this->categoryRepository->all();
         } catch (\Throwable $th) {
             abort(500);
         }
 
-        return view("admin.business.index", [
-            "businessList" => $businessList,
+        return view("admin.category.index", [
+            "categoryList" => $categoryList,
             "toastMessage" => $request->session()->get("toastMessage")
         ]);
     }
@@ -36,28 +36,28 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        return view("admin.business.create");
+        return view("admin.category.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(BusinessStoreUpdateRequest $request)
+    public function store(CategoryStoreUpdateRequest $request)
     {
         try {
-            $this->businessRepository->add($request);
+            $this->categoryRepository->add($request);
             $request->session()->flash("toastMessage", [
                 "status" => "success",
-                "message" => "Tipo de negócio cadastrado com sucesso!"
+                "message" => "Categoria cadastrada com sucesso!"
             ]);
         } catch (\Throwable $th) {
             $request->session()->flash("toastMessage", [
                 "status" => "error",
-                "message" => "Não foi possivel cadastrar tipo de negócio!"
+                "message" => "Não foi possivel cadastrar categoria."
             ]);
         }
 
-        return to_route("business.index");
+        return to_route("category.index");
     }
 
     /**
@@ -65,7 +65,7 @@ class BusinessController extends Controller
      */
     public function show(string | int $id)
     {
-        return to_route("business.index");
+        return to_route("category.index");
     }
 
     /**
@@ -73,19 +73,19 @@ class BusinessController extends Controller
      */
     public function edit()
     {
-        return view("admin.busines.update");
+        return view("admin.category.update");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(BusinessStoreUpdateRequest $request)
+    public function update(CategoryStoreUpdateRequest $request)
     {
         try {
-            if ($this->businessRepository->update($request)) {
+            if ($this->categoryRepository->update($request)) {
                 $request->session()->flash("toastMessage", [
                     "status" => "success",
-                    "message" => "Tipo de negócio atualizado com sucesso!"
+                    "message" => "Categoria atualizada com sucesso!"
                 ]);
             } else {
                 throw new \Exception("não podemos atualizar o registro");
@@ -93,11 +93,11 @@ class BusinessController extends Controller
         } catch (\Throwable $th) {
             $request->session()->flash("toastMessage", [
                 "status" => "error",
-                "message" => "Não foi possivel atualizar tipo de negócio"
+                "message" => "Não foi possivel atualizar categoria."
             ]);
         }
 
-        return to_route("business.index");
+        return to_route("category.index");
     }
 
     /**
@@ -106,10 +106,10 @@ class BusinessController extends Controller
     public function destroy(string | int $id, Request $request)
     {
         try {
-            if ($this->businessRepository->destroy($id)) {
+            if ($this->categoryRepository->destroy($id)) {
                 $request->session()->flash("toastMessage", [
                     "status" => "success",
-                    "message" => "Tipo de negócio deletado com sucesso!"
+                    "message" => "Categoria deletada com sucesso!"
                 ]);
             } else {
                 throw new \Exception("não podemos deletar o registro");
@@ -117,10 +117,10 @@ class BusinessController extends Controller
         } catch (\Throwable $th) {
             $request->session()->flash("toastMessage", [
                 "status" => "error",
-                "message" => "Falha ao deletar tipo de negócio."
+                "message" => "Falha ao deletar categoria."
             ]);
         }
 
-        return to_route("business.index");
+        return to_route("category.index");
     }
 }

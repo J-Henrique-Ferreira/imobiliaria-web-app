@@ -28,7 +28,7 @@
     </div>
     @else
     <div class="fs-5 fw-medium mx-3">
-        Cadastre a primeira cidade!
+        Cadastre o primeiro tipo de negócio!
     </div>
     @endif
 </x-layouts.admin>
