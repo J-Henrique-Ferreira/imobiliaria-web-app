@@ -71,7 +71,7 @@ class BusinessController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Business $business)
+    public function edit()
     {
         return view("admin.busines.update");
     }

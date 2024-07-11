@@ -26,7 +26,7 @@ class CategoryStoreUpdateRequest extends FormRequest
             "name" => [
                 "required",
                 "min:3",
-                "unique:cities,name," . $request->id,
+                "unique:categories,name," . $request->id,
             ],
         ];
     }

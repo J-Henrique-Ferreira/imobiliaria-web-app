@@ -7,7 +7,7 @@ use App\Models\Category as Model;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class BusinessRepository  implements CategoryRepositoryInterface
+class CategoryRepository  implements CategoryRepositoryInterface
 {
     public function __construct(
         protected Model $model,

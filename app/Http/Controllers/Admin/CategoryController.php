@@ -6,15 +6,29 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Category\CategoryStoreUpdateRequest;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
 {
+    public function __construct(private CategoryRepositoryInterface $categoryRepository)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("admin.category.index");
+        try {
+            $categoryList = $this->categoryRepository->all();
+        } catch (\Throwable $th) {
+            abort(500);
+        }
+
+        return view("admin.category.index", [
+            "categoryList" => $categoryList,
+            "toastMessage" => $request->session()->get("toastMessage")
+        ]);
     }
 
     /**
@@ -30,9 +44,21 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreUpdateRequest $request)
     {
-        dd("caiu no store");
-    }
+        try {
+            $this->categoryRepository->add($request);
+            $request->session()->flash("toastMessage", [
+                "status" => "success",
+                "message" => "Categoria cadastrada com sucesso!"
+            ]);
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "error",
+                "message" => "Não foi possivel cadastrar categoria."
+            ]);
+        }
 
+        return to_route("category.index");
+    }
 
     /**
      * Display the specified resource.
@@ -43,18 +69,58 @@ class CategoryController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit()
+    {
+        return view("admin.category.update");
+    }
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(CategoryStoreUpdateRequest $request)
     {
-        dd("caiu no update");
+        try {
+            if ($this->categoryRepository->update($request)) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Categoria atualizada com sucesso!"
+                ]);
+            } else {
+                throw new \Exception("não podemos atualizar o registro");
+            }
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "error",
+                "message" => "Não foi possivel atualizar categoria."
+            ]);
+        }
+
+        return to_route("category.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string | int $id)
+    public function destroy(string | int $id, Request $request)
     {
-        dd("caiu no destroy");
+        try {
+            if ($this->categoryRepository->destroy($id)) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Categoria deletada com sucesso!"
+                ]);
+            } else {
+                throw new \Exception("não podemos deletar o registro");
+            }
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "error",
+                "message" => "Falha ao deletar categoria."
+            ]);
+        }
+
+        return to_route("category.index");
     }
 }
