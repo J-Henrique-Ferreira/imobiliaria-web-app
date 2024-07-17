@@ -16,7 +16,7 @@ class CategoryRepository  implements CategoryRepositoryInterface
 
     public function all(): Collection
     {
-        return $this->model::all();
+        return $this->model::all()->sortBy("name");
     }
 
     public function add(CategoryStoreUpdateRequest $request): bool
