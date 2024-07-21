@@ -9,10 +9,8 @@
     </div>
 
     @if (isset($categoryList))
-    <div class="fs-5 fw-medium mx-3">
-        Tods os resultatos - @php
-        echo count($categoryList);
-        @endphp
+    <div class="fs-5 fw-medium">
+        {!! $categoryList->links("vendor.pagination.statusPaged") !!}
     </div>
 
     <div class="d-flex flex-column gap-3">
@@ -31,4 +29,8 @@
         Cadastre a primeira categoria!
     </div>
     @endif
+
+    <div class="d-flex justify-content-center">
+        {!! $categoryList->links() !!}
+    </div>
 </x-layouts.admin>
