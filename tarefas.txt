@@ -7,7 +7,7 @@
 [OK] crud de cidades  #obs - validar dados dos forms e e redirecionamentos para dashboard/cities
 [OK] crud de bairros
 [OK] crud de business
-[EM ANDAMENTO] crud de category
+[OK] crud de category
 [AGUARDADNDO] crud de users
 [AGUARDADNDO] crud de produtos
 // [AGUARDADNDO] crud de contatos
