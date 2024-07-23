@@ -9,7 +9,16 @@
 [OK] crud de business
 [OK] crud de category
 [AGUARDADNDO] crud de users
-[AGUARDADNDO] crud de produtos
+[EM ANDAMENTO] crud de produtos
+
+##
+	criar service de product para interagir com varios repositórios ao mesmo tempo
+	(users, product ...)
+
+	criar DTO com metodo de inicialização interno chamando o proprio contrutor (pesquisar sobre o self)
+
+##
+
 // [AGUARDADNDO] crud de contatos
 
 #filtros
