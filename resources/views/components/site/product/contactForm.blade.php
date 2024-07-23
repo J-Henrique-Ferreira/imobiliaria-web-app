@@ -1,5 +1,5 @@
 <section class="rounded shadow-sm p-3 mt-5 bg-white" id="contact_form">
-    <span class="fs-4 fw-semibold text-dark text-opacity-75">Me interesso por este imóvel</span>
+    <span class="fs-4 fw-semibold text-dark text-opacity-75 text-uppercase">Me interesso por este imóvel</span>
     <div method="GET" class="w-100 my-4 border border-bottom border-opacity-25"></div>
     <form class="row g-3 needs-validation bg-transparent">
         <div class="col-12 col-md-3">

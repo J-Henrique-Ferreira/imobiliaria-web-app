@@ -294,8 +294,25 @@ class SiteController extends Controller
             "cars_in_garage" => 2,
             "size" => "128", // metros quadrados
             "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-            "description" => "RECREIO DOS BANEIRANTES (72352) - CASA TRIPLEX à VENDA, no condomínio Terra América, Maravilhosa casa com espaço gourmet, churrasqueira, piscina, salão em 03 ambientes decorado, lavabo, copa cozinha planejada, quarto normal, área e banheiro de serviço, SEGUNDO PISO: 04 SUÍTES. TERCEIRO PISO: Sótão que está usando como escritório e banheiro, que pode ser mais uma suíte. Condomínio com infraestrutura e segurança 24 h. Pagamento à vista.Financiamento bancário. Estuda permuta por apto menor valor no Recreio, ou na ABM Barra. AGENDE já sua visita com corretor da PHD Imobiliária!
+            "description" => "
+            Imóvel dos Seus Sonhos à Venda!
+            Localização Impecável:
+            Este maravilhoso apartamento está situado no coração do [Bairro/Região], uma das áreas mais valorizadas da cidade. Com fácil acesso a escolas, supermercados, shoppings e parques, a localização oferece tudo o que você precisa para uma vida prática e confortável.
 
+            Design e Conforto:
+            Com 3 quartos espaçosos, incluindo uma suíte master com closet, este imóvel foi projetado para oferecer o máximo de conforto e elegância. A sala de estar ampla e iluminada é perfeita para receber amigos e familiares, enquanto a cozinha moderna, com armários planejados e eletrodomésticos de última geração, torna o dia a dia mais prático e agradável.
+
+            Infraestrutura Completa:
+            O condomínio oferece uma infraestrutura completa para toda a família, incluindo piscina, academia, salão de festas, área de churrasco, playground e segurança 24 horas. Tudo pensado para proporcionar qualidade de vida e bem-estar aos moradores.
+
+            Sustentabilidade:
+            Além do conforto e da localização privilegiada, este imóvel se destaca por suas características sustentáveis, como sistemas de captação de água da chuva, painéis solares e iluminação LED em todas as áreas comuns, contribuindo para um futuro mais sustentável e economia nas contas.
+
+            Preço Imbatível:
+            Tudo isso por um preço que cabe no seu bolso! Não perca a oportunidade de investir em um imóvel que combina conforto, praticidade e localização estratégica. Condições especiais de financiamento e negociação direta com o proprietário.
+
+            Agende sua Visita:
+            Entre em contato conosco e agende uma visita para conhecer este incrível apartamento. Nossa equipe está pronta para atendê-lo e ajudar a transformar este sonho em realidade.
             ",
             "modality" => "Aluguel",
             "address" => [

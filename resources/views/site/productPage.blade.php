@@ -1,5 +1,5 @@
 <x-layouts.site title="Produto">
-    <h1 class="fs-4 text-dark text-opacity-75 mt-4 mt-lg-4">
+    <h1 class="fs-4 text-dark text-opacity-75 mt-4 mt-lg-5 text-uppercase">
         {{$product["modality"] }} de {{$product["category"]}} - {{$product["address"]["city"]}}
         R${{$product["value"]}},00
     </h1>
