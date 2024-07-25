@@ -1,7 +1,7 @@
 <x-layouts.admin containerTitle="Imóveis">
 
     <div class="accordion mb-4 text-end" id="accordionAddDistrict">
-        <a href="/dashboard/adicionar-imovel" class="btn btn-primary my-3">Novo imóvel</a>
+        <a href="{{route("imoveis.create")}}" class="btn btn-primary my-3">Novo imóvel</a>
     </div>
     <x-site.filter></x-site.filter>
 

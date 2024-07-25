@@ -4,56 +4,61 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Repositories\Contracts\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
 
 class ProductController extends Controller
 {
+    public function __construct(private ProductRepositoryInterface $repository)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products =
+        $products = [
             [
-                [
-                    "category" => "casa",
-                    "bedrooms" => "3", // quartos
-                    "bathroom" => "2", // banheiros
-                    "cars_in_garage" => 2,
-                    "size" => "128", // metros quadrados
-                    "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                    "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                    "modality" => "aluguel",
-                    "address" => [
-                        "city" => "Taquara",
-                        "state" => "RS",
-                        "country" => "Morro do Leôncio",
-                        "number" => "7892"
-                    ],
-                    "value" => "1200",
-                    "default_image" => "https://cf.bstatic.com/xdata/images/hotel/max1024x768/476329454.jpg?k=8b8963ae5ac81ee0ee895e2b1e6cc3986e1d258daeca6210777adde62d660166&o=&hp=1",
-                    "images" => ["image1.jpg", "image2.jpg", "image3.jpg"]
+                "category" => "casa",
+                "bedrooms" => "3", // quartos
+                "bathroom" => "2", // banheiros
+                "cars_in_garage" => 2,
+                "size" => "128", // metros quadrados
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "modality" => "aluguel",
+                "address" => [
+                    "city" => "Taquara",
+                    "state" => "RS",
+                    "country" => "Morro do Leôncio",
+                    "number" => "7892"
                 ],
-                [
-                    "category" => "sobrado",
-                    "bedrooms" => "4",
-                    "bathroom" => "3",
-                    "cars_in_garage" => 2,
-                    "size" => "200",
-                    "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                    "description" => "Sobrado espaçoso em bairro residencial. Fácil acesso às principais vias.",
-                    "modality" => "aluguel",
-                    "address" => [
-                        "city" => "Chapecó",
-                        "state" => "SC",
-                        "country" => "Bairro Universitário",
-                        "number" => "135"
-                    ],
-                    "value" => "2200",
-                    "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
-                    "images" => ["image29.jpg", "image30.jpg", "image31.jpg"]
-                ]
-            ];
+                "value" => "1200",
+                "default_image" => "https://cf.bstatic.com/xdata/images/hotel/max1024x768/476329454.jpg?k=8b8963ae5ac81ee0ee895e2b1e6cc3986e1d258daeca6210777adde62d660166&o=&hp=1",
+                "images" => ["image1.jpg", "image2.jpg", "image3.jpg"]
+            ],
+            [
+                "category" => "sobrado",
+                "bedrooms" => "4",
+                "bathroom" => "3",
+                "cars_in_garage" => 2,
+                "size" => "200",
+                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
+                "description" => "Sobrado espaçoso em bairro residencial. Fácil acesso às principais vias.",
+                "modality" => "aluguel",
+                "address" => [
+                    "city" => "Chapecó",
+                    "state" => "SC",
+                    "country" => "Bairro Universitário",
+                    "number" => "135"
+                ],
+                "value" => "2200",
+                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
+                "images" => ["image29.jpg", "image30.jpg", "image31.jpg"]
+            ]
+        ];
 
         return view("admin.product.index", ["products" => $products]);
     }
@@ -69,8 +74,9 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductStoreUpdateRequest $request)
     {
+        $this->repository->add($request);
     }
 
     /**

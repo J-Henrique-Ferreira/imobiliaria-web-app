@@ -1,11 +1,11 @@
 @php
 $navList = [
 ["name"=>"Painel de controle" , "href" => "/dashboard"],
-["name"=>"Imoveis" , "href" => "/dashboard/imoveis"],
-["name"=>"Cidades" , "href" => "/dashboard/cities"],
-["name"=>"Bairros" , "href" => "/dashboard/districts"],
-["name"=>"Negócios" , "href" => "/dashboard/business"],
-["name"=>"Categorias" , "href" => "/dashboard/category"],
+["name"=>"Imoveis" , "href" => route("imoveis.index")],
+["name"=>"Cidades" , "href" => route("cities.index")],
+["name"=>"Bairros" , "href" => route("districts.index")],
+["name"=>"Negócios" , "href" => route("business.index")],
+["name"=>"Categorias" , "href" => route("category.index")],
 ];
 @endphp
 

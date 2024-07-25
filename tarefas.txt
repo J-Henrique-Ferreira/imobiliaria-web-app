@@ -11,6 +11,8 @@
 [AGUARDADNDO] crud de users
 [EM ANDAMENTO] crud de produtos
 
+(mapear campos a serem varificados na validação da request)
+
 ##
 	criar service de product para interagir com varios repositórios ao mesmo tempo
 	(users, product ...)
