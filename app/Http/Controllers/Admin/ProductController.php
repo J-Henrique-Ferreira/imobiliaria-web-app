@@ -7,6 +7,9 @@ use App\Models\Product;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
+use App\Repositories\Eloquent\BusinessRepository;
+use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Eloquent\CitiesRepository;
 
 class ProductController extends Controller
 {
@@ -60,15 +63,37 @@ class ProductController extends Controller
             ]
         ];
 
+        // return view("admin.product.create.index", [
+        //     "businessList" => $businessList,
+        //     "toastMessage" => $request->session()->get("toastMessage")
+        // ]);
+
         return view("admin.product.index", ["products" => $products]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view("admin.product.create");
+    public function create(
+        CategoryRepository $category,
+        BusinessRepository $business,
+        CitiesRepository $city
+    ) {
+        try {
+            $categoriesList = $category->all()->all();
+            $citiesList = $city->all()->all();
+            $businessList = $business->all()->all();
+
+            // dd($categoriesList);
+
+            return view("admin.product.create", [
+                "categoriesList" => $categoriesList,
+                "citiesList" => $citiesList,
+                "businessList" => $businessList
+            ]);
+        } catch (\Throwable $th) {
+            abort(500);
+        }
     }
 
     /**

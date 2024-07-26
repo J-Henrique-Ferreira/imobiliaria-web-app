@@ -10,36 +10,22 @@
                 <div class="w-100">
                     <label for="category_id" class="form-label">Tipo De Imóvel</label>
                     <select id="category_id" name="category_id" class="form-select">
-                        <option selected>Casa</option>
-                        <option>Casa em condomíno</option>
-                        <option>Sobrado</option>
+                        <option selected>Selecione</option>
 
-                        <option>Apartamento</option>
-                        <option>Apartamento Garden</option>
-                        <option>Duplex</option>
-                        <option>Loft</option>
-
-                        <option>Cobertura</option>
-                        <option>Loja</option>
-                        <option>Depósito</option>
-                        <option>Pavilhão</option>
-
-                        <option>Predio Comercial</option>
-                        <option>Salas Conjuntas</option>
-                        <option>Apartamento</option>
-                        <option>Sala comercial</option>
-
-                        <option>Terreno</option>
-                        <option>Garagem</option>
+                        @foreach ($categoriesList as $key => $category )
+                        <option value="{{$category['id']}}">{{$category['name']}}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="w-100">
                     <label for="business_id" class="form-label">Tipo De Negócio</label>
                     <select id="business_id" name="business_id" class="form-select">
-                        <option selected value="">Selecione</option>
-                        <option>Aluguel</option>
-                        <option>Venda</option>
+                        <option selected>Selecione</option>
+
+                        @foreach ($businessList as $key => $business )
+                        <option value="{{$business['id']}}">{{$business['name']}}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -56,24 +42,20 @@
             <div class="d-flex flex-column flex-md-row gap-3">
                 <div class="w-100">
                     <label for="address_city_id" class="form-label">Cidade</label>
-                    <select id="address_city_id" name="address_city_id" class="form-select form-control">
-                        <option selected value="">Selecione</option>
-                        <option>Taquara</option>
-                        <option>Parobé</option>
-                        <option>Igrejinha</option>
-                        <option>Três Coroas</option>
-                        <option>Gramado</option>
-                        <option>Canela</option>
-                        <option>Rolante</option>
-                        <option>São Leopoldo</option>
+                    <select id="address_city_id" name="address_city_id" class="form-select form-control" onchange="findDistrictsByCityId(this.value)">
+                        <option selected>Selecione</option>
+
+                        @foreach ($citiesList as $key => $city )
+                        <option value="{{$city  ['id']}}">{{$city ['name']}}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="w-100">
                     <label for="address_district_id" class="form-label">Bairro</label>
                     <select id="address_district_id" name="address_district_id" class="form-select">
-                        <option selected value="">Selecione</option>
-                        <option>Parobé</option>
+                        <option selected value="1">Selecione</option>
+                        <option value="2">Parobé</option>
                         <option>Igrejinha</option>
                         <option>Três Coroas</option>
                         <option>Gramado</option>
@@ -158,7 +140,7 @@
 
 <script>
     function reativeListFiles() {
-        var inputFiles = document.getElementById('files_input');
+        var inputFiles = document.getElementById('images_list_url');
         var previewImages = document.getElementById('preview_images');
         var files = inputFiles.files;
 
@@ -198,5 +180,57 @@
 
             reader.readAsDataURL(file); // Lê o arquivo como URL de dados
         }
+    }
+
+    function findDistrictsByCityId(value) {
+        var selectDistrict = window.document.getElementById("address_district_id");
+        var token = window.document.getElementsByName("_token")[0].value;
+        var url = "/dashboard/districts/" + token + "?id=" + value + "&&json=1"
+
+        console.log(url);
+
+        var districtsList = [];
+
+        fetch(url, {
+                method: "GET"
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error("Erro ao buscar bairros.");
+            })
+            .then(data => {
+                // updateTotalLikes(articleId, JSON.parse(data));
+                data = JSON.parse(data);
+                console.log(data);
+
+                // for (let i = 0; i < data.length; i++) {
+                //     const element = data[i];
+                //     consone.log("caiu no for" + i);
+                // }
+
+                var options = "";
+
+                data.forEach(district => {
+                    options += "<option value='" + district.id + "' >" + district.name + "</option>"
+                });
+
+                selectDistrict.innerHTML = options;
+
+                /* if (form[0].value === "1") {
+                    form[0].value = "0";
+                    form[2].innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/1330/1330225.png' alt='' class='unliked_icon'>";
+                } else {
+                    form[0].value = "1";
+                    form[2].innerHTML = "<img src='https://png.pngtree.com/png-clipart/20210423/ourmid/pngtree-red-polygon-heart-png-image_3232335.png' alt='' class='liked_icon'>";
+                } */
+            })
+
+        /* 
+        
+        [{"id":2,"name":"Cruzeiro","visible":1,"city_id":4,"created_at":"2024-07-26T00:44:13.000000Z","updated_at":"2024-07-26T00:44:36.000000Z"},
+        {"id":3,"name":"Empresa","visible":1,"city_id":4,"created_at":"2024-07-26T00:44:25.000000Z","updated_at":"2024-07-26T00:44:25.000000Z"}]
+        */
     }
 </script>

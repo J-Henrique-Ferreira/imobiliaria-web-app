@@ -5,10 +5,16 @@ namespace App\Repositories\Eloquent;
 use App\Http\Requests\Admin\City\CityStoreUpdateRequest;
 use App\Repositories\Contracts\CitiesRepositoryInterface;
 use App\Models\City;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class  CitiesRepository implements CitiesRepositoryInterface
 {
+    public function all(): Collection
+    {
+        return City::all()->sortBy("name");
+    }
+
     public function add(CityStoreUpdateRequest $request): bool
     {
         return DB::transaction(function () use ($request) {
