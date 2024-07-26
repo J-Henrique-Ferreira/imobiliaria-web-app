@@ -13,7 +13,7 @@
                         <option selected>Selecione</option>
 
                         @foreach ($categoriesList as $key => $category )
-                        <option value="{{$category['id']}}">{{$category['name']}}</option>
+                        <option value="{{$category['id']}}" @php if(old("category_id")===$category["id"]) echo "selected" @endphp>{{$category['name']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -217,20 +217,6 @@
                 });
 
                 selectDistrict.innerHTML = options;
-
-                /* if (form[0].value === "1") {
-                    form[0].value = "0";
-                    form[2].innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/1330/1330225.png' alt='' class='unliked_icon'>";
-                } else {
-                    form[0].value = "1";
-                    form[2].innerHTML = "<img src='https://png.pngtree.com/png-clipart/20210423/ourmid/pngtree-red-polygon-heart-png-image_3232335.png' alt='' class='liked_icon'>";
-                } */
             })
-
-        /* 
-        
-        [{"id":2,"name":"Cruzeiro","visible":1,"city_id":4,"created_at":"2024-07-26T00:44:13.000000Z","updated_at":"2024-07-26T00:44:36.000000Z"},
-        {"id":3,"name":"Empresa","visible":1,"city_id":4,"created_at":"2024-07-26T00:44:25.000000Z","updated_at":"2024-07-26T00:44:25.000000Z"}]
-        */
     }
 </script>

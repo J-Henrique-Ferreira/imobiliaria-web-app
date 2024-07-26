@@ -29,7 +29,7 @@ class ProductStoreUpdateRequest extends FormRequest
             ],
             "business_id" => [
                 "required",
-                "exists:business_id"
+                "exists:business,id"
             ],
             "address_city_id" => [
                 "required",
@@ -37,7 +37,7 @@ class ProductStoreUpdateRequest extends FormRequest
             ],
             "address_district_id" => [
                 "required",
-                "exists: districts,id"
+                "exists:districts,id"
             ],
             "address_street" => [
                 "required",

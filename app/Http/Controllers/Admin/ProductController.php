@@ -101,7 +101,7 @@ class ProductController extends Controller
      */
     public function store(ProductStoreUpdateRequest $request)
     {
-        $this->repository->add($request);
+        dd($request);
     }
 
     /**
