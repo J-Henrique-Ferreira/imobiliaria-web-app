@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin\District;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use App\Rules\UniqueDistrictName;
 
 
 class DistrictStoreUpdateRequest extends FormRequest
@@ -30,7 +31,7 @@ class DistrictStoreUpdateRequest extends FormRequest
             "name" => [
                 "required",
                 "min:3",
-                "unique:districts,name," . $districtId,
+                new UniqueDistrictName($this->city_id, $districtId),
             ],
         ];
     }
