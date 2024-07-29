@@ -17,7 +17,7 @@
             </div>
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Vagas</p>
-                {{$product["cars_in_garage"]}}
+                {{$product["parking_space"]}}
             </div>
 
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">

@@ -4,10 +4,12 @@ namespace App\Repositories\Contracts;
 
 use App\Models\Product;
 use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
+use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
+
 
 interface ProductRepositoryInterface
 {
-    // public function paginate();
+    public function findPaged(): LengthAwarePaginator;
 
     public function findById(int | string $id): Product;
 

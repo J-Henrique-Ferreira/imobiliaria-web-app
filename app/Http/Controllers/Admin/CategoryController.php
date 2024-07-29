@@ -20,7 +20,6 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         try {
-            // $categoryList = $this->categoryRepository->all();
             $categoryList = Category::paginate(8);
         } catch (\Throwable $th) {
             abort(500);

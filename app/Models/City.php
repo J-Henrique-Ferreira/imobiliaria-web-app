@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     protected $table = 'cities';
+    protected $fillable = ["name"];
+
     use HasFactory;
 
     public function districts()
@@ -15,5 +17,8 @@ class City extends Model
         return $this->hasMany(District::class, "city_id")->orderBy("name");
     }
 
-    protected $fillable = ["name"];
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'address_city_id');
+    }
 }

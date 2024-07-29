@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Product as Model;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
+use App\Models\Product;
 use App\Repositories\Eloquent\BusinessRepository;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\CitiesRepository;
@@ -17,63 +18,20 @@ class ProductController extends Controller
     {
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
-        $products = [
-            [
-                "category" => "casa",
-                "bedrooms" => "3", // quartos
-                "bathroom" => "2", // banheiros
-                "cars_in_garage" => 2,
-                "size" => "128", // metros quadrados
-                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                "description" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                "modality" => "aluguel",
-                "address" => [
-                    "city" => "Taquara",
-                    "state" => "RS",
-                    "country" => "Morro do Leôncio",
-                    "number" => "7892"
-                ],
-                "value" => "1200",
-                "default_image" => "https://cf.bstatic.com/xdata/images/hotel/max1024x768/476329454.jpg?k=8b8963ae5ac81ee0ee895e2b1e6cc3986e1d258daeca6210777adde62d660166&o=&hp=1",
-                "images" => ["image1.jpg", "image2.jpg", "image3.jpg"]
-            ],
-            [
-                "category" => "sobrado",
-                "bedrooms" => "4",
-                "bathroom" => "3",
-                "cars_in_garage" => 2,
-                "size" => "200",
-                "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
-                "description" => "Sobrado espaçoso em bairro residencial. Fácil acesso às principais vias.",
-                "modality" => "aluguel",
-                "address" => [
-                    "city" => "Chapecó",
-                    "state" => "SC",
-                    "country" => "Bairro Universitário",
-                    "number" => "135"
-                ],
-                "value" => "2200",
-                "default_image" => "https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2018/03/27/casa-linda-minimalista-com-piscina.jpg",
-                "images" => ["image29.jpg", "image30.jpg", "image31.jpg"]
-            ]
-        ];
+        try {
+            $products = $this->repository->findPaged();
 
-        return view("admin.product.index", [
-            "products" => $products,
-            "toastMessage" => $request->session()->get("toastMessage")
-        ]);
-
-        // return view("admin.product.index", ["products" => $products]);
+            return view("admin.product.index", [
+                "products" => $products,
+                "toastMessage" => $request->session()->get("toastMessage")
+            ]);
+        } catch (\Throwable $th) {
+            abort(500);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(
         CategoryRepository $category,
         BusinessRepository $business,
@@ -96,10 +54,7 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // ProductStoreUpdateRequest $request
+
     public function store(ProductStoreUpdateRequest $request)
     {
         try {
@@ -117,16 +72,13 @@ class ProductController extends Controller
         return to_route("imoveis.index");
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Product $product)
     {
         $product = [
             "category" => "casa",
             "bedrooms" => "3", // quartos
             "bathroom" => "2", // banheiros
-            "cars_in_garage" => 2,
+            "parking_space" => 2,
             "size" => "128", // metros quadrados
             "title" => "Casa bem localizada, próximo ao centro. Ótima vista e espaço.",
             "description" => "
@@ -192,24 +144,15 @@ class ProductController extends Controller
         return view("admin.product.show", ["product" => $product]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Request $request)
     {
         return view('admin.product.update', []);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
     {
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         //

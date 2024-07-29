@@ -39,28 +39,28 @@
     <div class="card-body pt-2 px-3 pb-4" style="display: flex; flex-direction: column; justify-content: space-between;">
 
         <p class="fw-normal fs-5 mb-2 lh-sm text-uppercase" style="min-height: 50px;">
-            {{$product["category"]}} - {{$product["address"]["city"]}}
+            {{$product->category->name}} - {{$product->city->name}}
         </p>
 
         <!-- <p class="card-text fs-6 text-gray-700">{{$product["description"]}}</p> -->
 
         <div class="pt-2 d-flex flex-wrap gap-1 text-xs align-items-center text-uppercase">
             <span class="badge fw-normal text-black p-0" style="">
-                {{$product["bedrooms"]}} quartos |
+                {{$product['bedroom']}} quartos |
             </span>
             <span class="badge fw-normal text-black p-0" style="">
                 {{$product["bathroom"]}} banheiros |
             </span>
             <span class="badge fw-normal text-black p-0" style="">
-                {{$product["size"]}} mt² |
+                {{$product["area_size"]}} mt² |
             </span>
             <span class="badge fw-normal text-black p-0" style="--bs-bg-opacity: .3;">
-                {{$product["cars_in_garage"]}} vagas
+                {{$product["parking_space"]}} vagas
             </span>
         </div>
         <div class="pt-2 d-flex justify-content-between text-xs align-items-center mt-1">
             <p class="card-text text-black fw-semibold text-opacity-75 m-0">R${{$product["value"]}}</p>
-            <p class="badge rounded  fw-medium text-black text-uppercase m-0 " style="background-color: #e0e0e0; font-size:14px">{{$product["modality"]}}
+            <p class="badge rounded  fw-medium text-black text-uppercase m-0 " style="background-color: #e0e0e0; font-size:14px">{{$product["business"]["name"]}}
             </p>
         </div>
     </div>

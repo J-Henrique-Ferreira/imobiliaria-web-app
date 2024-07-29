@@ -5,7 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
 use App\Models\Product as Model;
 use App\Repositories\Contracts\ProductRepositoryInterface;
-// use Illuminate\Database\Eloquent\Collection;
+use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ProductRepository  implements ProductRepositoryInterface
 {
@@ -20,13 +20,29 @@ class ProductRepository  implements ProductRepositoryInterface
         return $product;
     }
 
+    public function findPaged(): LengthAwarePaginator
+    {
+        $teste = $this->model::with(
+            [
+                'category',
+                'business',
+                'author',
+                'city',
+                'district'
+            ]
+        )->paginate(4);
+
+        // dd($teste);
+
+        // exit;
+
+        return $teste;
+    }
+
+
     public function add(ProductStoreUpdateRequest $request): bool
     {
-        // $productList = $this->model->get();
-        // dd($productList);
-
         $product = new $this->model($request->all());
-
         $product->author_id = "2";
         $product->default_image = "https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp";
 
