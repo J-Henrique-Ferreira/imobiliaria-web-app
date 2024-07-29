@@ -1,5 +1,10 @@
 <x-layouts.admin containerTitle="Imóveis">
 
+    @if (isset($toastMessage))
+    @component("components.site.toastMessage", ["toastMessage"=> $toastMessage])
+    @endComponent
+    @endif
+
     <div class="accordion mb-4 text-end" id="accordionAddDistrict">
         <a href="{{route("imoveis.create")}}" class="btn btn-primary my-3">Novo imóvel</a>
     </div>

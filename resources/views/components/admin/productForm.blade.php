@@ -128,8 +128,10 @@
                 <label class="form-label" for="images_list_url">
                     Imagens
                 </label>
-                <input onchange="reativeListFiles()" class="form-control mb-3" type="file" name="images_list_url" id="images_list_url" multiple>
-                <div class="d-flex flex-column gap-3 overflow-y-scroll  navbar-nav-scroll p-2" style="max-height: 400px;" id="preview_images"></div>
+                <input onchange="reativeListFiles()" class="form-control mb-3" type="file" multiple name="images_list_url[]" id="images_list_url" required>
+                <div class="d-flex flex-column gap-3 overflow-y-scroll navbar-nav-scroll p-2" style="max-height: 400px;" id="preview_images">
+
+                </div>
             </div>
         </div>
     </div>

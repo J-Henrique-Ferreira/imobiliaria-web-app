@@ -20,7 +20,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $products = [
             [
@@ -63,12 +63,12 @@ class ProductController extends Controller
             ]
         ];
 
-        // return view("admin.product.create.index", [
-        //     "businessList" => $businessList,
-        //     "toastMessage" => $request->session()->get("toastMessage")
-        // ]);
+        return view("admin.product.index", [
+            "products" => $products,
+            "toastMessage" => $request->session()->get("toastMessage")
+        ]);
 
-        return view("admin.product.index", ["products" => $products]);
+        // return view("admin.product.index", ["products" => $products]);
     }
 
     /**
@@ -99,9 +99,22 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // ProductStoreUpdateRequest $request
     public function store(ProductStoreUpdateRequest $request)
     {
-        dd($request);
+        try {
+            $this->repository->add($request);
+
+            $request->session()->flash("toastMessage", [
+                "status" => "success",
+                "message" => "Imóvel adicionado com sucesso!"
+            ]);
+        } catch (\Throwable $th) {
+            // dd($th->getMessage());
+            abort(500);
+        }
+
+        return to_route("imoveis.index");
     }
 
     /**

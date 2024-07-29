@@ -22,9 +22,16 @@ class ProductRepository  implements ProductRepositoryInterface
 
     public function add(ProductStoreUpdateRequest $request): bool
     {
+        // $productList = $this->model->get();
+        // dd($productList);
+
         $product = new $this->model($request->all());
 
-        dd($product);
+        $product->author_id = "2";
+        $product->default_image = "https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp";
+
+        $product->images_list_url = json_encode(["https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp"]);
+        $product->whoner_contact = "teste";
 
         return $product->save();
     }
