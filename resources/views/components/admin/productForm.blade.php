@@ -1,3 +1,7 @@
+<?php
+// dd(old('category_id'));
+?>
+
 <form method="POST" action="{{$actionProp}}">
     @csrf
     @method($methodProp)
@@ -9,13 +13,16 @@
             <div class="d-flex flex-column flex-md-row gap-3">
                 <div class="w-100">
                     <label for="category_id" class="form-label">Tipo De Imóvel</label>
-                    <select id="category_id" name="category_id" class="form-select">
-                        <option selected>Selecione</option>
-
+                    <select id="category_id" name="category_id" class="form-select" required>
+                        <option>Selecione</option>
                         @foreach ($categoriesList as $key => $category )
-                        <option value="{{$category['id']}}" @php if(old("category_id")===$category["id"]) echo "selected" @endphp>{{$category['name']}}</option>
+                        <option value="{{$category['id']}}">{{$category['name']}}</option>
                         @endforeach
                     </select>
+
+                    <!-- @error('category_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror -->
                 </div>
 
                 <div class="w-100">
@@ -31,7 +38,7 @@
 
                 <div class="w-100">
                     <label for="value" name="value" class="form-label">Valor</label>
-                    <input type="number" class="form-control" id="value">
+                    <input name="value" type="number" class="form-control" id="value" value="{{ old('value') }}" required>
                 </div>
             </div>
 
@@ -42,7 +49,7 @@
             <div class="d-flex flex-column flex-md-row gap-3">
                 <div class="w-100">
                     <label for="address_city_id" class="form-label">Cidade</label>
-                    <select id="address_city_id" name="address_city_id" class="form-select form-control" onchange="findDistrictsByCityId(this.value)">
+                    <select id="address_city_id" name="address_city_id" class="form-select form-control" onchange="findDistrictsByCityId(this.value)" required>
                         <option selected>Selecione</option>
 
                         @foreach ($citiesList as $key => $city )
@@ -53,15 +60,8 @@
 
                 <div class="w-100">
                     <label for="address_district_id" class="form-label">Bairro</label>
-                    <select id="address_district_id" name="address_district_id" class="form-select">
-                        <option selected value="1">Selecione</option>
-                        <option value="2">Parobé</option>
-                        <option>Igrejinha</option>
-                        <option>Três Coroas</option>
-                        <option>Gramado</option>
-                        <option>Canela</option>
-                        <option>Rolante</option>
-                        <option>São Leopoldo</option>
+                    <select id="address_district_id" name="address_district_id" class="form-select" required>
+                        <option selected>Selecione</option>
                     </select>
                 </div>
             </div>
@@ -69,12 +69,12 @@
             <div class="d-flex flex-column flex-md-row gap-3 mt-md-0 mt-3">
                 <div class="w-100">
                     <label for="address_street" class="form-label">Rua</label>
-                    <input type="text" class="form-control" id="address_street" name="address_street">
+                    <input type="text" class="form-control" id="address_street" name="address_street" value="{{old('address_street')}}" required>
                 </div>
 
                 <div class="w-100">
                     <label for="address_number" class="form-label">Número</label>
-                    <input type="number" class="form-control" id="address_number" name="address_number">
+                    <input type="number" class="form-control" id="address_number" name="address_number" value="{{old('address_number')}}" required>
                 </div>
             </div>
 
@@ -85,33 +85,33 @@
             <div class="d-flex gap-3 mb-3">
                 <div class="w-100">
                     <label for="bedroom" class="form-label">Quartos</label>
-                    <input type="number" class="form-control" id="bedroom" name="bedroom">
+                    <input type="number" class="form-control" id="bedroom" name="bedroom" value="{{old('bedroom')}}" required>
                 </div>
                 <div class="w-100">
                     <label for="bathroom" class="form-label">Banheiros</label>
-                    <input type="number" class="form-control" id="bathroom" name="bathroom">
+                    <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{old('bathroom')}}" required>
                 </div>
             </div>
 
             <div class="d-flex gap-3 mb-3">
                 <div class="w-100">
                     <label for="area_size" class="form-label">Área - mt²</label>
-                    <input type="number" class="form-control" id="area_size" name="area_size">
+                    <input type="number" class="form-control" id="area_size" name="area_size" value="{{old('area_size')}}" required>
                 </div>
                 <div class="w-100">
                     <label for="parking_space" class="form-label">Vagas</label>
-                    <input type="number" class="form-control" id="parking_space" name="parking_space">
+                    <input type="number" class="form-control" id="parking_space" name="parking_space" value="{{old('parking_space')}}" required>
                 </div>
             </div>
 
             <div class="d-flex gap-3 mb-3">
                 <div class="w-100">
                     <label for="iptu" class="form-label">IPTU</label>
-                    <input type="number" class="form-control" id="iptu" name="iptu">
+                    <input type="number" class="form-control" id="iptu" name="iptu" value="{{old('iptu')}}" required>
                 </div>
                 <div class="w-100">
                     <label for="condominium" class="form-label">Condomínio</label>
-                    <input type="number" class="form-control" id="condominium" name="condominium">
+                    <input type="number" class="form-control" id="condominium" name="condominium" value="{{old('condominium')}}" required>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
                 <label class="form-label" for="description">
                     Descrição
                 </label>
-                <textarea class="form-control" name="description" id="description" cols="40" rows="8"></textarea>
+                <textarea class="form-control" name="description" id="description" cols="40" rows="8" required>{{old('description')}}</textarea>
             </div>
 
             <div style="margin-top: 22px;">
@@ -185,6 +185,7 @@
     function findDistrictsByCityId(value) {
         var selectDistrict = window.document.getElementById("address_district_id");
         var token = window.document.getElementsByName("_token")[0].value;
+
         var url = "/dashboard/districts/" + token + "?id=" + value + "&&json=1"
 
         console.log(url);
@@ -201,15 +202,8 @@
                 throw new Error("Erro ao buscar bairros.");
             })
             .then(data => {
-                // updateTotalLikes(articleId, JSON.parse(data));
                 data = JSON.parse(data);
                 console.log(data);
-
-                // for (let i = 0; i < data.length; i++) {
-                //     const element = data[i];
-                //     consone.log("caiu no for" + i);
-                // }
-
                 var options = "";
 
                 data.forEach(district => {

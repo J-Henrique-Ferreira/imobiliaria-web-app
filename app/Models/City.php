@@ -12,7 +12,7 @@ class City extends Model
 
     public function districts()
     {
-        return $this->hasMany(District::class, "city_id");
+        return $this->hasMany(District::class, "city_id")->orderBy("name");
     }
 
     protected $fillable = ["name"];
