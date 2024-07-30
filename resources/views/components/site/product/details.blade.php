@@ -5,41 +5,41 @@
         <div class="d-flex flex-wrap gap-3 text-xs align-content-between">
             <div class=" text-dark p-0 opacity-75 d-block  gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Quartos</p>
-                {{$product["bedrooms"]}}
+                {{$product->bedroom}}
             </div>
             <div class=" text-dark p-0 opacity-75 d-block  gap-2" style="--bs-bg-opacity: .3; width: 110px; ">
                 <p class="m-0 fw-semibold ">Banheiros</p>
-                {{$product["bathroom"]}}
+                {{$product->bathroom}}
             </div>
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Área</p>
-                {{$product["size"]}} mt²
+                {{$product->area_size}} mt²
             </div>
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Vagas</p>
-                {{$product["parking_space"]}}
+                {{$product->parking_space}}
             </div>
 
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">IPTU</p>
-                R${{$product["iptu"]}},00
+                R${{$product->iptu}}
             </div>
 
             <div class="text-dark p-0 opacity-75 d-block  gap-2 " style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Condominio</p>
-                R${{$product["condominio"]}},00
+                R${{$product->condominium}}
             </div>
             <div class="text-dark p-0 opacity-75 d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Cód:</p>
-                {{$product["code"]}}
+                {{$product->id}}
             </div>
             <div class="text-dark p-0 opacity-75 d-block  gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
                 <p class="m-0 fw-semibold ">Valor</p>
-                R${{$product["value"]}},00
+                R${{$product->value}}
             </div>
             <!-- <div class="d-none d-sm-block"><br><br><br><br><br><br><br></div> -->
         </div>
-        <a href="#contact_form" type="button" class="btn py-2 btn-outline-success px-3 text-white nav-link text-center position-absolute bottom-0 start-0 end-0 mx-3 my-3 " style="background-color: rgb(18 71 148 / 98%);">Tenho interesse neste imóvel</a>
+        <a href="#contact_form" type="button" class="btn py-2 btn-outline-success px-3 text-white nav-link text-center position-absolute bottom-0 start-0 end-0 mx-3 my-3 " style="background-color: rgb(18 71 148 / 98%);" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Tenho interesse neste imóvel</a>
     </div>
 
 </div>

@@ -11,11 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', [SiteController::class, "index"]);
 
-Route::get('/product/{code}/{title}', [SiteController::class, "show"]);
-
-// Route::get('/dashboard/atualizar-imovel', function () {
-//     return view('admin.updateProduct', []);
-// });
+Route::get("/imoveis/{productId}/{title}", [ProductController::class, "show"]);
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, "index"]);

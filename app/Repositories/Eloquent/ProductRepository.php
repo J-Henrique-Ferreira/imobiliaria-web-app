@@ -16,7 +16,7 @@ class ProductRepository  implements ProductRepositoryInterface
 
     public function findById(int | string $id): Model
     {
-        $product = $this->model::findOrFail($id);
+        $product = $this->model::find($id);
         return $product;
     }
 
@@ -43,7 +43,7 @@ class ProductRepository  implements ProductRepositoryInterface
     public function add(ProductStoreUpdateRequest $request): bool
     {
         $product = new $this->model($request->all());
-        $product->author_id = "2";
+        $product->author_id = "1";
         $product->default_image = "https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp";
 
         $product->images_list_url = json_encode(["https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp"]);

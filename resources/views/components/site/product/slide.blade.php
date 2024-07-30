@@ -20,9 +20,9 @@
     </script>
     <div class="swiffy-slider slider-item-ratio slider-nav-caret slider-nav-autoplay slider-nav-autopause slider-nav-animation slider-nav-animation-slow shadow" id="pgallery">
         <ul class="slider-container rounded">
-            @foreach($imgList as $index => $img)
+            @foreach($images_list_url as $index => $img)
             <li>
-                <img class=" object-fit-cover" src="{{ $img['src'] }}" loading="lazy" alt="{{ $img['alt'] }}" data-bs-toggle="modal" data-bs-target="#productGalleryModal" onclick="imageClick({{$index}})">
+                <img class=" object-fit-cover" src="{{ $img }}" loading="lazy" alt="Imagem de imóvel {{$index}}" data-bs-toggle="modal" data-bs-target="#productGalleryModal" onclick="imageClick({{$index}})">
             </li>
             @endforeach
         </ul>
@@ -33,9 +33,9 @@
     <!-- controlador de imagens -->
     <div class="swiffy-slider slider-nav-dark slider-nav-sm slider-nav-chevron slider-item-show6 slider-item-snapstart slider-item-ratio slider-nav-visible slider-nav-outside my-3 d-none  d-lg-block">
         <ul class="slider-container" id="pgallerythumbs" style="cursor:pointer">
-            @foreach($imgList as $index => $img)
+            @foreach($images_list_url as $index => $img)
             <li>
-                <img class="rounded object-fit-cover" src="{{ $img['src'] }}" loading="lazy" alt="{{ $img['alt'] }}" onmouseover="thumbHover({{$index}})">
+                <img class="rounded object-fit-cover" src="{{$img}}" loading="lazy" alt="imagem de imóvel em miniátura clicável referente a imagem {{$index}}" onmouseover="thumbHover({{$index}})">
             </li>
             @endforeach
         </ul>
@@ -55,13 +55,13 @@
                     <div class="swiffy-slider h-100 slider-nav-dark" id="pgalleryModal">
                         <ul class="slider-container" tabindex="-1">
 
-                            @foreach($imgList as $index => $img)
+                            @foreach($images_list_url as $index => $img)
                             <li class="d-flex align-items-center justify-content-center">
-                                <img src="{{ $img['src'] }}" loading="lazy" class="rounded shadow " style="
+                                <img src="{{ $img }}" loading="lazy" class="rounded shadow " style="
                                 object-fit: contain;
                                 width: 100%;
                                 height: 85vh;
-                                " alt="{{ $img['alt'] }}">
+                                " alt="imagem de imóvel em rxtendida clicável {{$index}}">
                             </li>
                             @endforeach
                         </ul>
@@ -69,7 +69,7 @@
                         <button type="button" class="slider-nav" aria-label="Go previous"></button>
                         <button type="button" class="slider-nav slider-nav-next" aria-label="Go next"></button>
                         <ul class="slider-indicators slider-indicators-dark slider-indicators-highlight slider-indicators-round">
-                            @foreach($imgList as $index => $img)
+                            @foreach($images_list_url as $index => $img)
                             <li class=""></li>
                             @endforeach
                     </div>
