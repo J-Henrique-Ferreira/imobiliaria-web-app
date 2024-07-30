@@ -9,7 +9,11 @@
         {!! $products->links("vendor.pagination.statusPaged") !!}
     </div>
 
-    <section class="d-flex flex-wrap justify-content-center gap-2 my-4">
+    <section class="" style="
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 12px;
+    ">
         @foreach($products as $product)
         @component("components.site.product.card", ["product" => $product])
         @endComponent

@@ -1,6 +1,4 @@
-# Curso GRATUITO de Laravel 10.x
-
--   :movie_camera: [Acesse o Curso](https://academy.especializati.com.br/curso/laravel-10-gratuito).
+-   :movie_camera:(https://academy.especializati.com.br/curso/laravel-10-gratuito).
 
 ## Passo a passo para rodar o projeto
 

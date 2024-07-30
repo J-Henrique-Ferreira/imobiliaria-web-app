@@ -30,7 +30,7 @@ class ProductRepository  implements ProductRepositoryInterface
                 'city',
                 'district'
             ]
-        )->paginate(4);
+        )->paginate(8);
 
         // dd($teste);
 

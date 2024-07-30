@@ -3,22 +3,7 @@
         transition: transform .4s ease;
     }
 
-    .card-width {
-        width: 300px;
-        /* Tamanho máximo padrão */
-        margin: 0 auto;
-        /* Para centralizar o elemento na tela */
-    }
-
-    @media screen and (max-width: 768px) {
-
-        /* Quando a largura da tela for menor ou igual a 768 pixels */
-        .card-width {
-            width: 50%;
-        }
-    }
-
-    @media screen and (max-width: 490px) {
+    @media screen and (max-width: 800px) {
 
         /* Quando a largura da tela for menor ou igual a 480 pixels */
         .card-width {

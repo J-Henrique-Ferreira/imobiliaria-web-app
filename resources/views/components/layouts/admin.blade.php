@@ -18,7 +18,7 @@
     }
 </style>
 
-<body class="" style="background-color: #f7f9fc;">
+<body class="" style="background-color: #fafafa;">
     <main class="container mx-auto d-flex items-center">
         <x-admin.navbar></x-admin.navbar>
         <div class="w-100 min-vh-100">

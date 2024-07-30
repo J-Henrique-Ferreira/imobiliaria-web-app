@@ -54,7 +54,7 @@
 
 <x-site.header></x-site.header>
 
-<body class="" style="background-color: #f7f9fc;">
+<body class="" style="background-color: #fafafa;">
     <main class=" container mx-auto flex flex-col items-center" style="min-height: 100vh;">{{$slot}}</main>
     <x-site.footer></x-site.footer>
 </body>
