@@ -1,4 +1,4 @@
-<div id="filter" class="container shadow-sm rounded-3 p-3 pb-4 bg-white">
+<div id="filter" class="container border border-1 rounded-3 p-3 pb-4 bg-white">
     <span class="fw-medium fs-5">Buscador de Imóveis</span>
     <div class="d-flex flex-column flex-lg-row justify-content-center  gap-3 mt-3">
         <div class="form-group w-100 mb-3 mb-lg-0 ">

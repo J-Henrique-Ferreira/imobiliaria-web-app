@@ -45,9 +45,6 @@
             </div>
         </div>
     </div>
-
-    <button class="btn btn-primary">Open first modal</button>
-
 </section>
 
 <!-- 

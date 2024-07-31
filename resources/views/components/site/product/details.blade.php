@@ -1,4 +1,25 @@
-<div class="rounded shadow-sm w-100 p-3 mt-5 mt-lg-0 position-relative bg-white text-uppercase">
+<style>
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.03);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+
+<div class="rounded border border-1 w-100 p-3 mt-5 mt-lg-0 position-relative bg-white text-uppercase">
     <p class="fs-5 fw-semibold text-dark text-opacity-75">Detalhes</p>
     <div class="w-100 my-4 border border-bottom border-opacity-25 d-md-block "></div>
     <div class="d-flex flex-column h-auto justify-content-between" style="min-height: 300px;">
@@ -39,7 +60,7 @@
             </div>
             <!-- <div class="d-none d-sm-block"><br><br><br><br><br><br><br></div> -->
         </div>
-        <a href="#contact_form" type="button" class="btn py-2 btn-outline-success px-3 text-white nav-link text-center position-absolute bottom-0 start-0 end-0 mx-3 my-3 " style="background-color: rgb(18 71 148 / 98%);" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Tenho interesse neste imóvel</a>
+        <a type="button" class="pulse shadow btn py-2 btn-outline-success text-white nav-link text-center position-absolute bottom-0 start-0 end-0 mx-3 my-3" style="background-color: rgb(18 71 148 / 98%);" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Tenho interesse neste imóvel</a>
     </div>
 
 </div>
