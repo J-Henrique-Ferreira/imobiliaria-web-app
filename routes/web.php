@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', [SiteController::class, "index"]);
 
-Route::get("/imoveis/{productId}/{title}", [ProductController::class, "show"]);
+Route::get("/imoveis/{id}/{title}", [ProductController::class, "show"]);
+// Route::get("/site/imoveis/{productId}/{title}", [ProductController::class, "show"]);
+
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, "index"]);

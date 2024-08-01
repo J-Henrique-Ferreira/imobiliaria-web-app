@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
 use App\Models\Product as Model;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
 
 class ProductRepository  implements ProductRepositoryInterface
 {
@@ -63,9 +64,11 @@ class ProductRepository  implements ProductRepositoryInterface
     //     return false;
     // }
 
-    // public function update()
-    // {
-    // }
+    public function update(Request $request, int | string $id): bool
+    {
+
+        return $this->model::where('id', $id)->update($request->except(["_token", "_method"]));
+    }
 
     // public function destroy()
     // {

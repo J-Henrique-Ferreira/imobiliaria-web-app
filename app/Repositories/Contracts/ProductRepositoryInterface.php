@@ -5,7 +5,7 @@ namespace App\Repositories\Contracts;
 use App\Models\Product;
 use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
 use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
-
+use Illuminate\Http\Request;
 
 interface ProductRepositoryInterface
 {
@@ -15,7 +15,7 @@ interface ProductRepositoryInterface
 
     public function add(ProductStoreUpdateRequest $request): bool;
 
-    // public function update(): bool;
+    public function update(Request $request, int | string $id): bool;
 
     // public function destroy();
 }

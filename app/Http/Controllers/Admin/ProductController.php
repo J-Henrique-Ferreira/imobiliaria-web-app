@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
 use App\Repositories\Eloquent\BusinessRepository;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\CitiesRepository;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ProductController extends Controller
 {
@@ -41,8 +42,6 @@ class ProductController extends Controller
             $citiesList = $city->all()->all();
             $businessList = $business->all()->all();
 
-            // dd($categoriesList);
-
             return view("admin.product.create", [
                 "categoriesList" => $categoriesList,
                 "citiesList" => $citiesList,
@@ -73,12 +72,14 @@ class ProductController extends Controller
 
     public function show(Request $request)
     {
-        if (!isset($request->productId)) {
+        // dd('caiu no dd');
+
+        if (!isset($request->id)) {
             abort(400);
         }
 
         try {
-            $product = $this->repository->findById($request->productId);
+            $product = $this->repository->findById($request->id);
             return view("site.productPage", ["product" => $product]);
         } catch (\Throwable $th) {
             // dd($th->getMessage());
@@ -113,9 +114,20 @@ class ProductController extends Controller
         }
     }
 
-    public function update(ProductStoreUpdateRequest $request)
+    public function update(ProductStoreUpdateRequest $request, $id)
     {
-        dd($request);
+        try {
+            if ($this->repository->update($request, $id)) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Imóvel atualizado com sucesso!"
+                ]);
+                return redirect("imoveis/" . $id . "/viazualizar-imovel-editado");
+            }
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+        }
+        // dd($request);
     }
 
     public function destroy($id)
