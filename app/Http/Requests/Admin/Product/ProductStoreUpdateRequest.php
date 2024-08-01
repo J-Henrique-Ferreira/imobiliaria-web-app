@@ -53,14 +53,4 @@ class ProductStoreUpdateRequest extends FormRequest
             // "whoner_contact" => ["required"]
         ];
     }
-
-    public function messages()
-    {
-        return [
-            "category_id.required" => "Informe a categoria de imóvel.",
-            "category_id.exists" => "Informe uma categoria de imóvel válido.",
-
-        ];
-    }
 }
-// The selected category id is invalid.

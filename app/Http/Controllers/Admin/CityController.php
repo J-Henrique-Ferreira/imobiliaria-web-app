@@ -50,10 +50,10 @@ class CityController extends Controller
         return to_route("cities.index");
     }
 
-    public function update(City $city, CityStoreUpdateRequest $request)
+    public function update(CityStoreUpdateRequest $request)
     {
         try {
-            $this->cityRepository->update($city, $request);
+            $this->cityRepository->update($request);
             $request->session()->flash("toastMessage", [
                 "status" => "success",
                 "message" => "Cidade adicionada com sucesso!"
@@ -68,10 +68,10 @@ class CityController extends Controller
         return to_route("cities.index");
     }
 
-    public function destroy(Request $request, City $city)
+    public function destroy(Request $request)
     {
         try {
-            $this->cityRepository->destroy(City::find($request->id));
+            $this->cityRepository->destroy($request->id);
             $request->session()->flash("toastMessage", [
                 "status" => "success",
                 "message" => "Cidade removida com sucesso!"

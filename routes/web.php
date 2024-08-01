@@ -20,11 +20,12 @@ Route::prefix('dashboard')->group(function () {
         return view('admin.contacts', []);
     });
 
-    Route::resource("/cities", CityController::class, [])->only(["index", "store", "update"]);
     // verificar formas de implementar este middleware mantendo a roda resource
-    Route::delete('/cities/{id}', [CityController::class, ''])
+    Route::delete('/cities/{id}', [CityController::class, 'destroy'])
         ->name('cities.destroy')
         ->middleware('city.check.related');
+
+    Route::resource("/cities", CityController::class, [])->only(["index", "store", "update", "destroy"]);
 
     Route::resource("/districts", DistrictController::class, [])->only(
         ["index", "store", "show", "update", "destroy"]

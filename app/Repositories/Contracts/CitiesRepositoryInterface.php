@@ -10,6 +10,8 @@ interface CitiesRepositoryInterface
 {
     public function all(): Collection;
     public function add(CityStoreUpdateRequest $request): bool;
-    public function update(City $city, CityStoreUpdateRequest $request): bool;
-    public function destroy(City $city): bool;
+    public function update(CityStoreUpdateRequest $request): bool;
+    public function destroy(int | string $id): bool;
+
+    public function districts(int | string $id);
 }

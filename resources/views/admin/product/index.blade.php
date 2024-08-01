@@ -22,7 +22,7 @@
             @component("components.site.product.card", ["product" => $product])
             @endComponent
             <div class="d-flex justify-content-end gap-3 mx-3" style="margin-top: -5px; margin-bottom: 35px;">
-                <a href="/sddsfag">
+                <a href="{{route('imoveis.edit', $product->id)}}">
                     <img class="img-fluid zoom_icon object-fit-contain" style="max-width: 27px;" src="https://icons.veryicon.com/png/o/miscellaneous/blue-soft-fillet-icon/edit-173.png" alt="editar">
                 </a>
 
