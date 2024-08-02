@@ -17,5 +17,5 @@ interface ProductRepositoryInterface
 
     public function update(Request $request, int | string $id): bool;
 
-    // public function destroy();
+    public function destroy(int|string $id): bool;
 }

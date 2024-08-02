@@ -70,7 +70,10 @@ class ProductRepository  implements ProductRepositoryInterface
         return $this->model::where('id', $id)->update($request->except(["_token", "_method"]));
     }
 
-    // public function destroy()
-    // {
-    // }
+    public function destroy(int | string $id): bool
+    {
+        $product = $this->model->find($id);
+
+        return $product->delete();
+    }
 }

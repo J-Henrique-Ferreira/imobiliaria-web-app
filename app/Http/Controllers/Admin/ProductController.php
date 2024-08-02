@@ -125,13 +125,27 @@ class ProductController extends Controller
                 return redirect("imoveis/" . $id . "/viazualizar-imovel-editado");
             }
         } catch (\Throwable $th) {
-            dd($th->getMessage());
+            // dd($th->getMessage());
+            abort(500);
         }
-        // dd($request);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        try {
+            if ($this->repository->destroy($id)) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Imóvel deletado com sucesso!"
+                ]);
+            }
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "error",
+                "message" => "Erro ao deletar imóvel."
+            ]);
+        }
+
+        return to_route("imoveis.index");
     }
 }
