@@ -45,9 +45,9 @@ class ProductRepository  implements ProductRepositoryInterface
     {
         $product = new $this->model($request->all());
         $product->author_id = "1";
-        $product->default_image = "https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp";
+        $product->default_image = "https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg";
 
-        $product->images_list_url = json_encode(["https://resizedimgs.zapimoveis.com.br/crop/614x297/named.images.sp/8dd734a4461befa6d5c80eb736623417/fazenda-s-tio-ch-cara-com-2-quartos-venda-276m-no-fazenda-fialho-taquara.webp"]);
+        $product->images_list_url = json_encode(["https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg", "https://www.eztec.com.br/wp-content/uploads/blog/2023/09/post_blog_marco_varanda.jpg", "https://d31hw7dq38n1ek.cloudfront.net/Imagens/3/Interno/8937/Imovel/3386707/G_1-101_i6vE8X65Gg27WaYl95409_1016414afd9325dc.jpg", "https://finger.ind.br/wp-content/uploads/2020/01/original-123c34ea8b48242e44e6c91c7ab9952b.jpg"]);
         $product->whoner_contact = "teste";
 
         return $product->save();
@@ -66,8 +66,14 @@ class ProductRepository  implements ProductRepositoryInterface
 
     public function update(Request $request, int | string $id): bool
     {
+        // Criar uma nova pasta para as imagens deste imovel product_img_123_nomedaimagemSemEspaços.extençãoDaImagem;
+
+        // armazenar o nome das imagens salvas e inserir na query para o update no banco;
 
         return $this->model::where('id', $id)->update($request->except(["_token", "_method"]));
+
+        // se falhar o update, remove a pasta recem criada e retorna false
+        // (precisa-se ter o nome dela em momoria neste bloco de código);
     }
 
     public function destroy(int | string $id): bool
