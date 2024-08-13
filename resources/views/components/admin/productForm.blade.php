@@ -1,7 +1,7 @@
-<form method="POST" action="{{$actionProp}}">
+<form method="POST" action="{{$actionProp}}" enctype="multipart/form-data">
     @csrf
     @method($methodProp)
-    <div class="d-flex flex-column flex-md-row gap-4">
+    <div class=" d-flex flex-column flex-md-row gap-4">
         <div class="col-12 col-md-6 d-md-flex flex-column gap-3">
             <div class="pb-2 mb-4 fs-5 border-bottom">
                 Negócio

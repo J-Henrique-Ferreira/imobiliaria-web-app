@@ -43,6 +43,15 @@ class ProductRepository  implements ProductRepositoryInterface
 
     public function add(ProductStoreUpdateRequest $request): bool
     {
+
+        $images_list_url = $request->images_list_url('file');
+
+        // Definindo um nome único para o arquivo
+        $filename = time() . '_' . $images_list_url->getClientOriginalName();
+
+        // Salvando o arquivo em um diretório
+        $images_list_url->storeAs('uploads', $filename, 'public');
+
         $product = new $this->model($request->all());
         $product->author_id = "1";
         $product->default_image = "https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg";
@@ -66,6 +75,8 @@ class ProductRepository  implements ProductRepositoryInterface
 
     public function update(Request $request, int | string $id): bool
     {
+        dd($request);
+
         // Criar uma nova pasta para as imagens deste imovel product_img_123_nomedaimagemSemEspaços.extençãoDaImagem;
 
         // armazenar o nome das imagens salvas e inserir na query para o update no banco;
