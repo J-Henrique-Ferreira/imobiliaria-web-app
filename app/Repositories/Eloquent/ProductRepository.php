@@ -12,8 +12,7 @@ class ProductRepository  implements ProductRepositoryInterface
 {
     public function __construct(
         protected Model $model
-    ) {
-    }
+    ) {}
 
     public function findById(int | string $id): Model
     {
@@ -43,23 +42,27 @@ class ProductRepository  implements ProductRepositoryInterface
 
     public function add(ProductStoreUpdateRequest $request): bool
     {
+        try {
+            //code...
 
-        $images_list_url = $request->images_list_url('file');
+            $product = new $this->model($request->all());
+            $product->author_id = "1";
+            $product->default_image = "https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg";
+            $product->images_list_url = json_encode([""]);
+            $product->whoner_contact = "teste";
 
-        // Definindo um nome único para o arquivo
-        $filename = time() . '_' . $images_list_url->getClientOriginalName();
+            $product->save();
 
-        // Salvando o arquivo em um diretório
-        $images_list_url->storeAs('uploads', $filename, 'public');
+            dd($product->id);
 
-        $product = new $this->model($request->all());
-        $product->author_id = "1";
-        $product->default_image = "https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg";
+            $images_list_url = $request->allFiles()["images_list_url"];
+            $filename = time() . '_' . $images_list_url->getClientOriginalName();
+            $images_list_url->storeAs('uploads', $filename, 'public');
 
-        $product->images_list_url = json_encode(["https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg", "https://www.eztec.com.br/wp-content/uploads/blog/2023/09/post_blog_marco_varanda.jpg", "https://d31hw7dq38n1ek.cloudfront.net/Imagens/3/Interno/8937/Imovel/3386707/G_1-101_i6vE8X65Gg27WaYl95409_1016414afd9325dc.jpg", "https://finger.ind.br/wp-content/uploads/2020/01/original-123c34ea8b48242e44e6c91c7ab9952b.jpg"]);
-        $product->whoner_contact = "teste";
-
-        return $product->save();
+            return true;
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     // public function all()
