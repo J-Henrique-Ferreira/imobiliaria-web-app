@@ -7,6 +7,7 @@ use App\Models\Product as Model;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductRepository  implements ProductRepositoryInterface
 {
@@ -30,51 +31,41 @@ class ProductRepository  implements ProductRepositoryInterface
                 'city',
                 'district'
             ]
-        )->paginate(8);
-
-        // dd($teste);
-
-        // exit;
+        )->orderBy('created_at', 'desc')->paginate(8);
 
         return $teste;
     }
 
-
     public function add(ProductStoreUpdateRequest $request): bool
     {
         try {
-            //code...
-
             $product = new $this->model($request->all());
             $product->author_id = "1";
-            $product->default_image = "https://pointer.com.br/blog/wp-content/uploads/2021/02/5a8c590ea936140d7f6def44.jpg";
+            $product->default_image = "";
             $product->images_list_url = json_encode([""]);
             $product->whoner_contact = "teste";
-
             $product->save();
 
-            dd($product->id);
-
+            $folder = '' . $product->id;
+            $relativePathImgsList = [];
             $images_list_url = $request->allFiles()["images_list_url"];
-            $filename = time() . '_' . $images_list_url->getClientOriginalName();
-            $images_list_url->storeAs('uploads', $filename, 'public');
+
+            foreach ($images_list_url as $image) {
+                $filename = $image->getClientOriginalName();
+                $pathImage = $image->storeAs($folder, $filename, "public");
+
+                $relativePathImgsList[] = $pathImage;
+            }
+
+            $product->default_image = $relativePathImgsList[0];
+            $product->images_list_url = json_encode($relativePathImgsList);
+            $product->save();
 
             return true;
         } catch (\Throwable $th) {
-            //throw $th;
+            return false;
         }
     }
-
-    // public function all()
-    // {
-    //     return $this->model::all();
-    // }
-
-    // public function add()
-    // {
-
-    //     return false;
-    // }
 
     public function update(Request $request, int | string $id): bool
     {
