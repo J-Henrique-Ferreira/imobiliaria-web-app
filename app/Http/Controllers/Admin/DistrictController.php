@@ -47,6 +47,11 @@ class DistrictController extends Controller
 
         $districtsList = $city->districts;
 
+        if ($request->json) {
+            echo json_encode($districtsList);
+            exit;
+        }
+
         return view(
             'admin.district',
             [

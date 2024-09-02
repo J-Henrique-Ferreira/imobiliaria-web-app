@@ -24,6 +24,7 @@
 
         @endforeach
     </div>
+
     @else
     <div class="fs-5 fw-medium mx-3">
         Cadastre a primeira categoria!

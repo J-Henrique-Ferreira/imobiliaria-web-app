@@ -16,7 +16,7 @@ class BusinessRepository  implements BusinessRepositoryInterface
 
     public function all(): Collection
     {
-        return $this->model::all();
+        return $this->model::all()->sortBy("name");
     }
 
     public function add(BusinessStoreUpdateRequest $request): bool

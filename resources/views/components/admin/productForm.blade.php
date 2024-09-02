@@ -1,53 +1,57 @@
-<form>
-    <div class="d-flex flex-column flex-md-row gap-4">
+<form method="POST" action="{{$actionProp}}" enctype="multipart/form-data">
+    @csrf
+    @method($methodProp)
+    <div class=" d-flex flex-column flex-md-row gap-4">
         <div class="col-12 col-md-6 d-md-flex flex-column gap-3">
             <div class="pb-2 mb-4 fs-5 border-bottom">
                 Negócio
             </div>
             <div class="d-flex flex-column flex-md-row gap-3">
                 <div class="w-100">
-                    <label for="inputState" class="form-label">Tipo De Imóvel</label>
-                    <select id="inputState" class="form-select">
-                        <option selected>Casa</option>
-                        <option>Casa em condomíno</option>
-                        <option>Sobrado</option>
-
-                        <option>Apartamento</option>
-                        <option>Apartamento Garden</option>
-                        <option>Duplex</option>
-                        <option>Loft</option>
-
-                        <option>Cobertura</option>
-                        <option>Loja</option>
-                        <option>Depósito</option>
-                        <option>Pavilhão</option>
-
-                        <option>Predio Comercial</option>
-                        <option>Salas Conjuntas</option>
-                        <option>Apartamento</option>
-                        <option>Sala comercial</option>
-
-                        <option>Terreno</option>
-                        <option>Garagem</option>
+                    <label for="category_id" class="form-label">Tipo De Imóvel</label>
+                    <select id="category_id" name="category_id" class="form-select" required>
+                        <option value="null">Selecione</option>
+                        @foreach ($categoriesList as $key => $category )
+                        <option @if (isset($product) && ($product->category->id == $category->id) ||
+                            old("category_id") == $category->id)
+                            selected
+                            @endif
+                            value="{{$category['id']}}"
+                            >
+                            {{$category['name']}}
+                        </option>
+                        @endforeach
                     </select>
+
+                    <!-- @error('category_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror -->
                 </div>
 
                 <div class="w-100">
-                    <label for="inputState" class="form-label">Tipo De Negócio</label>
-                    <select id="inputState" class="form-select">
-                        <option selected value="">Selecione</option>
-                        <option>Aluguel</option>
-                        <option>Venda</option>
+                    <label for="business_id" class="form-label">Tipo De Negócio</label>
+                    <select id="business_id" name="business_id" class="form-select" required>
+                        <option selected>Selecione</option>
+                        @foreach ($businessList as $key => $business )
+                        <option @if (isset($product) && ($product->business->id == $business->id) ||
+                            old("business_id") == $business->id)
+                            selected
+                            @endif
+                            value="{{$business['id']}}"
+                            >
+                            {{$business['name']}}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
-
                 <div class="w-100">
-                    <label for="inputCity" class="form-label">Valor</label>
-                    <input type="number" class="form-control" id="inputCity">
+                    <label for="value" name="value" class="form-label">Valor</label>
+                    <input name="value" type="number" class="form-control" id="value" value="{{
+                     old('value') ?? 
+                        isset($product) ? $product->value : ''
+                    }}" required>
                 </div>
-
             </div>
-
 
             <div class="py-2 my-4 fs-5 border-bottom">
                 Endereço
@@ -55,103 +59,128 @@
 
             <div class="d-flex flex-column flex-md-row gap-3">
                 <div class="w-100">
-                    <label for="inputState" class="form-label">Cidade</label>
-                    <select id="inputState" class="form-select form-control">
-                        <option selected value="">Selecione</option>
-                        <option>Taquara</option>
-                        <option>Parobé</option>
-                        <option>Igrejinha</option>
-                        <option>Três Coroas</option>
-                        <option>Gramado</option>
-                        <option>Canela</option>
-                        <option>Rolante</option>
-                        <option>São Leopoldo</option>
+                    <label for="address_city_id" class="form-label">Cidade</label>
+                    <select value="2" id="address_city_id" name="address_city_id" class="form-select form-control" onchange="findDistrictsByCityId(this.value)" required>
+                        <option>Selecione</option>
+                        @foreach ($citiesList as $key => $city )
+                        <option @if (isset($product) && ($product->city->id == $city->id) ||
+                            old("address_city_id") == $city->id)
+                            selected
+                            @endif
+                            value="{{$city ['id']}}"
+                            >
+                            {{$city ['name']}}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="w-100">
-                    <label for="inputState" class="form-label">Bairro</label>
-                    <select id="inputState" class="form-select">
-                        <option selected value="">Selecione</option>
-                        <option>Parobé</option>
-                        <option>Igrejinha</option>
-                        <option>Três Coroas</option>
-                        <option>Gramado</option>
-                        <option>Canela</option>
-                        <option>Rolante</option>
-                        <option>São Leopoldo</option>
+                    <label for="address_district_id" class="form-label">Bairro</label>
+                    <select id="address_district_id" name="address_district_id" class="form-select" required>
+                        <option selected>Selecione</option>
+
+                        @if (isset($districtsList))
+                        @foreach ($districtsList as $key => $district )
+                        <option @if (($product->address_district_id == $district->id) ||
+                            old("address_district_id") == $district->id)
+                            selected
+                            @endif
+                            value="{{$district->id}}"
+                            >
+                            {{$district['name']}}
+                        </option>
+                        @endforeach
+                        @endif
                     </select>
                 </div>
             </div>
 
             <div class="d-flex flex-column flex-md-row gap-3 mt-md-0 mt-3">
                 <div class="w-100">
-                    <label for="inputEmail4" class="form-label">Rua</label>
-                    <input type="text" class="form-control" id="">
+                    <label for="address_street" class="form-label">Rua</label>
+                    <input type="text" class="form-control" id="address_street" name="address_street" value="{{
+                    old('address_street') ?? 
+                        isset($product) ? $product->address_street : ''
+                    }}" required>
                 </div>
-
                 <div class="w-100">
-                    <label for="inputEmail4" class="form-label">Número</label>
-                    <input type="number" class="form-control" id="">
+                    <label for="address_number" class="form-label">Número</label>
+                    <input type="number" class="form-control" id="address_number" name="address_number" value="{{
+                    old('address_number') ??
+                        isset($product) ? $product->address_number : ''
+                    }}" required>
                 </div>
             </div>
-
-
             <div class="py-2 my-4 fs-5 border-bottom">
                 Informações complementares
             </div>
-
-
             <div class="d-flex gap-3 mb-3">
                 <div class="w-100">
-                    <label for="inputEmail4" class="form-label">Quartos</label>
-                    <input type="number" class="form-control" id="">
+                    <label for="bedroom" class="form-label">Quartos</label>
+                    <input type="number" class="form-control" id="bedroom" name="bedroom" value="{{
+                            old('bedroom') ??
+                                isset($product) ? $product->bedroom : ''
+                        }}" required>
                 </div>
                 <div class="w-100">
-                    <label for="inputPassword4" class="form-label">Banheiros</label>
-                    <input type="number" class="form-control" id="inputPassword4">
+                    <label for="bathroom" class="form-label">Banheiros</label>
+                    <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{
+                            old('bathroom') ?? 
+                                isset($product) ? $product->bathroom : ''
+                            }}" required>
                 </div>
             </div>
-
             <div class="d-flex gap-3 mb-3">
                 <div class="w-100">
-                    <label for="inputCity" class="form-label">Área - mt²</label>
-                    <input type="number" class="form-control" id="inputCity">
+                    <label for="area_size" class="form-label">Área - mt²</label>
+                    <input type="number" class="form-control" id="area_size" name="area_size" value="{{ old('area_size') ?? 
+                                    isset($product) ? $product->area_size : ''
+                                }}" required>
                 </div>
                 <div class="w-100">
-                    <label for="inputEmail4" class="form-label">Vagas</label>
-                    <input type="number" class="form-control" id="">
+                    <label for="parking_space" class="form-label">Vagas</label>
+                    <input type="number" class="form-control" id="parking_space" name="parking_space" value="{{
+                            old('parking_space') ?? 
+                               isset($product) ? $product->parking_space : ''
+                            }}" required>
                 </div>
             </div>
-
-
             <div class="d-flex gap-3 mb-3">
                 <div class="w-100">
-                    <label for="inputPassword4" class="form-label">IPTU</label>
-                    <input type="number" class="form-control" id="inputPassword4">
+                    <label for="iptu" class="form-label">IPTU</label>
+                    <input type="number" class="form-control" id="iptu" name="iptu" value="{{
+                        old('iptu') ?? 
+                            isset($product) ? $product->iptu : ''
+                        }}" required>
                 </div>
                 <div class="w-100">
-                    <label for="inputCity" class="form-label">Condomínio</label>
-                    <input type="number" class="form-control" id="inputCity">
+                    <label for="condominium" class="form-label">Condomínio</label>
+                    <input type="number" class="form-control" id="condominium" name="condominium" value="{{
+                            old('condominium') ??
+                                isset($product) ? $product->condominium : ''
+                            }}" required>
                 </div>
             </div>
         </div>
-
-
         <div class="w-100 d-md-flex flex-column gap-3">
             <div class="">
-                <label class="form-label" for="gridCheck">
+                <label class="form-label" for="description">
                     Descrição
                 </label>
-                <textarea class="form-control" name="" id="" cols="40" rows="8"></textarea>
+                <textarea class="form-control" name="description" id="description" cols="40" rows="8" required>{{
+                        old('description') ?? 
+                            isset($product) ? $product->description : ''
+                        }}</textarea>
             </div>
-
             <div style="margin-top: 22px;">
-                <label class="form-label" for="gridCheck">
+                <label class="form-label" for="images_list_url">
                     Imagens
                 </label>
-                <input onchange="reativeListFiles()" class="form-control mb-3" type="file" name="imagens[]" id="files_input" multiple>
-                <div class="d-flex flex-column gap-3 overflow-y-scroll  navbar-nav-scroll p-2" style="max-height: 400px;" id="preview_images"></div>
+                <input onchange="reativeListFiles()" class="form-control mb-3" type="file" multiple name="images_list_url[]" id="images_list_url" required>
+                <div class="d-flex flex-column gap-3 overflow-y-scroll navbar-nav-scroll p-2" style="max-height: 400px;" id="preview_images">
+
+                </div>
             </div>
         </div>
     </div>
@@ -162,7 +191,7 @@
 
 <script>
     function reativeListFiles() {
-        var inputFiles = document.getElementById('files_input');
+        var inputFiles = document.getElementById('images_list_url');
         var previewImages = document.getElementById('preview_images');
         var files = inputFiles.files;
 
@@ -202,5 +231,37 @@
 
             reader.readAsDataURL(file); // Lê o arquivo como URL de dados
         }
+    }
+
+    function findDistrictsByCityId(value) {
+        var selectDistrict = window.document.getElementById("address_district_id");
+        var token = window.document.getElementsByName("_token")[0].value;
+
+        var url = "/dashboard/districts/" + token + "?id=" + value + "&&json=1"
+
+        console.log(url);
+
+        var districtsList = [];
+
+        fetch(url, {
+                method: "GET"
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error("Erro ao buscar bairros.");
+            })
+            .then(data => {
+                data = JSON.parse(data);
+                console.log(data);
+                var options = "";
+
+                data.forEach(district => {
+                    options += "<option value='" + district.id + "' >" + district.name + "</option>"
+                });
+
+                selectDistrict.innerHTML = options;
+            })
     }
 </script>
