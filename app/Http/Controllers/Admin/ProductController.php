@@ -14,9 +14,7 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class ProductController extends Controller
 {
-    public function __construct(private ProductRepositoryInterface $repository)
-    {
-    }
+    public function __construct(private ProductRepositoryInterface $repository) {}
 
     public function index(Request $request)
     {
@@ -110,6 +108,7 @@ class ProductController extends Controller
                 "districtsList" => $districtsList
             ]);
         } catch (\Throwable $th) {
+            // var_dump($th->getMessage());
             abort(500);
         }
     }

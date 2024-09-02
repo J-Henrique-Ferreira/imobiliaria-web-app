@@ -17,7 +17,7 @@
 </style>
 
 <a href="/imoveis/{{$product->id}}/{{$product->business->name}} de {{$product->category->name}} - {{$product->city->name}}" class="nav-link shadow border border-1 border-secondary border-opacity-25 overflow-hidden rounded-3 mb-3 card-width zoom_card position-relative bg-white">
-    <img src="{{asset('storage/'. $product['default_image'])}}" class="w-100" style="object-fit: cover; height: 14rem;" alt="Imagem da Casa">
+    <img src="{{asset('uploads/'. $product['default_image'])}}" class="w-100" style="object-fit: cover; height: 14rem;" alt="Imagem da Casa">
     <p class="position-absolute px-1 mx-2 rounded-1 end-0 top-0 small" style="
     margin-top: 10px; background-color: aliceblue; z-index: 50; box-shadow: 0 0 3px #d5dadc;">Cod: {{$product["id"]}}</p>
 

@@ -22,7 +22,7 @@
         <ul class="slider-container rounded">
             @foreach($images_list_url as $index => $img)
             <li>
-                <img class=" object-fit-cover" src="{{ asset("storage/" . $img) }}" loading="lazy" alt="Imagem de imóvel {{$index}}" data-bs-toggle="modal" data-bs-target="#productGalleryModal" onclick="imageClick({{$index}})">
+                <img class=" object-fit-cover" src="{{ asset("uploads/" . $img) }}" loading="lazy" alt="Imagem de imóvel {{$index}}" data-bs-toggle="modal" data-bs-target="#productGalleryModal" onclick="imageClick({{$index}})">
             </li>
             @endforeach
         </ul>
@@ -35,7 +35,7 @@
         <ul class="slider-container" id="pgallerythumbs" style="cursor:pointer">
             @foreach($images_list_url as $index => $img)
             <li>
-                <img class="rounded object-fit-cover" src="{{ asset("storage/" . $img) }}" loading="lazy" alt="imagem de imóvel em miniátura clicável referente a imagem {{$index}}" onmouseover="thumbHover({{$index}})">
+                <img class="rounded object-fit-cover" src="{{ asset("uploads/" . $img) }}" loading="lazy" alt="imagem de imóvel em miniátura clicável referente a imagem {{$index}}" onmouseover="thumbHover({{$index}})">
             </li>
             @endforeach
         </ul>
@@ -57,7 +57,7 @@
 
                             @foreach($images_list_url as $index => $img)
                             <li class="d-flex align-items-center justify-content-center">
-                                <img src="{{ asset("storage/" . $img) }}" loading="lazy" class="rounded shadow " style="
+                                <img src="{{ asset("uploads/" . $img) }}" loading="lazy" class="rounded shadow " style="
                                 object-fit: contain;
                                 width: 100%;
                                 height: 85vh;
