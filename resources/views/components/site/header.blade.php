@@ -14,7 +14,7 @@
                             <a class="nav-link" href="/#filter">Filtrar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
+                            <a class="nav-link" href="/login">Login</a>
                         </li>
                     </ul>
                 </nav>

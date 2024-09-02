@@ -1,4 +1,4 @@
-<x-layouts.admin containerTitle="Tipos de negócios - Criar">
+<x-admin-layout containerTitle="Tipos de negócios - Criar">
     @csrf
     <form action="{{route('category.store')}}" method="POST" class="d-flex flex-column form w-100 my-3">
         <div class="card-body d-flex flex-column col-12 col-md-4 mx-auto ">
@@ -11,4 +11,4 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>
-</x-layouts.admin>
+</x-admin-layout>
