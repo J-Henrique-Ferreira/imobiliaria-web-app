@@ -1,4 +1,4 @@
-<div class="col-12 col-lg-8" id="productGallery">
+<div class="col-12" id="productGallery">
     <script>
         function imageClick(imageNumber) {
             //Find the slider element
@@ -18,30 +18,43 @@
             swiffyslider.slideTo(sliderElement, imageNumber)
         }
     </script>
-    <div class="swiffy-slider slider-item-ratio slider-nav-caret slider-nav-autoplay slider-nav-autopause slider-nav-animation slider-nav-animation-slow shadow" id="pgallery">
-        <ul class="slider-container rounded">
-            @foreach($images_list_url as $index => $img)
-            <li>
-                <img class=" object-fit-cover" src="{{ asset("uploads/" . $img) }}" loading="lazy" alt="Imagem de imóvel {{$index}}" data-bs-toggle="modal" data-bs-target="#productGalleryModal" onclick="imageClick({{$index}})">
-            </li>
-            @endforeach
-        </ul>
-        <button type="button" class="slider-nav" aria-label="Go previous"></button>
-        <button type="button" class="slider-nav slider-nav-next" aria-label="Go next"></button>
-    </div>
 
     <!-- controlador de imagens -->
-    <div class="swiffy-slider slider-nav-dark slider-nav-sm slider-nav-chevron slider-item-show6 slider-item-snapstart slider-item-ratio slider-nav-visible slider-nav-outside my-3 d-none  d-lg-block">
-        <ul class="slider-container" id="pgallerythumbs" style="cursor:pointer">
-            @foreach($images_list_url as $index => $img)
-            <li>
-                <img class="rounded object-fit-cover" src="{{ asset("uploads/" . $img) }}" loading="lazy" alt="imagem de imóvel em miniátura clicável referente a imagem {{$index}}" onmouseover="thumbHover({{$index}})">
-            </li>
-            @endforeach
-        </ul>
+    <div class="d-flex gap-4" style="max-width: 890px;">
+        <div class="swiffy-slider slider-item-ratio slider-nav-caret slider-nav-autoplay slider-nav-autopause slider-nav-animation slider-nav-animation-slow shadow"
+            style="max-height: 500px;"
+            data-slider-nav-autoplay-interval="8000" id="pgallery">
+            <ul class="slider-container rounded">
+                @foreach($images_list_url as $index => $img)
+                <li>
+                    <div style="background-image: 
+                            linear-gradient(to right, rgba(10, 10, 10, 0.7), rgba(10,10,10, 0.5)), 
+                            url('{{asset("uploads/" . $img) }}');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            filter: blur(12px); 
+                            z-index: -1;
+                            "></div>
+                    <img class=" object-fit-contain" src="{{ asset("uploads/" . $img) }}" loading="lazy" alt="Imagem de imóvel {{$index}}" data-bs-toggle="modal" data-bs-target="#productGalleryModal" onclick="imageClick({{$index}})">
+                </li>
+                @endforeach
+            </ul>
+            <button type="button" class="slider-nav" aria-label="Go previous"></button>
+            <button type="button" class="slider-nav slider-nav-next" aria-label="Go next"></button>
+        </div>
 
-        <button type="button" class="slider-nav" aria-label="Go previous"></button>
-        <button type="button" class="slider-nav slider-nav-next" aria-label="Go next"></button>
+        <div class="swiffy-slider slider-nav-dark slider-nav-sm slider-nav-chevron slider-item-show6 slider-item-snapstart slider-item-ratio slider-nav-visible slider-nav-outside d-none  d-lg-block" style="max-width: 80px; max-height: 500px;">
+            <ul class="slider-container d-flex flex-column gap-5 mx-0" id="pgallerythumbs" style="cursor:pointer">
+                @foreach($images_list_url as $index => $img)
+                <li>
+                    <img class="rounded object-fit-cover" style="height: 80px;" src="{{ asset("uploads/" . $img) }}" loading="lazy" alt="imagem de imóvel em miniátura clicável referente a imagem {{$index}}" onmouseover="thumbHover({{$index}})">
+                </li>
+                @endforeach
+            </ul>
+
+            <!-- <button type="button" class="slider-nav" aria-label="Go previous"></button>
+            <button type="button" class="slider-nav slider-nav-next" aria-label="Go next"></button> -->
+        </div>
     </div>
 
     <!-- modal de carousel de slides extendido-->
@@ -54,14 +67,26 @@
                 <div class="modal-body">
                     <div class="swiffy-slider h-100 slider-nav-dark" id="pgalleryModal">
                         <ul class="slider-container" tabindex="-1">
-
                             @foreach($images_list_url as $index => $img)
                             <li class="d-flex align-items-center justify-content-center">
+
+                                <div
+                                    tabindex="100"
+                                    style="background-image: 
+                                        linear-gradient(to right, rgba(10, 10, 10, 0.7), rgba(10,10,10, 0.5)), 
+                                        url('{{asset("uploads/" . $img) }}');
+                                        background-size: cover;
+                                        background-repeat: no-repeat;
+                                        filter: blur(12px); 
+                                        z-index:9999;
+                                        ">
+                                </div>
+
                                 <img src="{{ asset("uploads/" . $img) }}" loading="lazy" class="rounded shadow " style="
-                                object-fit: contain;
-                                width: 100%;
-                                height: 85vh;
-                                " alt="imagem de imóvel em rxtendida clicável {{$index}}">
+                                        object-fit: contain;
+                                        width: 100%;
+                                        height: 85vh; "
+                                    alt="imagem de imóvel em rxtendida clicável {{$index}}">
                             </li>
                             @endforeach
                         </ul>

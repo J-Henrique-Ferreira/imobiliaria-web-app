@@ -1,21 +1,26 @@
-<div @class(['swiffy-slider', 'slider-nav-round' , 'slider-nav-autoplay'=> $autoplay, 'overflow-hidden'])>
+<div class="shadow-lg">
+    <div class="position-absolute top-1 mt-4 z-3 w-100" id="filter_form">
+        <x-site.filter></x-site.filter>
+    </div>
 
-    <ul class="slider-container rounded-3">
+    <div @class(['swiffy-slider', 'slider-nav-round' , 'slider-nav-autoplay'=> $autoplay, 'overflow-hidden' ])
+        data-slider-nav-autoplay-interval="8000">
 
-        @foreach($imgList as $index => $img)
-        <li>
-            <img class="rounded object-fit-cover" style="width: 100%; height: 100%;" src="{{ $img['src'] }}" alt="{{ $img['alt'] }}">
-        </li>
-        @endforeach
+        <ul class="slider-container w-100">
+            @foreach($imgList as $index => $img)
+            <li>
+                <img class="object-fit-cover" style="width: 100%; height: 100%;" src="{{ $img['src'] }}" alt="{{ $img['alt'] }}">
+            </li>
+            @endforeach
+        </ul>
 
-    </ul>
+        <button type="button" class="slider-nav"></button>
+        <button type="button" class="slider-nav slider-nav-next"></button>
 
-    <button type="button" class="slider-nav"></button>
-    <button type="button" class="slider-nav slider-nav-next"></button>
-
-    <div class="slider-indicators">
-        <button class="active"></button>
-        <button></button>
-        <button></button>
+        <div class="slider-indicators">
+            <button class="active"></button>
+            <button></button>
+            <button></button>
+        </div>
     </div>
 </div>

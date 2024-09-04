@@ -1,8 +1,8 @@
-<div id="filter" class="container border border-1 rounded-3 p-3 pb-4 bg-white">
+<div id="filter" class="container border border-1 border-secondary border-opacity-50 rounded-3 p-3 pb-4 bg-white bg-opacity-75">
     <span class="fw-medium fs-5">Buscador de Imóveis</span>
     <div class="d-flex flex-column flex-lg-row justify-content-center  gap-3 mt-3">
         <div class="form-group w-100 mb-3 mb-lg-0 ">
-            <label for="preco" class="text-secondary mb-1">Localização:</label>
+            <label for="preco" class="text-dark text-opacity-75 mb-1">Localização:</label>
             <select class="form-control" id="preco">
                 <option value="">Todos</option>
                 <option value="">Porto Alegre</option>
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group w-100 mb-3 mb-lg-0 ">
             <div class="form-group">
-                <label for="tipoImovel" class="text-secondary mb-1">Tipo De Imóvel:</label>
+                <label for="tipoImovel" class="text-dark text-opacity-75 mb-1">Tipo De Imóvel:</label>
                 <select class="form-control" id="tipoImovel">
                     <option value="">Todos</option>
                     <option value="casa">Casa</option>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group w-100 mb-3 mb-lg-0 ">
             <div class="form-group">
-                <label for="modalidade" class="text-secondary mb-1">Tipo De Negócio:</label>
+                <label for="modalidade" class="text-dark text-opacity-75 mb-1">Tipo De Negócio:</label>
                 <select class="form-control" id="modalidade">
                     <option value="">Todos</option>
                     <option value="aluguel">Aluguel</option>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group w-100">
             <div class="form-group">
-                <label for="preco" class="text-secondary mb-1">Faixa De Preço:</label>
+                <label for="preco" class="text-dark text-opacity-75 mb-1">Faixa De Preço:</label>
                 <select class="form-control" id="preco">
                     <option value="">Selecione</option>
                     <option value="0-500">Até R$ 500</option>

@@ -1,4 +1,4 @@
-<footer class="bg-dark mt-4 py-4 " style="width: 100%;">
+<footer class="bg-dark mt-4 py-4 " style="width: 100%;" id="footer">
 
     <div class="row justify-content-between container mx-auto ">
         <div class="col-md-auto text-center text-md-start">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -32,25 +32,12 @@ class SiteController extends Controller
         ];
 
         try {
-            $products = $this->repository->findPaged();
-
-            return view("site.index", [
-                "products" => $products,
-                "bannersList" => $bannersList,
-                "toastMessage" => $request->session()->get("toastMessage")
-            ]);
+            return $this->repository->findPaged();
         } catch (\Throwable $th) {
-            abort(500);
+            // abort(500);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //,,
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -135,13 +122,6 @@ class SiteController extends Controller
         return view('site.productPage', ["product" => $product]);
     }
 
-    /**
-     * Show the form for editing the specified resource.,,
-     */
-    public function edit(product $product)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

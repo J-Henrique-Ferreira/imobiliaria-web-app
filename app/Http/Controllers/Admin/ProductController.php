@@ -78,6 +78,7 @@ class ProductController extends Controller
 
         try {
             $product = $this->repository->findById($request->id);
+            // dd($product->author);
             return view("site.productPage", ["product" => $product]);
         } catch (\Throwable $th) {
             // dd($th->getMessage());
