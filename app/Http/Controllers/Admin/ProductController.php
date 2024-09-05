@@ -43,7 +43,8 @@ class ProductController extends Controller
             return view("admin.product.create", [
                 "categoriesList" => $categoriesList,
                 "citiesList" => $citiesList,
-                "businessList" => $businessList
+                "businessList" => $businessList,
+                "product" => null
             ]);
         } catch (\Throwable $th) {
             abort(500);
@@ -61,8 +62,8 @@ class ProductController extends Controller
                 "message" => "Imóvel adicionado com sucesso!"
             ]);
         } catch (\Throwable $th) {
-            dd($th->getMessage());
-            // abort(500);
+            // dd($th->getMessage());
+            abort(500);
         }
 
         return to_route("imoveis.index");

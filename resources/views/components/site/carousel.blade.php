@@ -1,8 +1,4 @@
 <div class="shadow-lg">
-    <div class="position-absolute top-1 mt-4 z-3 w-100" id="filter_form">
-        <x-site.filter></x-site.filter>
-    </div>
-
     <div @class(['swiffy-slider', 'slider-nav-round' , 'slider-nav-autoplay'=> $autoplay, 'overflow-hidden' ])
         data-slider-nav-autoplay-interval="8000">
 

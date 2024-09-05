@@ -50,7 +50,7 @@ class ProductStoreUpdateRequest extends FormRequest
             "iptu" => ["required"],
             "description" => ["required", "min:3"],
             'images_list_url' => 'required|array',
-            'images_list_url.*' => 'file|mimes:jpg,png,jpeg|max:2048',
+            'images_list_url.*' => 'file|mimes:jpg,png,jpeg|max:5048',
             // "whoner_contact" => ["required"]
         ];
     }

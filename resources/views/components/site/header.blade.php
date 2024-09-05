@@ -1,11 +1,11 @@
 <div id="topElement"></div>
 
 
-<header class="shadow-sm fixed-top bg-white" style="z-index: 999;">
-    <div class="container  container-fluid">
-        <div class="d-flex justify-content-between align-items-center py-2">
-            <a href="/" class="col nav-link">
-                <img class="img-fluid object-fit-contain" src="{{asset('storage/images/icons/logo.png')}}" alt="Logo da Imobiliária" style="width: 70px;">
+<header class="shadow-sm fixed-top bg-white" style="z-index: 999; opacity:.92 ;">
+    <div class="container container-fluid p-lg-0">
+        <div class="d-flex justify-content-between align-items-center my-2 bg-black rounded bg-opacity-10">
+            <a href="/" class="col nav-link mx-3">
+                <img class="img-fluid object-fit-contain" src="{{asset('storage/images/icons/logo.png')}}" alt="Logo da Imobiliária" style="width: 50px;">
             </a>
             <div class="col-md-auto">
                 <nav class="d-block">
@@ -28,7 +28,11 @@
     </div>
 </header>
 
-<div style="height: 3rem;"></div>
+<div style="height: 3.7rem;"></div>
+
+<div class="position-fixed collapse lg-collapsed top-1 mt-1 z-3 w-100" id="filter_form">
+    <x-site.filter></x-site.filter>
+</div>
 
 <script>
     function navigateHeader() {

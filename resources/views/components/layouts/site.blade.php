@@ -15,6 +15,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 
     <!-- fonts roboto -->
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +35,9 @@
 <style>
     body {
         font-family: 'monteserrat', sans-serif;
+        /* background-color: #fafaf5; */
+        /* background-color: #f7f7f7; */
+        background-color: #f0f0f0;
     }
 
     h1,
@@ -50,11 +55,17 @@
         font-family: 'monteserrat', sans-serif;
         font-weight: 400;
     }
+
+    .title-generic {
+        text-transform: uppercase;
+        color: black;
+        font-size: 1.5rem
+    }
 </style>
 
 <x-site.header></x-site.header>
 
-<body class="" style="background-color: #fafaf5;">
+<body>
     <main class="mx-auto flex flex-col items-center" style="min-height: 100vh;">{{$slot}}</main>
     <x-site.footer></x-site.footer>
 </body>
