@@ -22,7 +22,7 @@
                             <label class="form-label mt-4" for="nomeciBairro">Nome do Bairro</label>
                             <input class="form-control mb-4" type="text" name="name" id="nomeciBairro" required>
                             <div class="form-check form-switch mb-3">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="visible">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="visible" checked="true">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Visibilidade</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>

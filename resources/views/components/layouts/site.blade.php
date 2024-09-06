@@ -57,9 +57,29 @@
     }
 
     .title-generic {
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
         color: black;
         font-size: 1.5rem
+    }
+
+    .brightness-15 {
+        filter: brightness(15%);
+    }
+
+    .brightness-25 {
+        filter: brightness(25%);
+    }
+
+    .brightness-50 {
+        filter: brightness(50%);
+    }
+
+    .brightness-75 {
+        filter: brightness(75%);
+    }
+
+    .brightness-100 {
+        filter: brightness(100%);
     }
 </style>
 

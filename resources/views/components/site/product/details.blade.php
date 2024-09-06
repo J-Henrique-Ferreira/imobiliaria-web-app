@@ -1,5 +1,5 @@
-<article class="rounded shadow-sm  w-100 p-3 position-relative bg-white text-uppercase">
-    <h3 class="title-generic">Detalhes</h3>
+<article class="rounded shadow-sm  w-100 p-3 position-relative bg-white">
+    <h3 class="title-generi">Detalhes</h3>
     <div class="w-100 my-4 border border-bottom border-opacity-25 d-md-block"></div>
     <div class="d-flex flex-column h-auto justify-content-between">
         <div class="d-flex flex-wrap gap-2 text-xs align-content-between">
@@ -37,7 +37,6 @@
                 <p class="m-0 fw-semibold ">Valor</p>
                 R$ {{number_format( $product->value, 2, ',', '.')}}
             </div>
-
         </div>
     </div>
 </article>

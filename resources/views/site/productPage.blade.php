@@ -6,8 +6,30 @@
         <section>
             <h2 class="lg-d-flex align-items-center title-generic">
                 {{$product->business->name }} de {{$product->category->name}} em {{ $product->city->name}} - {{ $product->district->name}}
-                <div class="d-flex justify-content-between p-2 py-1 rounded-3 text-light w-auto bg-black align-items-center fs-3 mt-1">
-                    <span> por R$ {{number_format( $product->value, 2, ',', '.')}}</span>
+                <div class="d-flex justify-content-between p-2 py-1 rounded-3 w-auto align-items-center fs-3 mt-1">
+                    <!-- <span
+                        class="bg-success"> <span class="fs-6" style="text-decoration: none;"> Por</span> R$ </span> -->
+
+
+                    <div class="d-flex text-white align-items-center rounded"
+                        style="background-color: #660ff2; padding-right: 8px; margin-left: 10px">
+                        <svg
+                            width="24"
+                            height="54"
+                            viewBox="0 0 24 64"
+                            style="
+                                margin-left: -18px;
+                            ">
+                            <path fill="#660ff2" d="M22.557 0h1.442v64h-1.442a8 8 0 01-6.84-3.851l-14.557-24a8 8 0 010-8.298l14.557-24A8 8 0 0122.557 0z"></path>
+                        </svg>
+
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="fs-3">R$ {{number_format( $product->value, 2, ',', '.')}}</div>
+                            <div class="fs-6 fw-lighter">
+                                Escolha como pagar
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="d-none d-lg-flex align-items-center gap-2" style="max-height: 30px;">
                         <img class="w-2 bg-white rounded px-1" style="height: 28px;" src="{{asset("/storage/images/icons/pyments/pix.png")}}" alt="">

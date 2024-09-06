@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-2">
                 <div class="modal-header">
-                    <p class="text-center fs-5 fw-semibold text-dark text-opacity-75 text-uppercase mt-3">Me interesso por este imóvel</p>
+                    <p class="text-center fs-5 fw-semibold text-dark text-opacity-75 text-uppercase mt-3">Fale com um corretor</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

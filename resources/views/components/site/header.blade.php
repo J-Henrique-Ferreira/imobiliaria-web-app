@@ -3,9 +3,9 @@
 
 <header class="shadow-sm fixed-top bg-white" style="z-index: 999; opacity:.92 ;">
     <div class="container container-fluid p-lg-0">
-        <div class="d-flex justify-content-between align-items-center my-2 bg-black rounded bg-opacity-10">
-            <a href="/" class="col nav-link mx-3">
-                <img class="img-fluid object-fit-contain" src="{{asset('storage/images/icons/logo.png')}}" alt="Logo da Imobiliária" style="width: 50px;">
+        <div class="d-flex justify-content-between align-items-center py-2">
+            <a href=" /" class="col nav-link mx-3">
+                <img class="img-fluid object-fit-contain" src="{{asset('storage/images/icons/logo.png')}}" alt="Logo da Imobiliária" style="width: 75px;">
             </a>
             <div class="col-md-auto">
                 <nav class="d-block">

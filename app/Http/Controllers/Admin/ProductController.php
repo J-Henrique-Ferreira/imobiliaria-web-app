@@ -10,7 +10,6 @@ use App\Http\Requests\Admin\Product\ProductStoreUpdateRequest;
 use App\Repositories\Eloquent\BusinessRepository;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\CitiesRepository;
-use PhpParser\Node\Stmt\TryCatch;
 
 class ProductController extends Controller
 {
@@ -62,7 +61,6 @@ class ProductController extends Controller
                 "message" => "Imóvel adicionado com sucesso!"
             ]);
         } catch (\Throwable $th) {
-            // dd($th->getMessage());
             abort(500);
         }
 
@@ -71,8 +69,6 @@ class ProductController extends Controller
 
     public function show(Request $request)
     {
-        // dd('caiu no dd');
-
         if (!isset($request->id)) {
             abort(400);
         }

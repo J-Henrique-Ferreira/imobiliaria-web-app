@@ -13,22 +13,27 @@ class SiteController extends Controller
 
     public function index(Request $request)
     {
-
         $bannersList = [
             [
-                "src" => "https://img.kenlo.io/VWRCUkQ2Tnp3d1BJRDBJVe1szBgxSbxEJs4E8PoAzyCur-yjcWvylTZaIWQxUUFHJ%2BMbgmN3V8Aj%2B0Ih2sgp6R4-m9EYQLL55nLWh9nT4tqVrU3R9p%2BJtuKF38mmBpyHldxv2vCtHAHwv6NuFtcpOhoiOuU-XRX3W46bNX5NpCLJ417MU7ZxSWNT2Qwo1g9WyxH9F4HmpQFozg%3D%3D.png",
-                "alt" => "imagem 1 do banner"
-            ],
-            [
-                "src" => "https://storage.pixteller.com/designs/designs-images/2019-05-15/01/real-estate-modern-banner-1-5cdbf09815644.png",
-                "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
+                "src" => asset("/storage/images/uploads/banners_home/banner5.png"),
                 "alt" => "imagem 2 do banner"
             ],
             [
-                "src" => "https://athenasimobiliaria.com.br/wp-content/uploads/2021/02/banner-1.jpg",
-                "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
-                "alt" => "imagem 3 do banner"
-            ]
+                "src" => asset("/storage/images/uploads/banners_home/banner2.png"),
+                "alt" => "imagem 1 do banner"
+            ],
+            [
+                "src" => asset("/storage/images/uploads/banners_home/banner3.jpg"),
+                "alt" => "imagem 2 do banner"
+            ],
+            [
+                "src" => asset("/storage/images/uploads/banners_home/banner4.jpg"),
+                "alt" => "imagem 2 do banner"
+            ],
+            // [
+            //     "src" => asset("/storage/images/uploads/banners_home/banner1.png"),
+            //     "alt" => "imagem 2 do banner"
+            // ],
         ];
 
         try {
