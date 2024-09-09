@@ -1,41 +1,36 @@
-<article class="rounded shadow-sm  w-100 p-3 position-relative bg-white">
-    <h3 class="title-generi">Detalhes</h3>
+<article class="rounded shadow-sm w-100 p-3 position-relative bg-white">
+    <h3 class="title-generic">Detalhes</h3>
     <div class="w-100 my-4 border border-bottom border-opacity-25 d-md-block"></div>
     <div class="d-flex flex-column h-auto justify-content-between">
         <div class="d-flex flex-wrap gap-2 text-xs align-content-between">
-            <div class="d-block  gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
-                <p class="m-0 fw-semibold ">Quartos</p>
-                {{$product->bedroom}}
-            </div>
-            <div class="d-block  gap-2" style="--bs-bg-opacity: .3; width: 110px; ">
-                <p class="m-0 fw-semibold ">Banheiros</p>
-                {{$product->bathroom}}
-            </div>
-            <div class="d-block gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
-                <p class="m-0 fw-semibold ">Área</p>
-                {{$product->area_size}} mt²
-            </div>
-            <div class="d-block gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
-                <p class="m-0 fw-semibold ">Vagas</p>
-                {{$product->parking_space}}
-            </div>
+            @foreach (handleProductDetailsList($product) as $detail)
+            <div class="border border-dark shadow-sm border-opacity-10 rounded-2 px-2 py-1 mt-2">
+                <span
+                    class="fw-light lg-fw-lighter">{{$detail["name"]}}
+                </span>
 
-            <div class="d-block gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
-                <p class="m-0 fw-semibold ">IPTU</p>
-                R$ {{number_format($product->iptu, 2, ',', '.')}}
+                <span class="d-flex align-items-center gap-2 fw-normal text-black">
+                    <img
+                        src="{{asset("storage/images/icons/product-details/" .$detail["iconName"] . ".svg")}}"
+                        alt=""
+                        style="width: 15px; height: 15px;">
+                    <span style="font-size: 11px;">{{$detail["value"] ?? "0"}}</span>
+                </span>
             </div>
+            @endforeach
 
-            <div class="d-block gap-2 " style=" --bs-bg-opacity: .3; min-width: 110px; ">
-                <p class=" m-0 fw-semibold ">Condominio</p>
-                R$ {{number_format( $product->condominium, 2, ',', '.')}}
-            </div>
-            <div class="d-block   gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
-                <p class="m-0 fw-semibold ">Cód:</p>
-                {{$product->id}}
-            </div>
-            <div class="d-block gap-2" style="--bs-bg-opacity: .3; min-width: 110px; ">
-                <p class="m-0 fw-semibold ">Valor</p>
-                R$ {{number_format( $product->value, 2, ',', '.')}}
+            <div class="border border-dark shadow-sm border-opacity-10 rounded-2 px-2 py-1 mt-2">
+                <span
+                    class="fw-light lg-fw-lighter">Cód:
+                </span>
+
+                <span class="d-flex align-items-center gap-2 fw-normal text-black">
+                    <img
+                        src="{{asset("storage/images/icons/product-details/hashtag.svg")}}"
+                        alt=""
+                        style="width: 15px; height: 15px;">
+                    <span style="font-size: 11px;">{{$product->id}}</span>
+                </span>
             </div>
         </div>
     </div>

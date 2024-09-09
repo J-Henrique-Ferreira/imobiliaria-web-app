@@ -81,6 +81,22 @@
     .brightness-100 {
         filter: brightness(100%);
     }
+
+    .zoom_card {
+        transition: transform .17s ease;
+    }
+
+    @media screen and (max-width: 800px) {
+
+        /* Quando a largura da tela for menor ou igual a 480 pixels */
+        .card-width {
+            width: 100%;
+        }
+    }
+
+    .zoom_card:hover {
+        transform: scale(1.03);
+    }
 </style>
 
 <x-site.header></x-site.header>

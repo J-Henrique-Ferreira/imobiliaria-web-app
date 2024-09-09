@@ -15,7 +15,7 @@ function handleProductDetailsList($product)
                 "iconName" => "bedroom"
             ],
             [
-                "name" => "Suites",
+                "name" => "Suítes",
                 "value" => $product->suite,
                 "iconName" => "suite"
             ],
@@ -31,12 +31,12 @@ function handleProductDetailsList($product)
             ],
             [
                 "name" => "Condomínio",
-                "value" => $product->condominium,
+                "value" => "R$ " . number_format($product["condominium"], 2, ',', '.'),
                 "iconName" => "condominium"
             ],
             [
-                "name" => "iptu",
-                "value" => $product->iptu,
+                "name" => "IPTU",
+                "value" => "R$ " . number_format($product["iptu"], 2, ',', '.'),
                 "iconName" => "iptu"
             ],
         ];

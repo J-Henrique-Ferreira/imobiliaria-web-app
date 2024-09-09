@@ -7,10 +7,6 @@
             <h2 class="lg-d-flex align-items-center title-generic">
                 {{$product->business->name }} de {{$product->category->name}} em {{ $product->city->name}} - {{ $product->district->name}}
                 <div class="d-lg-flex justify-content-lg-between p-2 py-1 rounded-3 w-auto align-items-center fs-3 mt-1">
-                    <!-- <span
-                        class="bg-success"> <span class="fs-6" style="text-decoration: none;"> Por</span> R$ </span> -->
-
-
                     <div class="d-flex text-white align-items-center rounded"
                         style="background-color: #660ff2; padding-right: 8px; margin-left: 10px">
                         <svg
@@ -30,7 +26,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="d-lg-flex align-items-center gap-2" style="max-height: 30px;">
                         <img class="w-2 bg-white rounded px-1" style="height: 28px;" src="{{asset("/storage/images/icons/pyments/pix.png")}}" alt="">
                         <img class="w-2" style="height: 46px;" src="{{asset("/storage/images/icons/pyments/visa.png")}}" alt="">
@@ -42,32 +37,57 @@
             </h2>
         </section>
 
-        <div class="col-12 d-flex flex-column flex-lg-row  flex-lg-row-reverse gap-3 m-lg-3">
-            <section class="col-lg-4 p-3 rounded bg-white shadow-sm h-100">
-                <h2 class="title-generic">Contato</h2>
-                <div class="d-flex flex-column justify-content-between gap-3 h-auto">
-                    <div>
-                        <div>Tratar com
-                            <strong> {{$product->author->name}} </strong>
-                        </div>
-                        <div>Telefone: {{$product->author->phone_number}}</div>
-                        <div>CRECI: 533123</div>
-                    </div>
-                    <a type="button" class="shadow btn py-2 btn-outline-success nav-link text-center text-uppercase text-white bg-black"
-                        style="font-size: .8rem;"
-                        data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Tenho interesse neste imóvel</a>
-                </div>
-            </section>
-            <div class="col-lg-8 d-flex flex-column gap-3">
+        <div class="col-12 d-flex flex-column flex-lg-row gap-3 w-100">
+            <section class="col-lg-7 d-flex flex-column gap-3">
                 @component("components.site.product.details", ["product" => $product])
                 @endcomponent
 
                 @component("components.site.product.description", ["description" => $product->description])
                 @endcomponent
+            </section>
 
-                @component("components.site.product.contactForm", ["productCode" => $product->code])
+            <section class="col-lg-4 d-flex flex-column gap-3">
+                <div class="rounded bg-white shadow-sm h-auto p-3">
+                    <h2 class="title-generic">Contato</h2>
+                    <div class="d-flex flex-column justify-content-between gap-3 h-auto">
+                        <div>
+                            <div>Tratar com
+                                <strong> {{$product->author->name}} </strong>
+                            </div>
+                            <div>Telefone: {{$product->author->phone_number}}</div>
+                            <div>CRECI: 533123</div>
+                        </div>
+
+                        <div>
+                            @component("components.site.product.contactButtons",
+                            [
+                            "phoneNumber" => $product->author->phone_number,
+                            "id" => $product->id
+                            ])
+                            @endcomponent
+                        </div>
+                    </div>
+                </div>
+
+
+                @component("components.site.product.contactForm",["productId"=> $product->id])
                 @endcomponent
-            </div>
+            </section>
         </div>
     </div>
+
+    <a
+        style="
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin:0 20px 26px 0;
+        "
+        href="https://api.whatsapp.com/send/?phone=+55{{$product->author->phone_number}}&text=Olá, estive visitando o site e gostaria de mais informações sobre o imóvel Cód - {{$product->id}}.&type=phone_number&app_absent=1"
+        target="_blank">
+        <img
+            src="{{asset("/storage/images/icons/whatsapp.png")}}"
+            alt=""
+            style="width: 60px;">
+    </a>
 </x-layouts.site>
