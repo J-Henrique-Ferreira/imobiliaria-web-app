@@ -26,7 +26,7 @@ function handleProductDetailsList($product)
             ],
             [
                 "name" => "Área",
-                "value" =>  $product->area_size,
+                "value" =>  $product->area_size . "mt²",
                 "iconName" => "area_size"
             ],
             [
