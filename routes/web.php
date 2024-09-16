@@ -12,20 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', [SiteController::class, "index"]);
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/dashboard1', function () {
     return view('dashboard');
@@ -40,29 +27,33 @@ Route::middleware('auth')->group(function () {
 Route::get("/imoveis/{id}/{title}", [ProductController::class, "show"]);
 Route::get("/site/imoveis/{productId}/{title}", [ProductController::class, "show"]);
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, "index"]);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, "index"]);
 
-    Route::get('/contatos', function () {
-        return view('admin.contacts', []);
+        Route::get('/contatos', function () {
+            return view('admin.contacts', []);
+        });
+
+        // verificar formas de implementar este middleware mantendo a roda resource
+        Route::delete('/cities/{id}', [CityController::class, 'destroy'])
+            ->name('cities.destroy')
+            ->middleware('city.check.related');
+
+        Route::resource("/cities", CityController::class, [])->only(["index", "store", "update", "destroy"]);
+
+        Route::resource("/districts", DistrictController::class, [])->only(
+            ["index", "store", "show", "update", "destroy"]
+        );
+
+        Route::resource("/business", BusinessController::class, []);
+
+        Route::resource("/category", CategoryController::class, []);
+
+        Route::resource("/imoveis", ProductController::class, []);
     });
-
-    // verificar formas de implementar este middleware mantendo a roda resource
-    Route::delete('/cities/{id}', [CityController::class, 'destroy'])
-        ->name('cities.destroy')
-        ->middleware('city.check.related');
-
-    Route::resource("/cities", CityController::class, [])->only(["index", "store", "update", "destroy"]);
-
-    Route::resource("/districts", DistrictController::class, [])->only(
-        ["index", "store", "show", "update", "destroy"]
-    );
-
-    Route::resource("/business", BusinessController::class, []);
-
-    Route::resource("/category", CategoryController::class, []);
-
-    Route::resource("/imoveis", ProductController::class, []);
 });
+
+
 
 require __DIR__ . '/auth.php';

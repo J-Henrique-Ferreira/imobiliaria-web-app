@@ -12,9 +12,7 @@ use stdClass;
 class  CitiesRepository implements CitiesRepositoryInterface
 {
 
-    public function __construct(private City $city)
-    {
-    }
+    public function __construct(private City $city) {}
 
     public function all(): Collection
     {
@@ -25,6 +23,7 @@ class  CitiesRepository implements CitiesRepositoryInterface
     {
         return DB::transaction(function () use ($request) {
             $this->city->name = $request->name;
+            $this->city->visible = true;
             return $this->city->save();
         });
     }

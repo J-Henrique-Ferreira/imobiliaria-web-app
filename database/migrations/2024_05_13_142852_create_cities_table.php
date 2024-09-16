@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string("name", length: 255)->nullable(false);
-            $table->boolean("visible")->default(false);
+            $table->boolean("visible")->default(true);
             $table->timestamps();
             $table->unique("name");
         });
