@@ -16,10 +16,16 @@ class DistrictController extends Controller
     {
         $citiesList = City::where("visible", true)->orderBy("name")->get();
 
-        return view('admin.district', [
+        return view('admin.districts.index', [
             "citiesList" => $citiesList,
             "toastMessage" => $request->session()->get("toastMessage") ?? null
         ]);
+    }
+
+    public function create()
+    {
+        $citiesList = City::where("visible", true)->orderBy("name")->get();
+        return view("admin.districts.create", ["citiesList" => $citiesList]);
     }
 
     public function store(DistrictStoreUpdateRequest $request)
@@ -53,7 +59,7 @@ class DistrictController extends Controller
         }
 
         return view(
-            'admin.district',
+            'admin.districts.index',
             [
                 "citiesList" => $citiesList,
                 "cityName" => $city->name,

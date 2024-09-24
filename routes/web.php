@@ -42,9 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::resource("/cities", CityController::class, [])->only(["index", "store", "update", "destroy"]);
 
-        Route::resource("/districts", DistrictController::class, [])->only(
-            ["index", "store", "show", "update", "destroy"]
-        );
+        Route::resource("/districts", DistrictController::class, [])->except("edit");
 
         Route::resource("/business", BusinessController::class, []);
 
