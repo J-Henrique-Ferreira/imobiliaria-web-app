@@ -40,6 +40,4 @@ class BusinessStoreUpdateRequest extends FormRequest
             "name.unique" => "O nome precisa ser unico."
         ];
     }
-
-    protected $redirectRoute = 'business.index';
 }

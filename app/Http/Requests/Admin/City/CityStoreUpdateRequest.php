@@ -39,6 +39,4 @@ class CityStoreUpdateRequest extends FormRequest
             "name.unique" => "O nome precisa ser unico."
         ];
     }
-
-    protected $redirectRoute = 'cities.index';
 }

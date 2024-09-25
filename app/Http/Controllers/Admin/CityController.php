@@ -25,10 +25,16 @@ class CityController extends Controller
             dd($th->getMessage());
         }
 
-        return view('admin.cities', [
+        return view('admin.cities.index', [
             "citiesList" => $citiesList,
             "toastMessage" => $request->session()->get("toastMessage")
         ]);
+    }
+
+
+    public function create()
+    {
+        return view("admin.cities.create", []);
     }
 
     public function store(CityStoreUpdateRequest $request)

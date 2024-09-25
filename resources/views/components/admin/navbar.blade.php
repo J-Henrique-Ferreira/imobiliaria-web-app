@@ -1,12 +1,12 @@
 @php
-$navList = [
-["name"=>"Painel de controle" , "href" => "/dashboard"],
-["name"=>"Imoveis" , "href" => route("imoveis.index")],
-["name"=>"Cidades" , "href" => route("cities.index")],
-["name"=>"Bairros" , "href" => route("districts.index")],
-["name"=>"Negócios" , "href" => route("business.index")],
-["name"=>"Categorias" , "href" => route("category.index")],
-];
+    $navList = [
+        ['name' => 'Painel de controle', 'href' => '/dashboard'],
+        ['name' => 'Imoveis', 'href' => route('imoveis.index')],
+        ['name' => 'Cidades', 'href' => route('cities.index')],
+        ['name' => 'Bairros', 'href' => route('districts.index')],
+        ['name' => 'Negócios', 'href' => route('business.index')],
+        ['name' => 'Categorias', 'href' => route('category.index')],
+    ];
 @endphp
 
 <nav class="navbar position-fixed fixed-top p-0" visually-hidden>
@@ -18,10 +18,10 @@ $navList = [
             </div>
 
             <div class="offcanvas-body navbar-nav gap-3  justify-content-start">
-                @foreach($navList as $navData)
-                <a href="{{$navData['href']}}" class="btn btn-outline-primary border-0 text-start px-2 fw-normal">
-                    {{$navData["name"]}}
-                </a>
+                @foreach ($navList as $navData)
+                    <a href="{{ $navData['href'] }}" class="btn btn-outline-primary border-0 text-start px-2 fw-normal">
+                        {{ $navData['name'] }}
+                    </a>
                 @endForeach
             </div>
         </div>

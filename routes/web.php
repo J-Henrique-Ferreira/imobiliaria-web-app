@@ -40,7 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('cities.destroy')
             ->middleware('city.check.related');
 
-        Route::resource("/cities", CityController::class, [])->only(["index", "store", "update", "destroy"]);
+        Route::resource("/cities", CityController::class, [])->except("show", 'edit');
 
         Route::resource("/districts", DistrictController::class, [])->except("edit");
 

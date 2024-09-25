@@ -14,15 +14,21 @@
     }
 </style>
 
-<div class="shadow-lg brightness-75">
-    <div @class(['swiffy-slider', 'slider-nav-round' , 'slider-nav-autoplay'=> $autoplay, 'overflow-hidden' ])
+<div class="shadow-lg brightness-75 accordion">
+    <div @class([
+    'swiffy-slider',
+    'slider-nav-round',
+    'slider-nav-autoplay' => $autoplay,
+    'overflow-hidden',
+])
         data-slider-nav-autoplay-interval="8000">
 
         <ul class="slider-container w-100">
-            @foreach($imgList as $index => $img)
-            <li>
-                <img class="object-fit-cover lg-object-fit-lg-cover responsive-carousel" src="{{ $img['src'] }}" alt="{{ $img['alt'] }}">
-            </li>
+            @foreach ($imgList as $index => $img)
+                <li>
+                    <img class="object-fit-cover responsive-carousel" style="max-height: 400px" src="{{ $img['src'] }}"
+                        alt="{{ $img['alt'] }}">
+                </li>
             @endforeach
         </ul>
 
