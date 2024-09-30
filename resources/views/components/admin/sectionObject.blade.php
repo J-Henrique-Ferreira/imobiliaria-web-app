@@ -3,17 +3,25 @@
         <div class=""><strong>{{$name}}</strong></div>
         <div>
             @if ($visible)
-            Visível
+                Visível
             @else
-            Oculto
+                Oculto
             @endif
         </div>
     </div>
     <div class="d-flex align-items-center justify-content-end gap-3 w-100">
-        <button type="button" class="btn p-1" class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#update{{$objectId}}" data-bs-whatever="@mdo">
-            <img src="{{asset('storage/images/icons/edit.png')}}" style="object-fit: contain; width:25px;" alt="Editar">
+        <button type="button" class="btn p-1" class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal"
+            data-bs-target="#update{{$objectId}}" data-bs-whatever="@mdo">
+            <!-- <img src="{{asset('storage/images/icons/edit.png')}}" style="object-fit: contain; width:25px;" alt="Editar"> -->
+            <div class="text-primary">
+                <x-svgs.square-pen></x-svgs.square-pen>
+            </div>
         </button>
-        <button type="button" class="btn p-1" class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modaldelete{{$objectId}}" data-bs-whatever="@mdo"> <img src="{{asset('storage/images/icons/delete.png')}}" style="object-fit: contain; width:25px;" alt="Deletar">
+        <button type="button" class="btn p-1" class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal"
+            data-bs-target="#modaldelete{{$objectId}}" data-bs-whatever="@mdo">
+            <div class="text-danger">
+                <x-svgs.trash-2></x-svgs.trash-2>
+            </div>
         </button>
     </div>
 </div>

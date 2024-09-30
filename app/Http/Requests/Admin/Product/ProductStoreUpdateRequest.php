@@ -22,7 +22,7 @@ class ProductStoreUpdateRequest extends FormRequest
      */
     public function rules(Request $request): array
     {
-        return [
+        $rules = [
             "category_id" => [
                 "required",
                 "exists:categories,id",
@@ -49,9 +49,17 @@ class ProductStoreUpdateRequest extends FormRequest
             "value" => ["required"],
             "iptu" => ["required"],
             "description" => ["required", "min:3"],
-            'images_list_url' => 'required|array',
+            'images_list_url' => ['array'],
             'images_list_url.*' => 'file|mimes:jpg,png,jpeg|max:5048',
-            // "whoner_contact" => ["required"]
         ];
+
+        // Verifica se o método é POST
+        // if ($request->isMethod('post')) {
+        //     $rules[''] = [];
+        // }
+
+        return $rules;
+
+        return $rules;
     }
 }

@@ -9,13 +9,14 @@ use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ProductRepository  implements ProductRepositoryInterface
+class ProductRepository implements ProductRepositoryInterface
 {
     public function __construct(
         protected Model $model
-    ) {}
+    ) {
+    }
 
-    public function findById(int | string $id): Model
+    public function findById(int|string $id): Model
     {
         $product = $this->model::find($id);
         return $product;
@@ -65,36 +66,38 @@ class ProductRepository  implements ProductRepositoryInterface
         }
     }
 
-    public function update(Request $request, int | string $id): bool
+    public function update(Request $request, int|string $id): bool
     {
         try {
             $product = $this->model->findOrFail($id);
-
             $product->update($request->all());
 
-            Storage::disk("public")->deleteDirectory("images/uploads/" . $product->id);
+            if (isset($request["images_list_url"])) {
+                $images_list_url = $request->allFiles()["images_list_url"];
 
-            $folder = $product->id;
-            $relativePathImgsList = [];
-            $images_list_url = $request->allFiles()["images_list_url"];
+                Storage::disk("public")->deleteDirectory("images/uploads/" . $product->id);
 
-            foreach ($images_list_url as $image) {
-                $filename = $image->getClientOriginalName();
-                $pathImage = $image->storeAs($folder, $filename, "uploads");
+                $folder = $product->id;
+                $relativePathImgsList = [];
 
-                $relativePathImgsList[] = $pathImage;
+
+                foreach ($images_list_url as $image) {
+                    $filename = $image->getClientOriginalName();
+                    $pathImage = $image->storeAs($folder, $filename, "uploads");
+
+                    $relativePathImgsList[] = $pathImage;
+                }
+
+                $product->default_image = $relativePathImgsList[0];
+                $product->images_list_url = json_encode($relativePathImgsList);
             }
-
-            $product->default_image = $relativePathImgsList[0];
-            $product->images_list_url = json_encode($relativePathImgsList);
-
             return $product->save();
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    public function destroy(int | string $id): bool
+    public function destroy(int|string $id): bool
     {
         $product = $this->model->findOrFail($id);
         Storage::disk("public")->deleteDirectory("images/uploads/" . $product->id);

@@ -1,8 +1,8 @@
 @php
-$imgPath = asset('storage/images/icons/' . ($toastMessage["status"] ?? "error") . '.png');
+    $imgPath = asset('storage/images/icons/' . ($toastMessage["status"] ?? "error") . '.png');
 @endphp
 
-<div id="toast_message" class="toast-container position-fixed top-0 mt-5 mx-4" style="right: 0;">
+<div id="toast_message" class="toast-container position-fixed top-0 mx-4" style="right: 0; margin-top: 70px;">
     <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <strong class="me-auto">

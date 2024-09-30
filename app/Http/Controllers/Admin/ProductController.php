@@ -13,7 +13,9 @@ use App\Repositories\Eloquent\CitiesRepository;
 
 class ProductController extends Controller
 {
-    public function __construct(private ProductRepositoryInterface $repository) {}
+    public function __construct(private ProductRepositoryInterface $repository)
+    {
+    }
 
     public function index(Request $request)
     {
@@ -113,6 +115,9 @@ class ProductController extends Controller
 
     public function update(ProductStoreUpdateRequest $request, $id)
     {
+
+        // dd($request["description"]);
+
         try {
             if ($this->repository->update($request, $id)) {
                 $request->session()->flash("toastMessage", [
