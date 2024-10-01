@@ -18,7 +18,6 @@ class CategoriesSeeder extends Seeder
         "Garagem",
         "Sítio",
         "Cabanha",
-        "Hospedagem"
     ];
     public function run(): void
     {

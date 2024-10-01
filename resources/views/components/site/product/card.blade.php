@@ -17,7 +17,7 @@
         @component('components.site.product.detailsCard', ['details' => handleProductDetailsList($product)])
         @endcomponent
 
-        <div class="pt-2 d-flex justify-content-between text-xs align-items-center mt-2">
+        <div class="pt-2 d-flex justify-content-between text-xs align-items-center mt">
             <p class="card-text text-black fw-semibold text-opacity-75 m-0">R$
                 {{ number_format($product['value'], 2, ',', '.') }}
             </p>

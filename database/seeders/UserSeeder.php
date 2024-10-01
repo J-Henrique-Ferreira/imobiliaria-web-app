@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'João Henrique ferreira',
             'email' => 'joaof6418@gmail.com',
-            'phone_number' => 'password',
+            'phone_number' => '51999999999',
             'role' => 'admin',
-            'password' => Hash::make('password'), // Use Hash para a senha
+            'password' => Hash::make('password'),
         ]);
     }
 }
