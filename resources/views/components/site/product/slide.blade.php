@@ -1,3 +1,9 @@
+<?php
+if (!isset($images_list_url[0])) {
+    $images_list_url[0] = "default/no-image.jpg";
+}
+?>
+
 <div class="col-12" id="productGallery">
     <script>
         function imageClick(imageNumber) {
@@ -25,13 +31,8 @@
             <ul class="slider-container rounded">
                 @foreach ($images_list_url as $index => $img)
                     <li>
-                        <div style="background-image:
-                            linear-gradient(to right, rgba(10, 10, 10, 0.9), rgba(10,10,10, 0.9)),
-                            url('{{ asset('uploads/' . $img) }}');
-                            background-size: cover;
-                            background-repeat: no-repeat;
-                            filter: blur(1px);
-                            z-index: -1;">
+                        <div
+                            style="background-image: linear-gradient(to right, rgba(10, 10, 10, 0.9), rgba(10,10,10, 0.9)), url('{{ asset('uploads/' . $img) }}'); background-size: cover; background-repeat: no-repeat;filter: blur(1px); z-index: -1;">
                         </div>
                         <img class="object-fit-contain" src="{{ asset('uploads/' . $img) }}" loading="lazy"
                             alt="Imagem de imóvel {{ $index }}" data-bs-toggle="modal" data-bs-target="#productGalleryModal"
@@ -71,16 +72,18 @@
                     <div class="swiffy-slider h-100 slider-nav-caret" id="pgalleryModal">
                         <ul class="slider-container" tabindex="-1">
                             @foreach ($images_list_url as $index => $img)
-                                <li class="d-flex align-items-center justify-content-center" style="background-image:
-                                                                linear-gradient(to right, rgba(10, 10, 10, 0.9), rgba(10,10,10, 0.9)),
-                                                                url('{{ asset('uploads/' . $img) }}');
-                                                                background-size: cover;
-                                                                background-repeat: no-repeat;
-                                                                ">
-                                    <img src="{{ asset('uploads/' . $img) }}" loading="lazy" class="rounded shadow " style="
-                                                                object-fit: contain;
-                                                                width: 100%;
-                                                                height: 85vh;"
+                                <li class="d-flex align-items-center justify-content-center"
+                                    style="background-image:
+                                                                                                                                                                                            linear-gradient(to right, rgba(10, 10, 10, 0.9), rgba(10,10,10, 0.9)),
+                                                                                                                                                                                            url('{{ asset('uploads/' . $img) }}');
+                                                                                                                                                                                            background-size: cover;
+                                                                                                                                                                                            background-repeat: no-repeat;
+                                                                                                                                                                                            ">
+                                    <img src="{{ asset('uploads/' . $img) }}" loading="lazy" class="rounded shadow "
+                                        style="
+                                                                                                                                                                                            object-fit: contain;
+                                                                                                                                                                                            width: 100%;
+                                                                                                                                                                                            height: 85vh;"
                                         alt=" imagem de imóvel em rxtendida clicável {{ $index }}">
                                 </li>
                             @endforeach
@@ -93,6 +96,7 @@
                             @foreach ($images_list_url as $index => $img)
                                 <li class=""></li>
                             @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

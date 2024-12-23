@@ -15,7 +15,6 @@ class BusinessSeeder extends Seeder
     private $businessList = [
         "Venda",
         "Aluguel",
-        "Temporada",
         "Hospedagem",
     ];
 

@@ -48,7 +48,7 @@ return new class extends Migration {
             $table->string("condominium", 45)->nullable(false)->default("0");
             $table->string("iptu", 45)->default('0');
             $table->text("description")->nullable(false);
-            $table->text("default_image")->nullable(false);
+            $table->string("default_image")->nullable(true)->default("/default/no-image.jpg");
             $table->json("images_list_url")->nullable(true);
             $table->boolean("visible")->default(true);
             $table->string("whoner_contact", 255)->nullable(false);

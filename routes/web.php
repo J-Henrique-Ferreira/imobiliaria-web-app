@@ -27,30 +27,30 @@ Route::middleware('auth')->group(function () {
 Route::get("/imoveis/{id}/{title}", [ProductController::class, "show"]);
 Route::get("/site/imoveis/{productId}/{title}", [ProductController::class, "show"]);
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::prefix('/dashboard')->group(function () {
-        Route::get('/', [DashboardController::class, "index"])->name("dashboard");
+// Route::middleware(['auth', 'verified'])->group(function () {
+Route::prefix('/dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, "index"])->name("dashboard");
 
-        Route::get('/contatos', function () {
-            return view('admin.contacts', []);
-        });
-
-        // verificar formas de implementar este middleware mantendo a roda resource
-        Route::delete('/cities/{id}', [CityController::class, 'destroy'])
-            ->name('cities.destroy')
-            ->middleware('city.check.related');
-
-        Route::resource("/cities", CityController::class, [])->except("show", 'edit');
-
-        Route::resource("/districts", DistrictController::class, [])->except("edit");
-
-        Route::resource("/business", BusinessController::class, []);
-
-        Route::resource("/category", CategoryController::class, []);
-
-        Route::resource("/imoveis", ProductController::class, []);
+    Route::get('/contatos', function () {
+        return view('admin.contacts', []);
     });
+
+    // verificar formas de implementar este middleware mantendo a roda resource
+    Route::delete('/cities/{id}', [CityController::class, 'destroy'])
+        ->name('cities.destroy')
+        ->middleware('city.check.related');
+
+    Route::resource("/cities", CityController::class, [])->except("show", 'edit');
+
+    Route::resource("/districts", DistrictController::class, [])->except("edit");
+
+    Route::resource("/business", BusinessController::class, []);
+
+    Route::resource("/category", CategoryController::class, []);
+
+    Route::resource("/imoveis", ProductController::class, []);
 });
+// });
 
 
 
