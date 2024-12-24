@@ -1,11 +1,11 @@
 <x-layouts.site title="início">
 
-    <div class="container">
-        <section class="d-flex justify-content-center w-100">
-            @component('components.site.carousel', ['imgList' => $bannersList, 'autoplay' => true])
-            @endComponent
-        </section>
+    <section class="d-flex justify-content-center w-100">
+        @component('components.site.carousel', ['imgList' => $bannersList, 'autoplay' => true])
+        @endComponent
+    </section>
 
+    <div class="container">
         <div class="mt-5">
             <h3>Imóveis pensados para você</h3>
         </div>
