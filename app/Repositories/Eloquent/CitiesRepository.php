@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use stdClass;
 
-class  CitiesRepository implements CitiesRepositoryInterface
+class CitiesRepository implements CitiesRepositoryInterface
 {
 
-    public function __construct(private City $city) {}
+    public function __construct(private City $city)
+    {
+    }
 
     public function all(): Collection
     {
@@ -36,13 +38,13 @@ class  CitiesRepository implements CitiesRepositoryInterface
         return $city->save();
     }
 
-    public function destroy(int | string $id): bool
+    public function destroy(int|string $id): bool
     {
         $city = $this->city->find($id);
         return $city->delete();
     }
 
-    public function districts(int | string $id)
+    public function districts(int|string $id)
     {
         $city = $this->city->find($id);
         return $city->districts->all();

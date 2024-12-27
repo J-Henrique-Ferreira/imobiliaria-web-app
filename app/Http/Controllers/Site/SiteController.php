@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Eloquent\CitiesRepository;
 use App\Repositories\Eloquent\ProductRepository;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    public function __construct(private ProductRepository $repository) {}
+    public function __construct(
+        private ProductRepository $productRepository,
+        private CategoryRepository $categoryRepository,
+        private CitiesRepository $citiesRepository,
+    ) {
+    }
 
     public function index(Request $request)
     {
@@ -37,10 +44,17 @@ class SiteController extends Controller
         ];
 
         try {
-            $products = $this->repository->findPaged();
+            $products = $this->productRepository->findPaged();
+            $categories = $this->categoryRepository->all();
+            $cities = $this->citiesRepository->all();
+
 
             return view("site.index", [
                 "products" => $products,
+                "filterDatas" => [
+                    "categories" => $categories,
+                    "cities" => $cities
+                ],
                 "bannersList" => $bannersList,
                 "toastMessage" => $request->session()->get("toastMessage")
             ]);
@@ -112,29 +126,29 @@ class SiteController extends Controller
             "default_image" => "https://cdn.onekindesign.com/wp-content/uploads/2019/11/Striking-Modern-Villa-Design-Marmol-Radziner-01-1-Kindesign.jpg",
             "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
             "images" =>
-            [
                 [
-                    "src" => "https://img.freepik.com/free-photo/design-house-modern-villa-with-open-plan-living-private-bedroom-wing-large-terrace-with-privacy_1258-169741.jpg",
-                    "alt" => "imagem 1 do banner"
+                    [
+                        "src" => "https://img.freepik.com/free-photo/design-house-modern-villa-with-open-plan-living-private-bedroom-wing-large-terrace-with-privacy_1258-169741.jpg",
+                        "alt" => "imagem 1 do banner"
+                    ],
+                    [
+                        "src" => "https://cdn.onekindesign.com/wp-content/uploads/2019/11/Striking-Modern-Villa-Design-Marmol-Radziner-01-1-Kindesign.jpg",
+                        "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
+                        "alt" => "imagem 2 do banner"
+                    ],
+                    [
+                        "src" => "https://zegebeya.com/wp-content/uploads/2023/03/villa.jpg",
+                        "alt" => "imagem 3 do banner"
+                    ],
+                    [
+                        "src" => "https://www.digitow.com.br/wp-content/uploads/2020/10/home-office-historia-digitow.jpg",
+                        "alt" => "imagem 4 do banner"
+                    ],
+                    [
+                        "src" => "https://cullumhomes.com/assets/blog/2022%20Interior%20Design%20Trends%20for%20Luxury%20Homes%20Featured.jpg",
+                        "alt" => "imagem 6 do banner"
+                    ]
                 ],
-                [
-                    "src" => "https://cdn.onekindesign.com/wp-content/uploads/2019/11/Striking-Modern-Villa-Design-Marmol-Radziner-01-1-Kindesign.jpg",
-                    "https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png",
-                    "alt" => "imagem 2 do banner"
-                ],
-                [
-                    "src" => "https://zegebeya.com/wp-content/uploads/2023/03/villa.jpg",
-                    "alt" => "imagem 3 do banner"
-                ],
-                [
-                    "src" =>  "https://www.digitow.com.br/wp-content/uploads/2020/10/home-office-historia-digitow.jpg",
-                    "alt" => "imagem 4 do banner"
-                ],
-                [
-                    "src" => "https://cullumhomes.com/assets/blog/2022%20Interior%20Design%20Trends%20for%20Luxury%20Homes%20Featured.jpg",
-                    "alt" => "imagem 6 do banner"
-                ]
-            ],
         ];
 
         return view('site.productPage', ["product" => $product]);

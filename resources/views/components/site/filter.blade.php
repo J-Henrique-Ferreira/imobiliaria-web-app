@@ -37,24 +37,72 @@
         <button class="btn tab-btn active rounded-3" id="btnComprar">Comprar</button>
         <button class="btn tab-btn rounded-3" id="btnAlugar">Alugar</button>
     </div>
+
+
     <form>
         <div class="row g-3">
-            <labelel class="col-md-4 text-dark text-opacity-75 mb-1">
+            <div class="col-md-4">
                 Tipo de imóvel
-                <select class="form-select">
-                    <option selected></option>
-                    <option value="1">Casa</option>
-                    <option value="2">Apartamento</option>
-                </select>
-            </labelel>
-            <labelel class="col-md-4 text-dark text-opacity-75 mb-1">
+                <div class="dropdown">
+                    <button
+                        class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        Todos
+                    </button>
+                    <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
+                        <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" name="all-category" id="todos" value="value" checked>
+                            Todos
+                        </label>
+
+                        @foreach ($filterDatas['categories'] as $category)
+                            <label for="{{$category->name}}"
+                                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                                <input type="checkbox" name="{{$category->name}}" id="{{$category->name}}" value="value">
+                                {{$category->name}}
+                            </label>
+                        @endforeach
+
+
+                        <label for="apartamento"
+                            class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" name="apartamento" id="apartamento" value="value">
+                            Apartamento
+                        </label>
+                        <label for="terreno" class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" name="terreno" id="terreno" value="value">
+                            Terreno
+                        </label>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
                 Cidade
-                <select class="form-select">
-                    <option selected></option>
-                    <option value="1">São Paulo</option>
-                    <option value="2">Rio de Janeiro</option>
-                </select>
-            </labelel>
+                <div class="dropdown">
+                    <button
+                        class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        Todos
+                    </button>
+                    <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
+                        <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" name="all-cities" id="todos" value="value" checked>
+                            Todos
+                        </label>
+
+                        @foreach ($filterDatas['cities'] as $city)
+                            <label for="{{$city->name}}"
+                                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                                <input type="checkbox" name="{{$city->name}}" id="{{$city->name}}" value="value">
+                                {{$city->name}}
+                            </label>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+
             <label class="col-md-4 text-dark text-opacity-75 mb-1">
                 Bairros
                 <select class="form-select">

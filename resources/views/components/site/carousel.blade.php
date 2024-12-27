@@ -21,7 +21,7 @@
     'slider-nav-autoplay' => $autoplay,
     'overflow-hidden'
 ])
-        data-slider-nav-autoplay-interval="8000">
+        data-slider-nav-autoplay-interval="8000" style="filter: blur(1px);">
 
         <ul class="slider-container brightness-75">
             @foreach ($imgList as $index => $img)
@@ -44,9 +44,5 @@
                 @endif
             @endfor
         </div>
-    </div>
-
-    <div class="position-absolute top-0 z-3 w-100" style="padding-top: 20vh;" id="filter_form">
-        <x-site.filter></x-site.filter>
     </div>
 </div>

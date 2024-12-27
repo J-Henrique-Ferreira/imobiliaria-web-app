@@ -3,6 +3,12 @@
     <section class="d-flex justify-content-center w-100">
         @component('components.site.carousel', ['imgList' => $bannersList, 'autoplay' => true])
         @endComponent
+
+        <div class="position-absolute top-0 z-3 w-100" style="padding-top: 20vh;" id="filter_form">
+            @component("components.site.filter", ['filterDatas' => $filterDatas])
+            @endcomponent
+        </div>
+
     </section>
 
     <div class="container">
