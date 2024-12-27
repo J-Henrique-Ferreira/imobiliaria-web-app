@@ -1,8 +1,15 @@
 <?php
 
-// namespace App\Repositories\Contracts;
+namespace App\Repositories\Contracts;
 
-// interface DistrictRepositoryInterface
-// {
-//     public function findByCity(int|string $id);
-// }
+use App\Http\Requests\Admin\District\DistrictStoreUpdateRequest;
+// use App\Models\District;
+use Illuminate\Database\Eloquent\Collection;
+
+interface DistrictRepositoryInterface
+{
+    public function findByCity(int|string $id): Collection;
+    public function add(DistrictStoreUpdateRequest $request): bool;
+    public function update(DistrictStoreUpdateRequest $request): bool;
+    public function destroy(int|string $id): bool;
+}

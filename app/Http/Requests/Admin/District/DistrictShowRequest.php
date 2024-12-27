@@ -31,6 +31,4 @@ class DistrictShowRequest extends FormRequest
             "id" => "A cidade é obrigatória",
         ];
     }
-
-    // protected $redirectRoute = 'districts.index';
 }

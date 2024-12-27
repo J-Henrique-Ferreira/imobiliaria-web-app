@@ -7,11 +7,10 @@ use App\Repositories\Contracts\BusinessRepositoryInterface;
 use App\Models\Business as Model;
 use Illuminate\Database\Eloquent\Collection;
 
-class BusinessRepository  implements BusinessRepositoryInterface
+class BusinessRepository implements BusinessRepositoryInterface
 {
-    public function __construct(
-        protected Model $model,
-    ) {
+    public function __construct(protected Model $model)
+    {
     }
 
     public function all(): Collection
@@ -35,7 +34,7 @@ class BusinessRepository  implements BusinessRepositoryInterface
         return $business->save();
     }
 
-    public function destroy(string | int $id): bool
+    public function destroy(string|int $id): bool
     {
         if ($business = $this->model->find($id)) {
             return $business->delete();

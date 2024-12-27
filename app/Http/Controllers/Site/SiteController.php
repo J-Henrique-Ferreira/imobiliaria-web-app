@@ -21,18 +21,18 @@ class SiteController extends Controller
     public function index(Request $request)
     {
         $bannersList = [
-            [
-                "src" => asset("/storage/images/uploads/banners_home/banner5.png"),
-                "alt" => "imagem 2 do banner"
-            ],
-            [
-                "src" => asset("/storage/images/uploads/banners_home/banner2.png"),
-                "alt" => "imagem 1 do banner"
-            ],
-            [
-                "src" => asset("/storage/images/uploads/banners_home/banner3.jpg"),
-                "alt" => "imagem 2 do banner"
-            ],
+            // [
+            //     "src" => asset("/storage/images/uploads/banners_home/banner5.png"),
+            //     "alt" => "imagem 2 do banner"
+            // ],
+            // [
+            //     "src" => asset("/storage/images/uploads/banners_home/banner2.png"),
+            //     "alt" => "imagem 1 do banner"
+            // ],
+            // [
+            //     "src" => asset("/storage/images/uploads/banners_home/banner3.jpg"),
+            //     "alt" => "imagem 2 do banner"
+            // ],
             [
                 "src" => asset("/storage/images/uploads/banners_home/banner4.jpg"),
                 "alt" => "imagem 2 do banner"
