@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Repositories\Contracts\DistrictRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\District\DistrictDestroyRequest;
@@ -12,6 +13,10 @@ use App\Models\District;
 
 class DistrictController extends Controller
 {
+    public function __construct(private DistrictRepositoryInterface $districtRepository)
+    {
+    }
+
     public function index(Request $request)
     {
         $citiesList = City::where("visible", true)->orderBy("name")->get();
@@ -26,23 +31,6 @@ class DistrictController extends Controller
     {
         $citiesList = City::where("visible", true)->orderBy("name")->get();
         return view("admin.districts.create", ["citiesList" => $citiesList]);
-    }
-
-    public function store(DistrictStoreUpdateRequest $request)
-    {
-        $district = new District;
-        $district->name = $request->name;
-        $district->city_id = $request->city_id;
-        $district->visible = isset($request->visible) ? true : false;
-
-        $district->save();
-
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Bairro adicionado com sucesso!"
-        ]);
-
-        return to_route("districts.index");
     }
 
     public function show(DistrictShowRequest $request)
@@ -68,6 +56,23 @@ class DistrictController extends Controller
         );
     }
 
+    public function store(DistrictStoreUpdateRequest $request)
+    {
+        $district = new District;
+        $district->name = $request->name;
+        $district->city_id = $request->city_id;
+        $district->visible = isset($request->visible) ? true : false;
+
+        $district->save();
+
+        $request->session()->flash("toastMessage", [
+            "status" => "success",
+            "message" => "Bairro adicionado com sucesso!"
+        ]);
+
+        return to_route("districts.index");
+    }
+
     public function update(DistrictStoreUpdateRequest $request, string $id)
     {
         $district = District::find($id);
@@ -83,7 +88,7 @@ class DistrictController extends Controller
         return to_route("districts.index");
     }
 
-    public function destroy(DistrictDestroyRequest $request,  District $district)
+    public function destroy(DistrictDestroyRequest $request, District $district)
     {
         $district->delete();
 
