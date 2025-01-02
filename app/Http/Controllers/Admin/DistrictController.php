@@ -19,83 +19,108 @@ class DistrictController extends Controller
 
     public function index(Request $request)
     {
-        $citiesList = City::where("visible", true)->orderBy("name")->get();
+        try {
+            $citiesList = $this->districtRepository->findAllCity();
+            return view('admin.districts.index', [
+                "citiesList" => $citiesList,
+                "toastMessage" => $request->session()->get("toastMessage") ?? null
+            ]);
 
-        return view('admin.districts.index', [
-            "citiesList" => $citiesList,
-            "toastMessage" => $request->session()->get("toastMessage") ?? null
-        ]);
+        } catch (\Throwable $th) {
+            abort(500);
+        }
     }
 
     public function create()
     {
-        $citiesList = City::where("visible", true)->orderBy("name")->get();
-        return view("admin.districts.create", ["citiesList" => $citiesList]);
+        try {
+            $citiesList = $this->districtRepository->findAllCity();
+            return view("admin.districts.create", ["citiesList" => $citiesList]);
+        } catch (\Throwable $th) {
+            abort(500);
+        }
     }
 
     public function show(DistrictShowRequest $request)
     {
-        $citiesList = City::where("visible", true)->orderBy("name")->get();
-        $city = new City;
-        $city = $city->find($request->id);
+        try {
+            $datasDistrict = $this->districtRepository->findByCity($request);
 
-        $districtsList = $city->districts;
+            if ($request->json) {
+                echo json_encode($datasDistrict["districtsList"]);
+                exit;
+            }
 
-        if ($request->json) {
-            echo json_encode($districtsList);
-            exit;
+            return view(
+                'admin.districts.index',
+                $datasDistrict
+            );
+        } catch (\Throwable $th) {
+            abort(500);
         }
-
-        return view(
-            'admin.districts.index',
-            [
-                "citiesList" => $citiesList,
-                "cityName" => $city->name,
-                "districtsList" => $districtsList
-            ]
-        );
     }
 
     public function store(DistrictStoreUpdateRequest $request)
     {
-        $district = new District;
-        $district->name = $request->name;
-        $district->city_id = $request->city_id;
-        $district->visible = isset($request->visible) ? true : false;
-
-        $district->save();
-
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Bairro adicionado com sucesso!"
-        ]);
+        try {
+            $statusStore = $this->districtRepository->store($request);
+            if ($statusStore) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Bairro adicionado com sucesso!"
+                ]);
+            } else {
+                throw new \Exception("");
+            }
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "false",
+                "message" => "Não foi possivel adicionar bairro"
+            ]);
+        }
 
         return to_route("districts.index");
     }
 
-    public function update(DistrictStoreUpdateRequest $request, string $id)
+    public function update(DistrictStoreUpdateRequest $request)
     {
-        $district = District::find($id);
-        $district->name = $request->name;
-        $district->city_id = $request->city_id;
-        $district->visible = isset($request->visible) ? true : false;
-        $district->save();
-
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Bairro " . $district->value("name") . " atualizado com sucesso!"
-        ]);
+        $statusUpdate = $this->districtRepository->update($request);
+        try {
+            if ($statusUpdate) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Bairro " . $request->name . " atualizado com sucesso!"
+                ]);
+            } else {
+                throw new \Exception("");
+            }
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "false",
+                "message" => "Não foi possivel alterar bairro"
+            ]);
+        }
         return to_route("districts.index");
     }
 
-    public function destroy(DistrictDestroyRequest $request, District $district)
+    public function destroy(DistrictDestroyRequest $request)
     {
-        $district->delete();
-
-        $request->session()->flash("toastMessage", [
-            "status" => "success",
-            "message" => "Bairro removido com sucesso!"
-        ]);
+        $statusDestroy = $this->districtRepository->destroy($request);
+        try {
+            if ($statusDestroy) {
+                $request->session()->flash("toastMessage", [
+                    "status" => "success",
+                    "message" => "Bairro removido com sucesso!"
+                ]);
+            } else {
+                throw new \Exception("");
+            }
+        } catch (\Throwable $th) {
+            $request->session()->flash("toastMessage", [
+                "status" => "false",
+                "message" => "Erro ao remover o bairro"
+            ]);
+        }
 
         return to_route("districts.index");
     }
