@@ -14,7 +14,7 @@
     }
 </style>
 
-<div class="position-relative shadow-lg accordion">
+<div class="position-relative shadow-lg accordion w-100">
     <div @class([
     'swiffy-slider',
     'slider-nav-round',

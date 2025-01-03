@@ -38,12 +38,11 @@
         <button class="btn tab-btn rounded-3" id="btnAlugar">Alugar</button>
     </div>
 
-
     <form>
         <div class="row g-3">
             <div class="col-md-4">
                 Tipo de imóvel
-                <div class="dropdown">
+                <div class="dropdown" onchange="handleSelects('category', this)">
                     <button
                         class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
@@ -51,36 +50,50 @@
                     </button>
                     <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
                         <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
-                            <input type="checkbox" name="all-category" id="todos" value="value" checked>
+                            <input type="checkbox" name="all-category" id="todos" value="todos" checked>
                             Todos
                         </label>
 
                         @foreach ($filterDatas['categories'] as $category)
                             <label for="{{$category->name}}"
                                 class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                                <input type="checkbox" name="{{$category->name}}" id="{{$category->name}}" value="value">
+                                <input type="checkbox" name="{{$category->name}}" id="{{$category->name}}"
+                                    value="{{$category->name}}">
                                 {{$category->name}}
                             </label>
                         @endforeach
-
-
-                        <label for="apartamento"
-                            class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                            <input type="checkbox" name="apartamento" id="apartamento" value="value">
-                            Apartamento
-                        </label>
-                        <label for="terreno" class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                            <input type="checkbox" name="terreno" id="terreno" value="value">
-                            Terreno
-                        </label>
                     </ul>
                 </div>
             </div>
 
-
             <div class="col-md-4">
                 Cidade
-                <div class="dropdown">
+                <div class="dropdown" onchange="(handleSelects('cities', this), findDistrictsByCityId()">
+                    <button
+                        class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        Todos
+                    </button>
+                    <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
+                        <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" name="all-cities" id="todos" value="todos" checked>
+                            Todos
+                        </label>
+
+                        @foreach ($filterDatas['cities'] as $city)
+                            <label for="{{$city->name}}"
+                                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                                <input type="checkbox" name="{{$city->name}}" id="{{$city->name}}" value="{{$city->name}}">
+                                {{$city->name}}
+                            </label>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                Bairro
+                <div class="dropdown" onchange="handleSelects('cities', this)">
                     <button
                         class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
@@ -91,26 +104,9 @@
                             <input type="checkbox" name="all-cities" id="todos" value="value" checked>
                             Todos
                         </label>
-
-                        @foreach ($filterDatas['cities'] as $city)
-                            <label for="{{$city->name}}"
-                                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                                <input type="checkbox" name="{{$city->name}}" id="{{$city->name}}" value="value">
-                                {{$city->name}}
-                            </label>
-                        @endforeach
                     </ul>
                 </div>
             </div>
-
-            <label class="col-md-4 text-dark text-opacity-75 mb-1">
-                Bairros
-                <select class="form-select">
-                    <option selected>Todos</option>
-                    <option value="1">Opção 1</option>
-                    <option value="2">Opção 2</option>
-                </select>
-            </label>
             <label class="col-md-4 text-dark text-opacity-75 mb-1">
                 Código
                 <input type="text" class="form-control" placeholder="1234">
@@ -131,7 +127,6 @@
                     <option value="2">R$ 400.000</option>
                 </select>
             </label>
-
         </div>
 
         <div class="d-none row g-3 mt-1">
@@ -176,82 +171,62 @@
 </div>
 
 <script>
-    var precoOutput = document.getElementById('precoOutput');
-    var precoInput = document.getElementById('preco');
-
-    precoInput.addEventListener('input', function () {
-        precoOutput.textContent = 'R$ ' + precoInput.value;
-    });
-
-    function buscarImoveis() {
-        var tipoImovel = document.getElementById("tipoImovel").value;
-        var modalidade = document.getElementById("modalidade").value;
-        var preco = document.getElementById("preco").value;
-
-        // Aqui você pode implementar a lógica para buscar os imóveis com base nos valores dos campos de filtro
-        console.log("Tipo de Imóvel: " + tipoImovel + ", Modalidade: " + modalidade + ", Faixa de Preço: R$ " + preco);
-        // Exemplo de ação: redirecionar para uma página de resultados com os parâmetros de busca
-        // window.location.href = "resultados.html?tipoImovel=" + tipoImovel + "&modalidade=" + modalidade + "&preco=" + preco;
-    }
-
-
-</script>
-
-<script>
     document.querySelectorAll('.tab-btn').forEach(button => {
         button.addEventListener('click', function () {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
         });
     });
+
+    let formDatas = {
+        category: ["todos"],
+        cities: ["todos"],
+        districts: ["todos"],
+        business: ["compra"]
+    }
+
+    function handleSelects(fieldName, elements) {
+        const checkboxList = [...elements.querySelectorAll('input[type="checkbox"]')];
+        const checkedList = checkboxList.filter((checkboxElementDatas) => {
+            return checkboxElementDatas.checked
+        })
+
+        formDatas[fieldName] = checkedList.map((checkedElement) => {
+            return checkedElement.value;
+        });
+
+        console.log({ fieldName, elements, checkbox: elements.querySelectorAll('input[type="checkbox"]'), formDatas });
+    }
+
+    function findDistrictsByCityId(value) {
+        var selectDistrict = window.document.getElementById("address_district_id");
+        var token = window.document.getElementsByName("_token")[0].value;
+
+        var getDistrictsUrl = "/dashboard/districts/" + token + "?id=" + value + "&&json=1"
+
+        console.log(getDistrictsUrl);
+
+        var districtsList = [];
+
+        fetch(getDistrictsUrl, {
+            method: "GET"
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error("Erro ao buscar bairros.");
+            })
+            .then(data => {
+                data = JSON.parse(data);
+                console.log(data);
+                var options = "";
+
+                data.forEach(district => {
+                    options += "<option value='" + district.id + "' >" + district.name + "</option>"
+                });
+
+                selectDistrict.innerHTML = options;
+            })
+    }
 </script>
-
-<!--
-    <div class="d-flex flex-column flex-lg-row justify-content-center  gap-3 mt-3">
-        <div class="form-group w-100 mb-3 mb-lg-0 ">
-            <label for="preco" class="text-dark text-opacity-75 mb-1 text-uppercase">Cidade:</label>
-            <select class="form-control" id="preco">
-                <option value="">Todos</option>
-                <option value="">Porto Alegre</option>
-                <option value="">Gravataí</option>
-                <option value="">Parobé</option>
-                <option value="">Taquara</option>
-                <option value="">Rolante</option>
-                </select>
-        </div>
-        <div class="form-group w-100 mb-3 mb-lg-0 ">
-            <div class="form-group">
-                <label for="tipoImovel" class="text-dark text-opacity-75 mb-1 text-uppercase">Tipo De Imóvel:</label>
-                <select class="form-control" id="tipoImovel">
-                    <option value="">Todos</option>
-                    <option value="casa">Casa</option>
-                    <option value="apartamento">Apartamento</option>
-                    <option value="terreno">Terreno</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group w-100 mb-3 mb-lg-0 ">
-            <div class="form-group">
-                <label for="modalidade" class="text-dark text-opacity-75 mb-1">Tipo De Negócio:</label>
-                <select class="form-control" id="modalidade">
-                    <option value="">Todos</option>
-                    <option value="aluguel">Aluguel</option>
-                    <option value="venda">Venda</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group w-100">
-            <div class="form-group">
-                <label for="preco" class="text-dark text-opacity-75 mb-1">Faixa De Preço:</label>
-                <select class="form-control" id="preco">
-                    <option value="">Selecione</option>
-                    <option value="0-500">Até R$ 500</option>
-                    <option value="501-1000">R$ 501 - R$ 1000</option>
-                    <option value="1001-1500">R$ 1001 - R$ 1500</option>
-                </select>
-            </div>
-        </div>
-
-        <button class="btn btn-primary mt-4  mx-lg-0 " style="width: 200px;" onclick="buscarImoveis()">Buscar</button>
-    </div>
--->
