@@ -42,7 +42,8 @@
         <div class="row g-3">
             <div class="col-md-4">
                 Tipo de imóvel
-                <div class="dropdown" onchange="handleSelects('category', this)">
+                <div class="dropdown"
+                    onchange="(handleSelects('category', this), handleAllSelectElements('category', this))">
                     <button
                         class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
@@ -68,7 +69,7 @@
 
             <div class="col-md-4">
                 Cidade
-                <div class="dropdown" onchange="(handleSelects('cities', this), findDistrictsByCityId()">
+                <div class="dropdown" onchange="(handleSelects('cities', this), findDistrictsByCityId())">
                     <button
                         class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
@@ -188,7 +189,7 @@
     function handleSelects(fieldName, elements) {
         const checkboxList = [...elements.querySelectorAll('input[type="checkbox"]')];
         const checkedList = checkboxList.filter((checkboxElementDatas) => {
-            return checkboxElementDatas.checked
+            return checkboxElementDatas.checked;
         })
 
         formDatas[fieldName] = checkedList.map((checkedElement) => {
@@ -198,7 +199,39 @@
         console.log({ fieldName, elements, checkbox: elements.querySelectorAll('input[type="checkbox"]'), formDatas });
     }
 
+    function handleAllSelectElements(fieldName, dropdown) {
+        const checkboxes = dropdown.querySelectorAll('input[type="checkbox"]');
+        const allCheckbox = checkboxes[0]; // O checkbox "Todos"
+        const otherCheckboxes = Array.from(checkboxes).slice(1); // Os outros checkboxes
+
+        allCheckbox.addEventListener('change', () => {
+            const isChecked = allCheckbox.checked;
+            otherCheckboxes.forEach((checkbox) => {
+                checkbox.checked = isChecked;
+            });
+        });
+
+        otherCheckboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', () => {
+                const allChecked = otherCheckboxes.every(cb => cb.checked);
+                allCheckbox.checked = allChecked; // Marca "Todos" se todos os outros estiverem marcados
+                if (!checkbox.checked) {
+                    allCheckbox.checked = false; // Desmarca "Todos" se qualquer outro for desmarcado
+                }
+            });
+        });
+    }
+
+
     function findDistrictsByCityId(value) {
+        if (formDatas.cities.length > 1) {
+            alert("caiu no if");
+            return;
+        }
+
+        alert("passou do if")
+        return;
+
         var selectDistrict = window.document.getElementById("address_district_id");
         var token = window.document.getElementsByName("_token")[0].value;
 
