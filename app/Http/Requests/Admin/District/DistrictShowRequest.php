@@ -22,13 +22,21 @@ class DistrictShowRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "id" => "required",
+            'id' => 'required_without:name|nullable|string',
+            'name' => 'required_without:id|nullable|string',
         ];
     }
-    public function messages()
+
+    /**
+     * Get custom error messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
     {
         return [
-            "id" => "A cidade é obrigatória",
+            'id.required_without' => 'O campo ID é obrigatório quando o nome não é fornecido.',
+            'name.required_without' => 'O campo Nome é obrigatório quando o ID não é fornecido.',
         ];
     }
 }

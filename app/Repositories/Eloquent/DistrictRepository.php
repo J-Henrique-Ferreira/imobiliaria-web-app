@@ -21,16 +21,15 @@ class DistrictRepository implements DistrictRepositoryInterface
 
     public function findByCity(Request $request): array
     {
-        $citiesList = City::where("visible", true)->orderBy("name")->get();
-        $city = new City;
-        $city = $city->find($request->id); //mudar para cityId
+        $city = City::where(['visible' => true, 'name' => $request->name])->with('districts')->first();
 
-        $districtsList = $city->districts;
+        // $districtsList = $city->districts;
 
+        // refatorar, não deveria precisar retoranar a lista de cidades
         return [
-            "citiesList" => $citiesList,
+            "citiesList" => $city,
             "cityName" => $city->name,
-            "districtsList" => $districtsList
+            "districtsList" => $city->districts
         ];
     }
 

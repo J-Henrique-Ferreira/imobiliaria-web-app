@@ -8,8 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\District\DistrictDestroyRequest;
 use App\Http\Requests\Admin\District\DistrictShowRequest;
 use App\Http\Requests\Admin\District\DistrictStoreUpdateRequest;
-use App\Models\City;
-use App\Models\District;
 
 class DistrictController extends Controller
 {
@@ -43,6 +41,9 @@ class DistrictController extends Controller
 
     public function show(DistrictShowRequest $request)
     {
+        // echo json_encode($request->json);
+        // exit;
+
         try {
             $datasDistrict = $this->districtRepository->findByCity($request);
 
@@ -56,6 +57,7 @@ class DistrictController extends Controller
                 $datasDistrict
             );
         } catch (\Throwable $th) {
+            // echo 'deu ruim';
             abort(500);
         }
     }

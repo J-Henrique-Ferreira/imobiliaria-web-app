@@ -34,32 +34,36 @@
     style="background-color: /*#e7e7e7d4*/ #fffffff0; max-width: 860px;">
     <div class="fw-medium fs-4 text-uppercase text-center p-3 pb-4">Encontre seu imóvel</div>
     <div class="d-flex justify-content-center mb-3 gap-2">
-        <button class="btn tab-btn active rounded-3" id="btnComprar">Comprar</button>
-        <button class="btn tab-btn rounded-3" id="btnAlugar">Alugar</button>
+        <button class="btn tab-btn active rounded-3" id="btnComprar" onclick="setBusiness('compra')">Comprar</button>
+        <button class="btn tab-btn rounded-3" id="btnAlugar" onclick="setBusiness('aluguel')">Alugar</button>
     </div>
 
-    <form>
+    <form id="form-busca">
+        @csrf
+        @method('POST')
+
         <div class="row g-3">
             <div class="col-md-4">
                 Tipo de imóvel
-                <div class="dropdown"
-                    onchange="(handleSelects('category', this), handleAllSelectElements('category', this))">
-                    <button
-                        class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                <div class="dropdown" onclick="(
+                    getSelectsDatas('category', this)
+                    )">
+                    <button class="btn btn-white dropdown-toggle w-100 border border-1 d-flex
+                        justify-content-between align-items-center bg-white" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-auto-close="outside">
                         Todos
                     </button>
                     <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
-                        <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
-                            <input type="checkbox" name="all-category" id="todos" value="todos" checked>
+                        <label class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" id="todos" value="todos" checked>
                             Todos
                         </label>
 
                         @foreach ($filterDatas['categories'] as $category)
-                            <label for="{{$category->name}}"
+                            <label for="category-{{$category->name}}"
                                 class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                                <input type="checkbox" name="{{$category->name}}" id="{{$category->name}}"
-                                    value="{{$category->name}}">
+                                <input type="checkbox" name="{{$category->name}}" id="category-{{$category->name}}"
+                                    value="{{$category->name}}" checked>
                                 {{$category->name}}
                             </label>
                         @endforeach
@@ -67,24 +71,30 @@
                 </div>
             </div>
 
+
+
+
             <div class="col-md-4">
                 Cidade
-                <div class="dropdown" onchange="(handleSelects('cities', this), findDistrictsByCityId())">
-                    <button
-                        class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                <div class="dropdown" onclick="(
+                getSelectsDatas('cities', this)
+                )">
+                    <button class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-
+                        content-between align-items-center bg-white" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-auto-close="outside">
                         Todos
                     </button>
                     <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
-                        <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
-                            <input type="checkbox" name="all-cities" id="todos" value="todos" checked>
+                        <label class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
+                            <input type="checkbox" id="todos" value="todos" checked>
                             Todos
                         </label>
 
                         @foreach ($filterDatas['cities'] as $city)
-                            <label for="{{$city->name}}"
+                            <label for="city-{{$city->name}}"
                                 class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                                <input type="checkbox" name="{{$city->name}}" id="{{$city->name}}" value="{{$city->name}}">
+                                <input type="checkbox" name="{{$city->name}}" id="city-{{$city->name}}" value="{{$city->name}}"
+                                    checked>
                                 {{$city->name}}
                             </label>
                         @endforeach
@@ -94,15 +104,16 @@
 
             <div class="col-md-4">
                 Bairro
-                <div class="dropdown" onchange="handleSelects('cities', this)">
-                    <button
-                        class="btn btn-white dropdown-toggle w-100 border border-1 d-flex justify-content-between align-items-center bg-white"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                <div class="dropdown" onchange="setFormValues('cities', this)">
+                    <button class="btn btn-white dropdown-toggle w-100 border border-1 d-flex
+                        justify-content-between align-items-center bg-white" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-auto-close="outside">
                         Todos
                     </button>
                     <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
-                        <label for="todos" class="p-1 px-2 border-bottom border-2 w-100 d-flex gap-2 dropdown-item">
-                            <input type="checkbox" name="all-cities" id="todos" value="value" checked>
+                        <label class="p-1 px-2 border-bottom border-2 w-100 d-flex
+                        gap-2 dropdown-item">
+                            <input type="checkbox" id="todos" value="value" checked>
                             Todos
                         </label>
                     </ul>
@@ -186,7 +197,14 @@
         business: ["compra"]
     }
 
-    function handleSelects(fieldName, elements) {
+    function setBusiness(business) {
+        formDatas.business = business;
+        console.log(formDatas);
+        return;
+    }
+
+    // passa valores para a o estado que armazena os dados do form
+    function setFormValues(fieldName, elements) {
         const checkboxList = [...elements.querySelectorAll('input[type="checkbox"]')];
         const checkedList = checkboxList.filter((checkboxElementDatas) => {
             return checkboxElementDatas.checked;
@@ -196,16 +214,28 @@
             return checkedElement.value;
         });
 
-        console.log({ fieldName, elements, checkbox: elements.querySelectorAll('input[type="checkbox"]'), formDatas });
+
+        if ((fieldName === 'category' || fieldName === 'cities') && formDatas[fieldName][0] === "todos") {
+            formDatas[fieldName] = ['todos'];
+        }
+
+        console.log(
+            // checkboxList,
+            // checkedList,
+            // fieldName,
+            // elements,
+            formDatas
+        );
     }
 
-    function handleAllSelectElements(fieldName, dropdown) {
-        const checkboxes = dropdown.querySelectorAll('input[type="checkbox"]');
-        const allCheckbox = checkboxes[0]; // O checkbox "Todos"
+    function getSelectsDatas(fieldName, elements) {
+        const checkboxes = [...elements.querySelectorAll('input[type="checkbox"]')];
+        const allCheckboxInput = checkboxes[0]; // O checkbox "Todos"
         const otherCheckboxes = Array.from(checkboxes).slice(1); // Os outros checkboxes
 
-        allCheckbox.addEventListener('change', () => {
-            const isChecked = allCheckbox.checked;
+        // marca todos - desmarca todos - com base no valor do primeiro select
+        allCheckboxInput.addEventListener('change', () => {
+            const isChecked = allCheckboxInput.checked;
             otherCheckboxes.forEach((checkbox) => {
                 checkbox.checked = isChecked;
             });
@@ -214,28 +244,40 @@
         otherCheckboxes.forEach((checkbox) => {
             checkbox.addEventListener('change', () => {
                 const allChecked = otherCheckboxes.every(cb => cb.checked);
-                allCheckbox.checked = allChecked; // Marca "Todos" se todos os outros estiverem marcados
+                // Marca "Todos" se todos os outros estiverem marcados
+                allCheckboxInput.checked = allChecked;
+                // Desmarca "Todos" se qualquer outro for desmarcado
                 if (!checkbox.checked) {
-                    allCheckbox.checked = false; // Desmarca "Todos" se qualquer outro for desmarcado
+                    allCheckboxInput.checked = false;
                 }
             });
         });
+
+        setTimeout(() => {
+            console.log("Executou 'setFormValues' lguns segundos");
+            setFormValues(fieldName, elements);
+            findDistrictsByCityId()
+        }, 100);
+
     }
 
 
-    function findDistrictsByCityId(value) {
-        if (formDatas.cities.length > 1) {
-            alert("caiu no if");
+    function findDistrictsByCityId() {
+        // marcou mais de uma cidade portanto não marca os bairros
+        if (formDatas.cities.length > 1 || formDatas.cities[0] === "todos") {
+            console.log("marcou mais de uma cidade portanto não marca os bairros");
             return;
         }
 
-        alert("passou do if")
-        return;
-
         var selectDistrict = window.document.getElementById("address_district_id");
-        var token = window.document.getElementsByName("_token")[0].value;
+        const token = document.querySelector('input[name="_token"]').value;
 
-        var getDistrictsUrl = "/dashboard/districts/" + token + "?id=" + value + "&&json=1"
+        // var getDistrictsUrl = "/dashboard/districts/" + token + "?name=" + formDatas.cities[0] + "&&json=1"
+
+        var getDistrictsUrl = "/api/getdistricts" + "?id=&&name=" + formDatas.cities[0] + '&&json=1';
+
+        // alert(getDistrictsUrl);
+        // return;
 
         console.log(getDistrictsUrl);
 
