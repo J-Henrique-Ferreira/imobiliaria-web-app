@@ -93,8 +93,8 @@
                         @foreach ($filterDatas['cities'] as $city)
                             <label for="city-{{$city->name}}"
                                 class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
-                                <input type="checkbox" name="{{$city->name}}" id="city-{{$city->name}}" value="{{$city->name}}"
-                                    checked>
+                                <input type="checkbox" name="{{$city->name}}" id="city-{{$city->name}}"
+                                    value="{{$city->name}}" checked>
                                 {{$city->name}}
                             </label>
                         @endforeach
@@ -104,7 +104,7 @@
 
             <div class="col-md-4">
                 Bairro
-                <div class="dropdown" onchange="setFormValues('cities', this)">
+                <div class="dropdown" onclick="setFormValues('cities', this)" id="address_district_dropdown">
                     <button class="btn btn-white dropdown-toggle w-100 border border-1 d-flex
                         justify-content-between align-items-center bg-white" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false" data-bs-auto-close="outside">
@@ -269,7 +269,6 @@
             return;
         }
 
-        var selectDistrict = window.document.getElementById("address_district_id");
         const token = document.querySelector('input[name="_token"]').value;
 
         // var getDistrictsUrl = "/dashboard/districts/" + token + "?name=" + formDatas.cities[0] + "&&json=1"
@@ -295,13 +294,18 @@
             .then(data => {
                 data = JSON.parse(data);
                 console.log(data);
-                var options = "";
-
-                data.forEach(district => {
-                    options += "<option value='" + district.id + "' >" + district.name + "</option>"
-                });
-
-                selectDistrict.innerHTML = options;
+                createDistrictOptions(data);
             })
+    }
+
+
+    function createDistrictOptions(districts) {
+        var selectDistrict = window.document.getElementById("address_district_dropdown");
+        var options = "";
+
+        districts.forEach(district => {
+            options += "<option value='" + district.id + "' >" + district.name + "</option>"
+        });
+        selectDistrict.innerHTML = options;
     }
 </script>
