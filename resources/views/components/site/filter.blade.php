@@ -71,9 +71,6 @@
                 </div>
             </div>
 
-
-
-
             <div class="col-md-4">
                 Cidade
                 <div class="dropdown" onclick="(
@@ -104,13 +101,14 @@
 
             <div class="col-md-4">
                 Bairro
-                <div class="dropdown" onclick="setFormValues('cities', this)" id="address_district_dropdown">
+                <div class="dropdown" onclick="getSelectsDatas('districts', this)">
                     <button class="btn btn-white dropdown-toggle w-100 border border-1 d-flex
                         justify-content-between align-items-center bg-white" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false" data-bs-auto-close="outside">
                         Todos
                     </button>
-                    <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden">
+                    <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden"
+                        id="address_district_dropdown_list">
                         <label class="p-1 px-2 border-bottom border-2 w-100 d-flex
                         gap-2 dropdown-item">
                             <input type="checkbox" id="todos" value="value" checked>
@@ -183,6 +181,8 @@
 </div>
 
 <script>
+    const checkboxListDistrictElement = window.document.getElementById("address_district_dropdown_list");
+
     document.querySelectorAll('.tab-btn').forEach(button => {
         button.addEventListener('click', function () {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -256,7 +256,10 @@
         setTimeout(() => {
             console.log("Executou 'setFormValues' lguns segundos");
             setFormValues(fieldName, elements);
-            findDistrictsByCityId()
+
+            fieldName === 'cities' ? findDistrictsByCityId() : null;
+
+            formDatas.cities[0] === 'todos' ? clearDistrictsCheckbox() : null
         }, 100);
 
     }
@@ -294,18 +297,39 @@
             .then(data => {
                 data = JSON.parse(data);
                 console.log(data);
-                createDistrictOptions(data);
+                createDistrictListOptions(data);
             })
     }
 
 
-    function createDistrictOptions(districts) {
-        var selectDistrict = window.document.getElementById("address_district_dropdown");
-        var options = "";
+    function createDistrictListOptions(districts) {
+        var options = `
+            <label for="district-todos"
+                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                <input type="checkbox" id="district-todos" value="todos" checked>
+                   Todos
+            </label>`;
 
         districts.forEach(district => {
-            options += "<option value='" + district.id + "' >" + district.name + "</option>"
+
+            options += `
+            <label for="district-${district.name}"
+                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                <input type="checkbox" id="district-${district.name}" value="${district.name}" checked>
+                    ${district.name}
+            </label>
+            `;
         });
-        selectDistrict.innerHTML = options;
+        checkboxListDistrictElement.innerHTML = options;
+    }
+
+
+    function clearDistrictsCheckbox() {
+        checkboxListDistrictElement.innerHTML = `
+            <label for="district-todos"
+                class="p-1 px-2 border-bottom border-1 w-100 d-flex gap-2 dropdown-item">
+                <input type="checkbox" id="district-todos" value="todos" checked>
+                   Todos
+            </label>`;
     }
 </script>
