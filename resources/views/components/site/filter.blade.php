@@ -104,7 +104,7 @@
                 <div class="dropdown" onclick="getSelectsDatas('districts', this)">
                     <button class="btn btn-white dropdown-toggle w-100 border border-1 d-flex
                         justify-content-between align-items-center bg-white" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false" data-bs-auto-close="outside">
+                        aria-expanded="false" data-bs-auto-close="outside" id="dropdown-button-districts">
                         Todos
                     </button>
                     <ul class="dropdown-menu w-100 p-0 border border-1 border-dark overflow-hidden"
@@ -256,49 +256,48 @@
         setTimeout(() => {
             console.log("Executou 'setFormValues' lguns segundos");
             setFormValues(fieldName, elements);
-
             fieldName === 'cities' ? findDistrictsByCityId() : null;
-
             formDatas.cities[0] === 'todos' ? clearDistrictsCheckbox() : null
         }, 100);
-
     }
 
 
-    function findDistrictsByCityId() {
+    async function findDistrictsByCityId() {
         // marcou mais de uma cidade portanto não marca os bairros
-        if (formDatas.cities.length > 1 || formDatas.cities[0] === "todos") {
+        if (formDatas.cities.length > 1 || formDatas.cities[0] === "todos" || formDatas.cities.length === 0) {
             console.log("marcou mais de uma cidade portanto não marca os bairros");
+            editDistrictTextButtonDropdown("Todos")
             return;
         }
 
+        editDistrictTextButtonDropdown("Buscando...")
+
         const token = document.querySelector('input[name="_token"]').value;
-
-        // var getDistrictsUrl = "/dashboard/districts/" + token + "?name=" + formDatas.cities[0] + "&&json=1"
-
         var getDistrictsUrl = "/api/getdistricts" + "?id=&&name=" + formDatas.cities[0] + '&&json=1';
-
-        // alert(getDistrictsUrl);
-        // return;
-
         console.log(getDistrictsUrl);
-
         var districtsList = [];
 
-        fetch(getDistrictsUrl, {
-            method: "GET"
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error("Erro ao buscar bairros.");
+        try {
+            await fetch(getDistrictsUrl, {
+                method: "GET"
             })
-            .then(data => {
-                data = JSON.parse(data);
-                console.log(data);
-                createDistrictListOptions(data);
-            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    }
+                    throw new Error("Erro ao buscar bairros.");
+                })
+                .then(data => {
+                    data = JSON.parse(data);
+                    console.log(data);
+                    return createDistrictListOptions(data);
+                })
+        } catch (error) {
+            console.error(error)
+        }
+
+
+        editDistrictTextButtonDropdown("Selecione")
     }
 
 
@@ -331,5 +330,10 @@
                 <input type="checkbox" id="district-todos" value="todos" checked>
                    Todos
             </label>`;
+    }
+
+    function editDistrictTextButtonDropdown(text) {
+        let buttoneElement = window.document.getElementById("dropdown-button-districts");
+        buttoneElement.innerHTML = text;
     }
 </script>

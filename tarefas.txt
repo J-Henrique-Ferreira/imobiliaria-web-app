@@ -8,20 +8,15 @@
 [OK] crud de bairros
 [OK] crud de business
 [OK] crud de category
+[OK] crud de produtos
+[OK] mapear campos a serem varificados na validação da request
+[ok] edefuar upload e validação dos arquivos
+
 [AGUARDADNDO] crud de users
+------------------------------------------------------------------
+#login
 
-[EM ANDAMENTO] crud de produtos
-	[OK] mapear campos a serem varificados na validação da request
-	[em andamento] 
-	[em andamento] edefuar upload e validação dos arquivos
-
-##
-	criar service de product para interagir com varios repositórios ao mesmo tempo
-	(users, product ...)
-
-	criar DTO com metodo de inicialização interno chamando o proprio contrutor (pesquisar sobre o self)
-
-##
+[AGUARDADNDO] autenticação e niveis de acesso
 
 // [AGUARDADNDO] crud de contatos
 
@@ -30,31 +25,9 @@
 [AGUARDADNDO] filtrar imóveis
 [AGUARDADNDO] filtrar contatos
 
-#componentes dinâmicos 
+#componentes dinâmicos
 
 [OK] cards de produto
 [PARCIAL] paginar resultados de listagem de imóveis na pagina do usuário
 [PARCIAL] página do produto
 [PARCIAL] paginar resultados de listagem de imóveis na pagina do adminstrador
-
-
-#permições
-
-[ ] login do adm
-[ ] tratamendo de autenticação e autorização
-
-#estilos personalizados 
-// Para o próximo projeto ser possivel criar interfaces diferentes sem que 
-// afete o restante do projeto, praticamente separando front e back end mas mantendo o mvc
-
-[ ] Criar lib para views respeitando os valores vindos da api
-
-[ ] pagina adm que permita selecionar formatos de: 
-	- slider de banners
-	- card de produto
-	- formato do filtro de produtos
-	- formato da pagina do produto
-	- cores do sistema
-	- formato do paginador
-	- formato e links do cabeçalho
-	- formato e links do rodapé

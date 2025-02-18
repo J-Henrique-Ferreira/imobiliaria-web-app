@@ -34,14 +34,42 @@ Route::prefix('/dashboard')->group(function () {
     });
 
     // verificar formas de implementar este middleware mantendo a rota resource
-    Route::delete('/cities/{id}', [CityController::class, 'destroy'])
+    Route::delete(
+        '/cities/{id}',
+        [CityController::class, 'destroy']
+    )
         ->name('cities.destroy')
         ->middleware('city.check.related');
-    Route::resource("/cities", CityController::class, [])->except("show", 'edit');
-    Route::resource("/districts", DistrictController::class, [])->except("edit");
-    Route::resource("/business", BusinessController::class, []);
-    Route::resource("/category", CategoryController::class, []);
-    Route::resource("/imoveis", ProductController::class, []);
+
+    Route::resource(
+        "/cities",
+        CityController::class,
+        []
+    )->except("show", 'edit');
+
+    Route::resource(
+        "/districts",
+        DistrictController::class,
+        []
+    )->except("edit");
+
+    Route::resource(
+        "/business",
+        BusinessController::class,
+        []
+    );
+
+    Route::resource(
+        "/category",
+        CategoryController::class,
+        []
+    );
+
+    Route::resource(
+        "/imoveis",
+        ProductController::class,
+        []
+    );
 });
 // });
 
