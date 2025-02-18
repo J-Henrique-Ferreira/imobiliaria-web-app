@@ -21,7 +21,7 @@
     </div>
 </div>
 
-
+<!--
 <div class="my-5">
     <form action="#" id="filter_contacts" class="container shadow-sm rounded-3 p-3 pb-4 bg-white">
         <span class="fw-medium fs-5">Filtro de contatos</span>
@@ -87,4 +87,4 @@
         </div>
 </div>
 @endfor
-</div>
+</div> -->
