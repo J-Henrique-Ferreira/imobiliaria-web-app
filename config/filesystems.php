@@ -44,13 +44,13 @@ return [
             'throw' => false,
         ],
 
-        'uploads' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/images/uploads'),
-            'url' => env('APP_URL') . '/storage',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
+        // 'uploads' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public/images/uploads'),
+        //     'url' => env('APP_URL') . '/storage',
+        //     'visibility' => 'public',
+        //     'throw' => false,
+        // ],
 
         's3' => [
             'driver' => 's3',
