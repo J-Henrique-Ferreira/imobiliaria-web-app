@@ -42,6 +42,7 @@
                 <div class="mx-5 fs-4 fw-medium my-auto">
                     {{ $containerTitle }}
                 </div>
+                @include('layouts.navigation')
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
