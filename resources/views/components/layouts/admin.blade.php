@@ -12,10 +12,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-        </script>
+    </script>
 
     <!-- Fonts -->
     <!-- <link rel="preconnect" href="https://fonts.bunny.net"> -->
@@ -26,25 +26,29 @@
 </head>
 
 <style>
-    .max-w {
-        max-width: 1600px;
-    }
+.max-w {
+    max-width: 1600px;
+}
 </style>
 
 <body class="" style="background-color: #fafafa;">
     <div class="d-flex justify-content-between px-3 py-3 fs-3 mb-3 shadow">
         <div class="container d-flex justify-content-between">
-            <div class="d-flex justify-content-between gap-4">
-                <a href="/dashboard" class="col nav-link">
-                    <img class="img-fluid object-fit-contain" src="{{ asset('storage/images/icons/logo.png') }}"
-                        alt="Logo da Imobiliária" style="width: 90px;">
-                </a>
-                <div class="mx-5 fs-4 fw-medium my-auto">
-                    {{ $containerTitle }}
+            <div class="d-flex justify-content-between w-100 gap-4 align-items-center">
+                <div class="d-flex">
+                    <a href="/dashboard" class="col nav-link">
+                        <img class="img-fluid object-fit-contain" src="{{ asset('storage/images/icons/logo.png') }}"
+                            alt="Logo da Imobiliária" style="width: 90px;">
+                    </a>
+                    <div class="mx-5 fs-4 fw-medium my-auto">
+                        {{ $containerTitle }}
+                    </div>
                 </div>
-                @include('layouts.navigation')
+                <div style="margin-right: 20px">
+                    @include('layouts.navigation')
+                </div>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            <button class=" navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <x-svgs.menu></x-svgs.menu>
             </button>
@@ -54,7 +58,6 @@
     <main class="container mx-auto d-flex items-center">
         <x-admin.navbar></x-admin.navbar>
         <div class="w-100 min-vh-100">
-            <x-site.alertMessage>aaaa</x-site.alertMessage>
             <div class="d-flex flex-column gap-3 p-3">{{ $slot }}</div>
         </div>
     </main>

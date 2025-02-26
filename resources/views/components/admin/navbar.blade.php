@@ -1,12 +1,12 @@
 @php
-    $navList = [
-        ['name' => 'Painel de controle', 'href' => route('dashboard')],
-        ['name' => 'Imoveis', 'href' => route('imoveis.index')],
-        ['name' => 'Cidades', 'href' => route('cities.index')],
-        ['name' => 'Bairros', 'href' => route('districts.index')],
-        ['name' => 'Negócios', 'href' => route('business.index')],
-        ['name' => 'Categorias', 'href' => route('category.index')],
-    ];
+$navList = [
+['name' => 'Painel de controle', 'href' => route('dashboard')],
+['name' => 'Imoveis', 'href' => route('imoveis.index')],
+['name' => 'Cidades', 'href' => route('cities.index')],
+['name' => 'Bairros', 'href' => route('districts.index')],
+['name' => 'Negócios', 'href' => route('business.index')],
+['name' => 'Categorias', 'href' => route('category.index')],
+];
 @endphp
 
 
@@ -24,7 +24,7 @@
                     @if (url()->current() === $navData['href'])
                         bg-primary text-white shadow
                     @endif
-                    @if ($key != 0 && strpos(url()->current(), $navData["href"]) === 0)
+                    @if ($key != 0 && strpos(url()->current(), $navData['href']) === 0)
                         bg-primary text-white shadow
                     @endif
                 " style="
